@@ -72,14 +72,14 @@ functional-fortran builds and passes all tests with:
 `arange` is used to generate evenly spaced arrays,
 given start and end values as input arguments:
 
-```
+```fortran
 write(*,*)arange(1,5)
            1           2           3           4           5
 ```
 
 `arange` works with real numbers as well:
 
-```
+```fortran
 write(*,*)arange(1.,5.)
    1.00000000       2.00000000       3.00000000       4.00000000       5.00000000    
 ```
@@ -87,75 +87,75 @@ write(*,*)arange(1.,5.)
 Third argument to `arange` (optional) is the increment,
 which defaults to `1` if not given:
 
-```
+```fortran
 write(*,*)arange(1,15,3)
            1           4           7          10          13
 ```
 
 Negative increments work as expected:
-```
+```fortran
 write(*,*)arange(3,1,-1)
            3           2           1 
 ```
 
 We can use floating-point increments:
-```
+```fortran
 write(*,*)arange(1.,1.5,0.1)
    1.00000000       1.10000002       1.20000005       1.29999995       1.39999998       1.50000000    
 ```
 
 Be mindful of floating-point arithmetic:
-```
+```fortran
 write(*,*)arange(1.,1.4,0.1)
    1.00000000       1.10000002       1.20000005       1.29999995    
 ```
 
 If `start` is greater than `end` and increment is positive,
 `arange` returns an empty array:
-```
+```fortran
 write(*,*)arange(5,1)
 
 ```
 
 `head` returns the first element of the array:
-```
+```fortran
 write(*,*)head([1,2,3])
            1
 ```
 
 `tail` returns everything but the first element of the array:
-```
+```fortran
 write(*,*)tail([1,2,3])
            2           3
 ```
 
 Similarly, `last` returns the last element of the array:
-```
+```fortran
 write(*,*)last([1,2,3])
            3
 ```
 
 `init` returns everything but the last element of the array:
-```
+```fortran
 write(*,*)init([1,2,3])
            1           2
 ```
 
 Subscript an array at specific indices:
-```
+```fortran
 write(*,*)subscript([1,2,3,4,5],[3,4])
            3           4
 ```
 
 Unlike Fortran 2008 vector subscript, the `subscript` function is out-of-bounds safe,
 i.e. subscripting out of bounds returns an empty array:
-```
+```fortran
 write(*,*)subscript([1,2,3],[10])
 
 ```
 
 We can prepend, append, or insert an element into an array using `insert`:
-```
+```fortran
 ! insert a 5 at position 0 to prepend:
 write(*,*)insert(5,0,[1,2,3])
            5           1           2           3
@@ -170,7 +170,7 @@ write(*,*)insert(2,2,[1,3,4])
 ```
 
 `split` can be used to return first or second half of an array:
-```
+```fortran
 ! return first half of the array
 write(*,*)split(arange(1,5),1)
            1           2
@@ -183,7 +183,7 @@ The above is useful for recursive binary tree searching or sorting,
 for example, see the implementation of `sort` in this library.
 
 `sort` returns a sorted array in ascending order:
-```
+```fortran
 real,dimension(5) :: x
 call random_number(x)
 write(*,*)x
@@ -192,7 +192,7 @@ write(*,*)sort(x)
    0.367390871      0.566824675      0.747927666      0.965915322      0.997559547    
 ```
 Use `reverse` to sort in descending order:
-```
+```fortran
 write(*,*)reverse(sort(x))
    0.997559547      0.965915322      0.747927666      0.566824675      0.367390871    
 ```
@@ -200,7 +200,7 @@ write(*,*)reverse(sort(x))
 The `limit` function can be used to contrain a value of a scalar
 or an array within a lower and upper limit, for example:
 
-```
+```fortran
 ! limit a scalar (5) within bounds 1 and 4
 write(*,*)limit(5,1,4)
            4
@@ -210,7 +210,7 @@ write(*,*)limit(5,1,4)
            4
 ```
 `limit` also works on arrays:
-```
+```fortran
 write(*,*)limit(arange(0,4),1,3):
            1           1           2           3           3
 ```
@@ -219,7 +219,7 @@ write(*,*)limit(arange(0,4),1,3):
 
 `map` has the same functionality as pure elemental functions,
 but can be used to apply recursive functions to arrays, for example:
-```
+```fortran
 pure recursive integer function fibonacci(n) result(fib)
   integer,intent(in) :: n
   if(n == 0)then
@@ -238,7 +238,7 @@ write(*,*)map(fibonacci,[17,5,13,22])
 `filter` returns array elements that satisfy a logical filtering function.
 For example, we can define a function that returns .true. when input is an 
 even number, and use this function to filter an array:
-```
+```fortran
 pure logical function even(x)
   integer,intent(in) :: x
   even = .false.
@@ -249,7 +249,7 @@ write(*,*)filter(even,[1,2,3,4,5])
            2           4
 ```
 Functions can be chained together into pretty one-liners:
-```
+```fortran
 write(*,*)filter(even,map(fibonacci,arange(1,10)))
            2           8          34
 ```
@@ -259,7 +259,7 @@ functional-fortran also provides left-, right-, and tree-fold functions,
 consume an array using a user-defined function, and return a resulting scalar.
 For simple examples of `sum` and `product` functions using folds, we can define
 the following addition and multiplication functions that operate on scalars:
-```
+```fortran
 pure real function add(x,y)
   real,intent(in) :: x,y
   add = x+y
@@ -273,7 +273,7 @@ endfunction mult
 We can then calculate the `sum` and `product` of an array by "folding" the 
 input using the above-defined functions and a start value 
 (second argument to `fold*`):
-```
+```fortran
 ! left-fold an array using add to compute array sum
 write(*,*)foldl(add,0.,arange(1.,5.))
    15.0000000
@@ -296,7 +296,7 @@ based on a start value `x`, and a function `f`, such that
 the resulting array equals `[x, f(x), f(f(x)), f(f(f(x))), ... ]`.
 For example:
 
-```
+```fortran
 pure real function multpt1(x)
   real,intent(in) :: x
   multpt1 = 1.1*x
@@ -309,13 +309,13 @@ write(*,*)unfold(multpt1,[1.],5)
 ### Set functions: `set`, `union`, `intersection`, `complement`
 
 Function `set` returns all unique elements of an input array:
-```
+```fortran
 write(*,*)set([1,1,2,2,3])
            1           2           3
 ```
 Common functions that operate on sets, `union`, 
 `intersection`, and `complement`,  are also available:
-```
+```fortran
 ! unique elements that are found in either array
 write(*,*)union([1,2,2],[2,3,3,4])
            1           2           3           4
