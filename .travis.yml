@@ -1,0 +1,10 @@
+language: generic
+before_install:
+  - sudo apt-get install gfortran
+before_script:
+  - cmake .
+  - make
+script:
+  - ctest
+notifications:
+  email: false
