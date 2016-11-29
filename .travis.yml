@@ -5,6 +5,8 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - gfortran-6
+      - cmake
+      - cmake-data
 before_script:
   - cmake .
   - make
