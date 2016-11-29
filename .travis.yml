@@ -2,6 +2,7 @@ language: generic
 addons:
   apt:
     sources:
+      - kalakris-cmake
       - ubuntu-toolchain-r-test
     packages:
       - gfortran-6
