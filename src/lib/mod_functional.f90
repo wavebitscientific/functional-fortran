@@ -561,7 +561,7 @@ pure recursive integer(kind=int8) function foldl_int8(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_int8
 
@@ -580,7 +580,7 @@ pure recursive integer(kind=int16) function foldl_int16(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_int16
 
@@ -599,7 +599,7 @@ pure recursive integer(kind=int32) function foldl_int32(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_int32
 
@@ -618,7 +618,7 @@ pure recursive integer(kind=int64) function foldl_int64(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_int64
 
@@ -637,7 +637,7 @@ pure recursive real(kind=real32) function foldl_real32(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_real32
 
@@ -656,7 +656,7 @@ pure recursive real(kind=real64) function foldl_real64(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_real64
 
@@ -675,7 +675,7 @@ pure recursive real(kind=real128) function foldl_real128(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = foldl(f,f(start,x(1)),tail(x))
+    res = foldl(f,f(start,x(1)),x(2:))
   endif
 endfunction foldl_real128
 
@@ -693,7 +693,7 @@ pure recursive integer(kind=int8) function foldr_int8(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_int8
 
@@ -711,7 +711,7 @@ pure recursive integer(kind=int16) function foldr_int16(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_int16
 
@@ -729,7 +729,7 @@ pure recursive integer(kind=int32) function foldr_int32(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_int32
 
@@ -747,7 +747,7 @@ pure recursive integer(kind=int64) function foldr_int64(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_int64
 
@@ -765,7 +765,7 @@ pure recursive real(kind=real32) function foldr_real32(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_real32
 
@@ -783,7 +783,7 @@ pure recursive real(kind=real64) function foldr_real64(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_real64
 
@@ -801,7 +801,7 @@ pure recursive real(kind=real128) function foldr_real128(f,start,x) result(res)
   if(size(x) < 1)then
     res = start
   else
-    res = f(x(1),foldr(f,start,tail(x)))
+    res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_real128
 
@@ -982,6 +982,15 @@ pure real(kind=real32) function head_real32(x) result(head)
   real(kind=real32),dimension(:),intent(in) :: x !! Input array
   head = x(1)
 endfunction head_real32
+
+pure complex(kind=real32) function head_complex32(x) result(head)
+  !! Returns the first element of array `x`.
+  !! This specific procedure is for 4-byte reals.
+  !! Overloaded by generic procedure `head`.
+  complex(kind=real32),dimension(:),intent(in) :: x !! Input array
+  head = x(1)
+endfunction head_complex32
+
 
 
 pure real(kind=real64) function head_real64(x) result(head)
