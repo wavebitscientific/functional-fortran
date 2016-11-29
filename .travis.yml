@@ -9,7 +9,7 @@ addons:
       - cmake
       - cmake-data
 before_script:
-  - cmake .
+  - FC=gfortran-6 cmake .
   - make
 script:
   - ctest
