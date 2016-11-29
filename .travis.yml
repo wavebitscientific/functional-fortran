@@ -2,7 +2,7 @@ language: generic
 addons:
   apt:
     sources:
-      - kalakris-cmake
+      - george-edison55-precise-backports
       - ubuntu-toolchain-r-test
     packages:
       - gfortran-6
