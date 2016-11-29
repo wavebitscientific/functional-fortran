@@ -2,8 +2,6 @@
 
 Functional programming for modern Fortran. 
 
----
-
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/wavebitscientific/functional-fortran)
 
 * [Getting started](https://github.com/wavebitscientific/functional-fortran#getting-started)
