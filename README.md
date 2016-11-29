@@ -1,8 +1,10 @@
 ## functional-fortran
 
-Functional programming for modern Fortran.
+Functional programming for modern Fortran. 
 
-Jump to:
+---
+
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/wavebitscientific/functional-fortran)
 
 * [Getting started](https://github.com/wavebitscientific/functional-fortran#getting-started)
 * [Why functional-fortran?](https://github.com/wavebitscientific/functional-fortran#why-functional-fortran)
