@@ -2,6 +2,14 @@
 
 Functional programming for modern Fortran.
 
+Jump to:
+
+* [Getting started](https://github.com/wavebitscientific/functional-fortran#getting-started)
+* [Why functional-fortran?](https://github.com/wavebitscientific/functional-fortran#why-functional-fortran)
+* [What's included?](https://github.com/wavebitscientific/functional-fortran#whats-included)
+* [Example usage](https://github.com/wavebitscientific/functional-fortran#example-usage)
+* [Contributing](https://github.com/wavebitscientific/functional-fortran#contributing)
+
 ## Getting started
 
 ```
@@ -57,13 +65,6 @@ The following functions are provided:
 
 All of the above functions are compatible with the standard Fortran 2008 kinds:
 `int8`, `int16`, `int32`, `int64`, `real32`, `real64`, `real128`.
-
-## System requirements
-
-functional-fortran builds and passes all tests with: 
-
-* GNU Fortran compiler v4.8.3 and higher
-* Intel Fortran compiler v15.0.0 and higher
 
 ## Example usage
 
