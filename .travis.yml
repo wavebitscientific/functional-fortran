@@ -2,12 +2,9 @@ language: generic
 addons:
   apt:
     sources:
-#      - george-edison55-precise-backports
       - ubuntu-toolchain-r-test
     packages:
       - gfortran-6
-#      - cmake
-#      - cmake-data
 before_script:
   - FC=gfortran-6 cmake .
   - make
