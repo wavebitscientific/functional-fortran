@@ -10,6 +10,7 @@ Functional programming for modern Fortran.
 * [What's included?](https://github.com/wavebitscientific/functional-fortran#whats-included)
 * [Example usage](https://github.com/wavebitscientific/functional-fortran#example-usage)
 * [Contributing](https://github.com/wavebitscientific/functional-fortran#contributing)
+* [Further reading](https://github.com/wavebitscientific/functional-fortran#further-reading)
 
 ## Getting started
 
@@ -335,3 +336,13 @@ write(*,*)complement([1,2,2],[2,3,3,4])
 
 Please submit a bug report or a request for new feature 
 [here](https://github.com/wavebitscientific/functional-fortran/issues/new).
+
+## Further reading
+
+* [John Backus (1978): Can programming be liberated from the von Neumann style? A functional style and its algebra of programs](http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf)
+
+* [Functional programming on Wikipedia](https://en.wikipedia.org/wiki/Functional_programming)
+
+* [Fold (higher-order function) on Wikipedia](https://en.wikipedia.org/wiki/Fold_(higher-order_function))
+
+* [Graham Hutton (1999): A tutorial on the universality and expresiveness of fold](http://www.cs.nott.ac.uk/~pszgmh/fold.pdf)
