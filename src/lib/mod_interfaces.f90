@@ -5,196 +5,197 @@
 ! Licensed under the BSD-3 clause license. See LICENSE for details.
 
 module mod_interfaces
-use iso_fortran_env,only:int8,int16,int32,int64,real32,real32,real64,real128
+use iso_fortran_env,only:i1 => int8,i2 => int16,i4 => int32,i8 => int64,&
+                         r4 => real32,r8 => real64,r16 => real128
 implicit none
 
 private
 
-public :: f_int8,f_int16,f_int32,f_int64
-public :: f_real32,f_real64,f_real128
-public :: f_array_int8,f_array_int16,f_array_int32,f_array_int64
-public :: f_array_real32,f_array_real64,f_array_real128
-public :: f2_int8,f2_int16,f2_int32,f2_int64
-public :: f2_real32,f2_real64,f2_real128
-public :: f_int8_logical,f_int16_logical,f_int32_logical,f_int64_logical
-public :: f_real32_logical,f_real64_logical,f_real128_logical
+public :: f_i1,f_i2,f_i4,f_i8
+public :: f_r4,f_r8,f_r16
+public :: f_array_i1,f_array_i2,f_array_i4,f_array_i8
+public :: f_array_r4,f_array_r8,f_array_r16
+public :: f2_i1,f2_i2,f2_i4,f2_i8
+public :: f2_r4,f2_r8,f2_r16
+public :: f_i1_logical,f_i2_logical,f_i4_logical,f_i8_logical
+public :: f_r4_logical,f_r8_logical,f_r16_logical
 
 interface
 
-  pure integer(kind=int8) function f_int8(x)
-    !! f :: int8 -> int8
-    import :: int8
-    integer(kind=int8),intent(in) :: x
-  endfunction f_int8
+  pure integer(kind=i1) function f_i1(x)
+    !! f :: i1 -> i1
+    import :: i1
+    integer(kind=i1),intent(in) :: x
+  endfunction f_i1
 
-  pure integer(kind=int16) function f_int16(x)
-    !! f :: int16 -> int16
-    import :: int16
-    integer(kind=int16),intent(in) :: x
-  endfunction f_int16
+  pure integer(kind=i2) function f_i2(x)
+    !! f :: i2 -> i2
+    import :: i2
+    integer(kind=i2),intent(in) :: x
+  endfunction f_i2
 
-  pure integer(kind=int32) function f_int32(x)
-    !! f :: int32 -> int32
-    import :: int32
-    integer(kind=int32),intent(in) :: x
-  endfunction f_int32
+  pure integer(kind=i4) function f_i4(x)
+    !! f :: i4 -> i4
+    import :: i4
+    integer(kind=i4),intent(in) :: x
+  endfunction f_i4
 
-  pure integer(kind=int64) function f_int64(x)
-    !! f :: int64 -> int64
-    import :: int64
-    integer(kind=int64),intent(in) :: x
-  endfunction f_int64
+  pure integer(kind=i8) function f_i8(x)
+    !! f :: i8 -> i8
+    import :: i8
+    integer(kind=i8),intent(in) :: x
+  endfunction f_i8
 
-  pure real(kind=real32) function f_real32(x)
-    !! f :: real32 -> real32
-    import :: real32
-    real(kind=real32),intent(in) :: x
-  endfunction f_real32
+  pure real(kind=r4) function f_r4(x)
+    !! f :: r4 -> r4
+    import :: r4
+    real(kind=r4),intent(in) :: x
+  endfunction f_r4
 
-  pure real(kind=real64) function f_real64(x)
-    !! f :: real64 -> real64
-    import :: real64
-    real(kind=real64),intent(in) :: x
-  endfunction f_real64
+  pure real(kind=r8) function f_r8(x)
+    !! f :: r8 -> r8
+    import :: r8
+    real(kind=r8),intent(in) :: x
+  endfunction f_r8
 
-  pure real(kind=real128) function f_real128(x)
-    !! f :: real128 -> real128
-    import :: real128
-    real(kind=real128),intent(in) :: x
-  endfunction f_real128
+  pure real(kind=r16) function f_r16(x)
+    !! f :: r16 -> r16
+    import :: r16
+    real(kind=r16),intent(in) :: x
+  endfunction f_r16
 
-  pure function f_array_int8(x) result(f)
-    !! f :: [int8] -> [int8]
-    import :: int8
-    integer(kind=int8),dimension(:),intent(in) :: x
-    integer(kind=int8),dimension(:),allocatable :: f
-  endfunction f_array_int8
+  pure function f_array_i1(x) result(f)
+    !! f :: [i1] -> [i1]
+    import :: i1
+    integer(kind=i1),dimension(:),intent(in) :: x
+    integer(kind=i1),dimension(:),allocatable :: f
+  endfunction f_array_i1
 
-  pure function f_array_int16(x) result(f)
-    !! f :: [int16] -> [int16]
-    import :: int16
-    integer(kind=int16),dimension(:),intent(in) :: x
-    integer(kind=int16),dimension(:),allocatable :: f
-  endfunction f_array_int16
+  pure function f_array_i2(x) result(f)
+    !! f :: [i2] -> [i2]
+    import :: i2
+    integer(kind=i2),dimension(:),intent(in) :: x
+    integer(kind=i2),dimension(:),allocatable :: f
+  endfunction f_array_i2
 
-  pure function f_array_int32(x) result(f)
-    !! f :: [int32] -> [int32]
-    import :: int32
-    integer(kind=int32),dimension(:),intent(in) :: x
-    integer(kind=int32),dimension(:),allocatable :: f
-  endfunction f_array_int32
+  pure function f_array_i4(x) result(f)
+    !! f :: [i4] -> [i4]
+    import :: i4
+    integer(kind=i4),dimension(:),intent(in) :: x
+    integer(kind=i4),dimension(:),allocatable :: f
+  endfunction f_array_i4
 
-  pure function f_array_int64(x) result(f)
-    !! f :: [int64] -> [int64]
-    import :: int64
-    integer(kind=int64),dimension(:),intent(in) :: x
-    integer(kind=int64),dimension(:),allocatable :: f
-  endfunction f_array_int64
+  pure function f_array_i8(x) result(f)
+    !! f :: [i8] -> [i8]
+    import :: i8
+    integer(kind=i8),dimension(:),intent(in) :: x
+    integer(kind=i8),dimension(:),allocatable :: f
+  endfunction f_array_i8
 
-  pure function f_array_real32(x) result(f)
-    !! f :: [real32] -> [real32]
-    import :: real32
-    real(kind=real32),dimension(:),intent(in) :: x
-    real(kind=real32),dimension(:),allocatable :: f
-  endfunction f_array_real32
+  pure function f_array_r4(x) result(f)
+    !! f :: [r4] -> [r4]
+    import :: r4
+    real(kind=r4),dimension(:),intent(in) :: x
+    real(kind=r4),dimension(:),allocatable :: f
+  endfunction f_array_r4
 
-  pure function f_array_real64(x) result(f)
-    !! f :: [real64] -> [real64]
-    import :: real64
-    real(kind=real64),dimension(:),intent(in) :: x
-    real(kind=real64),dimension(:),allocatable :: f
-  endfunction f_array_real64
+  pure function f_array_r8(x) result(f)
+    !! f :: [r8] -> [r8]
+    import :: r8
+    real(kind=r8),dimension(:),intent(in) :: x
+    real(kind=r8),dimension(:),allocatable :: f
+  endfunction f_array_r8
 
-  pure function f_array_real128(x) result(f)
-    !! f :: [real128] -> [real128]
-    import :: real128
-    real(kind=real128),dimension(:),intent(in) :: x
-    real(kind=real128),dimension(:),allocatable :: f
-  endfunction f_array_real128
+  pure function f_array_r16(x) result(f)
+    !! f :: [r16] -> [r16]
+    import :: r16
+    real(kind=r16),dimension(:),intent(in) :: x
+    real(kind=r16),dimension(:),allocatable :: f
+  endfunction f_array_r16
 
-  pure integer(kind=int8) function f2_int8(x,y)
-    !! f :: int8 int8 -> int8
-    import :: int8
-    integer(kind=int8),intent(in) :: x,y
-  endfunction f2_int8
+  pure integer(kind=i1) function f2_i1(x,y)
+    !! f :: i1 i1 -> i1
+    import :: i1
+    integer(kind=i1),intent(in) :: x,y
+  endfunction f2_i1
 
-  pure integer(kind=int16) function f2_int16(x,y)
-    !! f :: int16 int16 -> int16
-    import :: int16
-    integer(kind=int16),intent(in) :: x,y
-  endfunction f2_int16
+  pure integer(kind=i2) function f2_i2(x,y)
+    !! f :: i2 i2 -> i2
+    import :: i2
+    integer(kind=i2),intent(in) :: x,y
+  endfunction f2_i2
 
-  pure integer(kind=int32) function f2_int32(x,y)
-    !! f :: int32 int32 -> int32
-    import :: int32
-    integer(kind=int32),intent(in) :: x,y
-  endfunction f2_int32
+  pure integer(kind=i4) function f2_i4(x,y)
+    !! f :: i4 i4 -> i4
+    import :: i4
+    integer(kind=i4),intent(in) :: x,y
+  endfunction f2_i4
 
-  pure integer(kind=int64) function f2_int64(x,y)
-    !! f :: int64 int64 -> int64
-    import :: int64
-    integer(kind=int64),intent(in) :: x,y
-  endfunction f2_int64
+  pure integer(kind=i8) function f2_i8(x,y)
+    !! f :: i8 i8 -> i8
+    import :: i8
+    integer(kind=i8),intent(in) :: x,y
+  endfunction f2_i8
 
-  pure real(kind=real32) function f2_real32(x,y)
-    !! f :: real32 real32 -> real32
-    import :: real32
-    real(kind=real32),intent(in) :: x,y
-  endfunction f2_real32
+  pure real(kind=r4) function f2_r4(x,y)
+    !! f :: r4 r4 -> r4
+    import :: r4
+    real(kind=r4),intent(in) :: x,y
+  endfunction f2_r4
 
-  pure real(kind=real64) function f2_real64(x,y)
-    !! f :: real64 real64 -> real64
-    import :: real64
-    real(kind=real64),intent(in) :: x,y
-  endfunction f2_real64
+  pure real(kind=r8) function f2_r8(x,y)
+    !! f :: r8 r8 -> r8
+    import :: r8
+    real(kind=r8),intent(in) :: x,y
+  endfunction f2_r8
 
-  pure real(kind=real128) function f2_real128(x,y)
-    !! f :: real128 real128 -> real128
-    import :: real128
-    real(kind=real128),intent(in) :: x,y
-  endfunction f2_real128
+  pure real(kind=r16) function f2_r16(x,y)
+    !! f :: r16 r16 -> r16
+    import :: r16
+    real(kind=r16),intent(in) :: x,y
+  endfunction f2_r16
 
-  pure logical function f_int8_logical(x)
-    !! f :: int8 -> logical
-    import :: int8
-    integer(kind=int8),intent(in) :: x
-  endfunction f_int8_logical
+  pure logical function f_i1_logical(x)
+    !! f :: i1 -> logical
+    import :: i1
+    integer(kind=i1),intent(in) :: x
+  endfunction f_i1_logical
 
-  pure logical function f_int16_logical(x)
-    !! f :: int16 -> logical
-    import :: int16
-    integer(kind=int16),intent(in) :: x
-  endfunction f_int16_logical
+  pure logical function f_i2_logical(x)
+    !! f :: i2 -> logical
+    import :: i2
+    integer(kind=i2),intent(in) :: x
+  endfunction f_i2_logical
 
-  pure logical function f_int32_logical(x)
-    !! f :: int32 -> logical
-    import :: int32
-    integer(kind=int32),intent(in) :: x
-  endfunction f_int32_logical
+  pure logical function f_i4_logical(x)
+    !! f :: i4 -> logical
+    import :: i4
+    integer(kind=i4),intent(in) :: x
+  endfunction f_i4_logical
 
-  pure logical function f_int64_logical(x)
-    !! f :: int64 -> logical
-    import :: int64
-    integer(kind=int64),intent(in) :: x
-  endfunction f_int64_logical
+  pure logical function f_i8_logical(x)
+    !! f :: i8 -> logical
+    import :: i8
+    integer(kind=i8),intent(in) :: x
+  endfunction f_i8_logical
 
-  pure logical function f_real32_logical(x)
-    !! f :: real32 -> logical
-    import :: real32
-    real(kind=real32),intent(in) :: x
-  endfunction f_real32_logical
+  pure logical function f_r4_logical(x)
+    !! f :: r4 -> logical
+    import :: r4
+    real(kind=r4),intent(in) :: x
+  endfunction f_r4_logical
 
-  pure logical function f_real64_logical(x)
-    !! f :: real64 -> logical
-    import :: real64
-    real(kind=real64),intent(in) :: x
-  endfunction f_real64_logical
+  pure logical function f_r8_logical(x)
+    !! f :: r8 -> logical
+    import :: r8
+    real(kind=r8),intent(in) :: x
+  endfunction f_r8_logical
 
-  pure logical function f_real128_logical(x)
-    !! f :: real128 -> logical
-    import :: real128
-    real(kind=real128),intent(in) :: x
-  endfunction f_real128_logical
+  pure logical function f_r16_logical(x)
+    !! f :: r16 -> logical
+    import :: r16
+    real(kind=r16),intent(in) :: x
+  endfunction f_r16_logical
 
 endinterface
 

@@ -5,7 +5,8 @@
 ! Licensed under the BSD-3 clause license. See LICENSE for details.
 
 module mod_functional
-use iso_fortran_env,only:int8,int16,int32,int64,real32,real32,real64,real128
+use iso_fortran_env,only:i1 => int8,i2 => int16,i4 => int32,i8 => int64,&
+                         r4 => real32,r8 => real64,r16 => real128
 use mod_interfaces
 implicit none
 
@@ -27,179 +28,179 @@ public :: operator(.tail.)
 public :: operator(.union.)
 
 interface arange
-  module procedure :: arange_int8,arange_int16,arange_int32,arange_int64
-  module procedure :: arange_real32,arange_real64,arange_real128
+  module procedure :: arange_i1,arange_i2,arange_i4,arange_i8
+  module procedure :: arange_r4,arange_r8,arange_r16
 endinterface arange
 
 interface complement
-  module procedure :: complement_int8,complement_int16,complement_int32,complement_int64
-  module procedure :: complement_real32,complement_real64,complement_real128
+  module procedure :: complement_i1,complement_i2,complement_i4,complement_i8
+  module procedure :: complement_r4,complement_r8,complement_r16
 endinterface complement
 
 interface operator(.complement.)
-  module procedure :: complement_int8,complement_int16,complement_int32,complement_int64
-  module procedure :: complement_real32,complement_real64,complement_real128
+  module procedure :: complement_i1,complement_i2,complement_i4,complement_i8
+  module procedure :: complement_r4,complement_r8,complement_r16
 endinterface
 
 interface filter
-  module procedure :: filter_int8,filter_int16,filter_int32,filter_int64
-  module procedure :: filter_real32,filter_real64,filter_real128
+  module procedure :: filter_i1,filter_i2,filter_i4,filter_i8
+  module procedure :: filter_r4,filter_r8,filter_r16
 endinterface filter
 
 interface foldl
-  module procedure :: foldl_int8,foldl_int16,foldl_int32,foldl_int64
-  module procedure :: foldl_real32,foldl_real64,foldl_real128
+  module procedure :: foldl_i1,foldl_i2,foldl_i4,foldl_i8
+  module procedure :: foldl_r4,foldl_r8,foldl_r16
 endinterface foldl
 
 interface foldr
-  module procedure :: foldr_int8,foldr_int16,foldr_int32,foldr_int64
-  module procedure :: foldr_real32,foldr_real64,foldr_real128
+  module procedure :: foldr_i1,foldr_i2,foldr_i4,foldr_i8
+  module procedure :: foldr_r4,foldr_r8,foldr_r16
 endinterface foldr
 
 interface foldt
-  module procedure :: foldt_int8,foldt_int16,foldt_int32,foldt_int64
-  module procedure :: foldt_real32,foldt_real64,foldt_real128
+  module procedure :: foldt_i1,foldt_i2,foldt_i4,foldt_i8
+  module procedure :: foldt_r4,foldt_r8,foldt_r16
 endinterface foldt
 
 interface head
-  module procedure :: head_int8,head_int16,head_int32,head_int64
-  module procedure :: head_real32,head_real64,head_real128
+  module procedure :: head_i1,head_i2,head_i4,head_i8
+  module procedure :: head_r4,head_r8,head_r16
 endinterface head
 
 interface operator(.head.)
-  module procedure :: head_int8,head_int16,head_int32,head_int64
-  module procedure :: head_real32,head_real64,head_real128
+  module procedure :: head_i1,head_i2,head_i4,head_i8
+  module procedure :: head_r4,head_r8,head_r16
 endinterface
 
 interface init
-  module procedure :: init_int8,init_int16,init_int32,init_int64
-  module procedure :: init_real32,init_real64,init_real128
+  module procedure :: init_i1,init_i2,init_i4,init_i8
+  module procedure :: init_r4,init_r8,init_r16
 endinterface init
 
 interface operator(.init.)
-  module procedure :: init_int8,init_int16,init_int32,init_int64
-  module procedure :: init_real32,init_real64,init_real128
+  module procedure :: init_i1,init_i2,init_i4,init_i8
+  module procedure :: init_r4,init_r8,init_r16
 endinterface
 
 interface insert
-  module procedure :: insert_int8,insert_int16,insert_int32,insert_int64
-  module procedure :: insert_real32,insert_real64,insert_real128
+  module procedure :: insert_i1,insert_i2,insert_i4,insert_i8
+  module procedure :: insert_r4,insert_r8,insert_r16
 endinterface insert
 
 interface intersection
-  module procedure :: intersection_int8,intersection_int16,intersection_int32,intersection_int64
-  module procedure :: intersection_real32,intersection_real64,intersection_real128
+  module procedure :: intersection_i1,intersection_i2,intersection_i4,intersection_i8
+  module procedure :: intersection_r4,intersection_r8,intersection_r16
 endinterface intersection
 
 interface operator(.intersection.)
-  module procedure :: intersection_int8,intersection_int16,intersection_int32,intersection_int64
-  module procedure :: intersection_real32,intersection_real64,intersection_real128
+  module procedure :: intersection_i1,intersection_i2,intersection_i4,intersection_i8
+  module procedure :: intersection_r4,intersection_r8,intersection_r16
 endinterface
 
 interface iterfold
-  module procedure :: iterfold_int8,iterfold_int16,iterfold_int32,iterfold_int64
-  module procedure :: iterfold_real32,iterfold_real64,iterfold_real128
+  module procedure :: iterfold_i1,iterfold_i2,iterfold_i4,iterfold_i8
+  module procedure :: iterfold_r4,iterfold_r8,iterfold_r16
 endinterface iterfold
 
 interface last
-  module procedure :: last_int8,last_int16,last_int32,last_int64
-  module procedure :: last_real32,last_real64,last_real128
+  module procedure :: last_i1,last_i2,last_i4,last_i8
+  module procedure :: last_r4,last_r8,last_r16
 endinterface last
 
 interface operator(.last.)
-  module procedure :: last_int8,last_int16,last_int32,last_int64
-  module procedure :: last_real32,last_real64,last_real128
+  module procedure :: last_i1,last_i2,last_i4,last_i8
+  module procedure :: last_r4,last_r8,last_r16
 endinterface
 
 interface limit
-  module procedure :: limit_int8,limit_int16,limit_int32,limit_int64
-  module procedure :: limit_real32,limit_real64,limit_real128
+  module procedure :: limit_i1,limit_i2,limit_i4,limit_i8
+  module procedure :: limit_r4,limit_r8,limit_r16
 endinterface limit
 
 interface map
-  module procedure :: map_int8,map_int16,map_int32,map_int64
-  module procedure :: map_real32,map_real64,map_real128
+  module procedure :: map_i1,map_i2,map_i4,map_i8
+  module procedure :: map_r4,map_r8,map_r16
 endinterface map
 
 interface reverse
-  module procedure :: reverse_int8,reverse_int16,reverse_int32,reverse_int64
-  module procedure :: reverse_real32,reverse_real64,reverse_real128
+  module procedure :: reverse_i1,reverse_i2,reverse_i4,reverse_i8
+  module procedure :: reverse_r4,reverse_r8,reverse_r16
 endinterface reverse
 
 interface operator(.reverse.)
-  module procedure :: reverse_int8,reverse_int16,reverse_int32,reverse_int64
-  module procedure :: reverse_real32,reverse_real64,reverse_real128
+  module procedure :: reverse_i1,reverse_i2,reverse_i4,reverse_i8
+  module procedure :: reverse_r4,reverse_r8,reverse_r16
 endinterface
 
 interface set
-  module procedure :: set_int8,set_int16,set_int32,set_int64
-  module procedure :: set_real32,set_real64,set_real128
+  module procedure :: set_i1,set_i2,set_i4,set_i8
+  module procedure :: set_r4,set_r8,set_r16
 endinterface set
 
 interface operator(.set.)
-  module procedure :: set_int8,set_int16,set_int32,set_int64
-  module procedure :: set_real32,set_real64,set_real128
+  module procedure :: set_i1,set_i2,set_i4,set_i8
+  module procedure :: set_r4,set_r8,set_r16
 endinterface
 
 interface sort
-  module procedure :: sort_int8,sort_int16,sort_int32,sort_int64
-  module procedure :: sort_real32,sort_real64,sort_real128
+  module procedure :: sort_i1,sort_i2,sort_i4,sort_i8
+  module procedure :: sort_r4,sort_r8,sort_r16
 endinterface sort
 
 interface operator(.sort.)
-  module procedure :: sort_int8,sort_int16,sort_int32,sort_int64
-  module procedure :: sort_real32,sort_real64,sort_real128
+  module procedure :: sort_i1,sort_i2,sort_i4,sort_i8
+  module procedure :: sort_r4,sort_r8,sort_r16
 endinterface
 
 interface split
-  module procedure :: split_int8,split_int16,split_int32,split_int64
-  module procedure :: split_real32,split_real64,split_real128
+  module procedure :: split_i1,split_i2,split_i4,split_i8
+  module procedure :: split_r4,split_r8,split_r16
 endinterface split
 
 interface subscript
-  module procedure :: subscript_int8,subscript_int16,subscript_int32,subscript_int64
-  module procedure :: subscript_real32,subscript_real64,subscript_real128
+  module procedure :: subscript_i1,subscript_i2,subscript_i4,subscript_i8
+  module procedure :: subscript_r4,subscript_r8,subscript_r16
 endinterface subscript
 
 interface tail
-  module procedure :: tail_int8,tail_int16,tail_int32,tail_int64
-  module procedure :: tail_real32,tail_real64,tail_real128
+  module procedure :: tail_i1,tail_i2,tail_i4,tail_i8
+  module procedure :: tail_r4,tail_r8,tail_r16
 endinterface tail
 
 interface operator(.tail.)
-  module procedure :: tail_int8,tail_int16,tail_int32,tail_int64
-  module procedure :: tail_real32,tail_real64,tail_real128
+  module procedure :: tail_i1,tail_i2,tail_i4,tail_i8
+  module procedure :: tail_r4,tail_r8,tail_r16
 endinterface
 
 interface unfold
-  module procedure :: unfold_int8,unfold_int16,unfold_int32,unfold_int64
-  module procedure :: unfold_real32,unfold_real64,unfold_real128
+  module procedure :: unfold_i1,unfold_i2,unfold_i4,unfold_i8
+  module procedure :: unfold_r4,unfold_r8,unfold_r16
 endinterface unfold
 
 interface union
-  module procedure :: union_int8,union_int16,union_int32,union_int64
-  module procedure :: union_real32,union_real64,union_real128
+  module procedure :: union_i1,union_i2,union_i4,union_i8
+  module procedure :: union_r4,union_r8,union_r16
 endinterface union
 
 interface operator(.union.)
-  module procedure :: union_int8,union_int16,union_int32,union_int64
-  module procedure :: union_real32,union_real64,union_real128
+  module procedure :: union_i1,union_i2,union_i4,union_i8
+  module procedure :: union_r4,union_r8,union_r16
 endinterface
 
 contains
 
-pure function arange_int8(start,end,increment) result(arange)
+pure function arange_i1(start,end,increment) result(arange)
   !! Returns an array of integers given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 1-byte integers.
   !! Oveloaded by generic procedure `arange`.
-  integer(kind=int8),intent(in) :: start !! Start value of the array
-  integer(kind=int8),intent(in) :: end !! End value of the array
-  integer(kind=int8),intent(in),optional :: increment !! Array increment
-  integer(kind=int8),dimension(:),allocatable :: arange
-  integer(kind=int8) :: incr
-  integer(kind=int8) :: i
-  integer(kind=int8) :: length
+  integer(kind=i1),intent(in) :: start !! Start value of the array
+  integer(kind=i1),intent(in) :: end !! End value of the array
+  integer(kind=i1),intent(in),optional :: increment !! Array increment
+  integer(kind=i1),dimension(:),allocatable :: arange
+  integer(kind=i1) :: incr
+  integer(kind=i1) :: i
+  integer(kind=i1) :: length
   if(present(increment))then
     incr = increment
   else
@@ -210,21 +211,21 @@ pure function arange_int8(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_int8
+endfunction arange_i1
 
 
-pure function arange_int16(start,end,increment) result(arange)
+pure function arange_i2(start,end,increment) result(arange)
   !! Returns an array of integers given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 2-byte integers.
   !! Oveloaded by generic procedure `arange`.
-  integer(kind=int16),intent(in) :: start !! Start value of the array
-  integer(kind=int16),intent(in) :: end !! End value of the array
-  integer(kind=int16),intent(in),optional :: increment !! Array increment
-  integer(kind=int16),dimension(:),allocatable :: arange
-  integer(kind=int16) :: incr
-  integer(kind=int16) :: i
-  integer(kind=int16) :: length
+  integer(kind=i2),intent(in) :: start !! Start value of the array
+  integer(kind=i2),intent(in) :: end !! End value of the array
+  integer(kind=i2),intent(in),optional :: increment !! Array increment
+  integer(kind=i2),dimension(:),allocatable :: arange
+  integer(kind=i2) :: incr
+  integer(kind=i2) :: i
+  integer(kind=i2) :: length
   if(present(increment))then
     incr = increment
   else
@@ -235,21 +236,21 @@ pure function arange_int16(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_int16
+endfunction arange_i2
 
 
-pure function arange_int32(start,end,increment) result(arange)
+pure function arange_i4(start,end,increment) result(arange)
   !! Returns an array of integers given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 4-byte integers.
   !! Oveloaded by generic procedure `arange`.
-  integer(kind=int32),intent(in) :: start !! Start value of the array
-  integer(kind=int32),intent(in) :: end !! End value of the array
-  integer(kind=int32),intent(in),optional :: increment !! Array increment
-  integer(kind=int32),dimension(:),allocatable :: arange
-  integer(kind=int32) :: incr
-  integer(kind=int32) :: i
-  integer(kind=int32) :: length
+  integer(kind=i4),intent(in) :: start !! Start value of the array
+  integer(kind=i4),intent(in) :: end !! End value of the array
+  integer(kind=i4),intent(in),optional :: increment !! Array increment
+  integer(kind=i4),dimension(:),allocatable :: arange
+  integer(kind=i4) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
   if(present(increment))then
     incr = increment
   else
@@ -260,21 +261,21 @@ pure function arange_int32(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_int32
+endfunction arange_i4
 
 
-pure function arange_int64(start,end,increment) result(arange)
+pure function arange_i8(start,end,increment) result(arange)
   !! Returns an array of integers given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 8-byte integers.
   !! Oveloaded by generic procedure `arange`.
-  integer(kind=int64),intent(in) :: start !! Start value of the array
-  integer(kind=int64),intent(in) :: end !! End value of the array
-  integer(kind=int64),intent(in),optional :: increment !! Array increment
-  integer(kind=int64),dimension(:),allocatable :: arange
-  integer(kind=int64) :: incr
-  integer(kind=int64) :: i
-  integer(kind=int64) :: length
+  integer(kind=i8),intent(in) :: start !! Start value of the array
+  integer(kind=i8),intent(in) :: end !! End value of the array
+  integer(kind=i8),intent(in),optional :: increment !! Array increment
+  integer(kind=i8),dimension(:),allocatable :: arange
+  integer(kind=i8) :: incr
+  integer(kind=i8) :: i
+  integer(kind=i8) :: length
   if(present(increment))then
     incr = increment
   else
@@ -285,21 +286,21 @@ pure function arange_int64(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_int64
+endfunction arange_i8
 
 
-pure function arange_real32(start,end,increment) result(arange)
+pure function arange_r4(start,end,increment) result(arange)
   !! Returns an array of reals given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 4-byte reals.
   !! Oveloaded by generic procedure `arange`.
-  real(kind=real32),intent(in) :: start !! Start value of the array
-  real(kind=real32),intent(in) :: end !! End value of the array
-  real(kind=real32),intent(in),optional :: increment !! Array increment
-  real(kind=real32),dimension(:),allocatable :: arange
-  real(kind=real32) :: incr
-  integer(kind=int32) :: i
-  integer(kind=int32) :: length
+  real(kind=r4),intent(in) :: start !! Start value of the array
+  real(kind=r4),intent(in) :: end !! End value of the array
+  real(kind=r4),intent(in),optional :: increment !! Array increment
+  real(kind=r4),dimension(:),allocatable :: arange
+  real(kind=r4) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
   if(present(increment))then
     incr = increment
   else
@@ -310,21 +311,21 @@ pure function arange_real32(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_real32
+endfunction arange_r4
 
 
-pure function arange_real64(start,end,increment) result(arange)
+pure function arange_r8(start,end,increment) result(arange)
   !! Returns an array of reals given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 8-byte reals.
   !! Oveloaded by generic procedure `arange`.
-  real(kind=real64),intent(in) :: start !! Start value of the array
-  real(kind=real64),intent(in) :: end !! End value of the array
-  real(kind=real64),intent(in),optional :: increment !! Array increment
-  real(kind=real64),dimension(:),allocatable :: arange
-  real(kind=real64) :: incr
-  integer(kind=int32) :: i
-  integer(kind=int32) :: length
+  real(kind=r8),intent(in) :: start !! Start value of the array
+  real(kind=r8),intent(in) :: end !! End value of the array
+  real(kind=r8),intent(in),optional :: increment !! Array increment
+  real(kind=r8),dimension(:),allocatable :: arange
+  real(kind=r8) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
   if(present(increment))then
     incr = increment
   else
@@ -335,21 +336,21 @@ pure function arange_real64(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_real64
+endfunction arange_r8
 
 
-pure function arange_real128(start,end,increment) result(arange)
+pure function arange_r16(start,end,increment) result(arange)
   !! Returns an array of reals given `start`, `end`, and `increment` values.
   !! Increment defaults to 1 if not provided.
   !! This specific procedure is for 16-byte reals.
   !! Oveloaded by generic procedure `arange`.
-  real(kind=real128),intent(in) :: start !! Start value of the array
-  real(kind=real128),intent(in) :: end !! End value of the array
-  real(kind=real128),intent(in),optional :: increment !! Array increment
-  real(kind=real128),dimension(:),allocatable :: arange
-  real(kind=real128) :: incr
-  integer(kind=int32) :: i
-  integer(kind=int32) :: length
+  real(kind=r16),intent(in) :: start !! Start value of the array
+  real(kind=r16),intent(in) :: end !! End value of the array
+  real(kind=r16),intent(in),optional :: increment !! Array increment
+  real(kind=r16),dimension(:),allocatable :: arange
+  real(kind=r16) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
   if(present(increment))then
     incr = increment
   else
@@ -360,142 +361,142 @@ pure function arange_real128(start,end,increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_real128
+endfunction arange_r16
 
 
-pure function complement_int8(x,y) result(complement)
+pure function complement_i1(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `complement`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int8),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int8),dimension(:),allocatable :: complement
-  integer(kind=int8),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i1),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i1),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i1),dimension(:),allocatable :: complement
+  integer(kind=i1),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1_int8,0_int8)
+  complement = arange(1_i1,0_i1)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_int8
+endfunction complement_i1
 
 
-pure function complement_int16(x,y) result(complement)
+pure function complement_i2(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `complement`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int16),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int16),dimension(:),allocatable :: complement
-  integer(kind=int16),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i2),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i2),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i2),dimension(:),allocatable :: complement
+  integer(kind=i2),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1_int16,0_int16)
+  complement = arange(1_i2,0_i2)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_int16
+endfunction complement_i2
 
 
-pure function complement_int32(x,y) result(complement)
+pure function complement_i4(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `complement`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int32),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int32),dimension(:),allocatable :: complement
-  integer(kind=int32),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i4),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i4),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i4),dimension(:),allocatable :: complement
+  integer(kind=i4),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1_int32,0_int32)
+  complement = arange(1_i4,0_i4)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_int32
+endfunction complement_i4
 
 
-pure function complement_int64(x,y) result(complement)
+pure function complement_i8(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `complement`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int64),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int64),dimension(:),allocatable :: complement
-  integer(kind=int64),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i8),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i8),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i8),dimension(:),allocatable :: complement
+  integer(kind=i8),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1_int64,0_int64)
+  complement = arange(1_i8,0_i8)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_int64
+endfunction complement_i8
 
 
-pure function complement_real32(x,y) result(complement)
+pure function complement_r4(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `complement`.
-  real(kind=real32),dimension(:),intent(in) :: x !! First input array
-  real(kind=real32),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real32),dimension(:),allocatable :: complement
-  real(kind=real32),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  real(kind=r4),dimension(:),intent(in) :: x !! First input array
+  real(kind=r4),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r4),dimension(:),allocatable :: complement
+  real(kind=r4),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1._real32,0._real32)
+  complement = arange(1._r4,0._r4)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_real32
+endfunction complement_r4
 
 
-pure function complement_real64(x,y) result(complement)
+pure function complement_r8(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `complement`.
-  real(kind=real64),dimension(:),intent(in) :: x !! First input array
-  real(kind=real64),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real64),dimension(:),allocatable :: complement
-  real(kind=real64),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  real(kind=r8),dimension(:),intent(in) :: x !! First input array
+  real(kind=r8),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r8),dimension(:),allocatable :: complement
+  real(kind=r8),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1._real32,0._real32)
+  complement = arange(1._r4,0._r4)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_real64
+endfunction complement_r8
 
 
-pure function complement_real128(x,y) result(complement)
+pure function complement_r16(x,y) result(complement)
   !! Returns a set complement of two arrays.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `complement`.
-  real(kind=real128),dimension(:),intent(in) :: x !! First input array
-  real(kind=real128),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real128),dimension(:),allocatable :: complement
-  real(kind=real128),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  real(kind=r16),dimension(:),intent(in) :: x !! First input array
+  real(kind=r16),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r16),dimension(:),allocatable :: complement
+  real(kind=r16),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  complement = arange(1._real128,0._real128)
+  complement = arange(1._r16,0._r16)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
-endfunction complement_real128
+endfunction complement_r16
 
 
-pure function filter_int8(f,x) result(filter)
+pure function filter_i1(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_int8_logical) :: f !! Filtering function
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(:),allocatable :: filter
+  procedure(f_i1_logical) :: f !! Filtering function
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -503,16 +504,16 @@ pure function filter_int8(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_int8
+endfunction filter_i1
 
 
-pure function filter_int16(f,x) result(filter)
+pure function filter_i2(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_int16_logical) :: f !! Filtering function
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(:),allocatable :: filter
+  procedure(f_i2_logical) :: f !! Filtering function
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -520,16 +521,16 @@ pure function filter_int16(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_int16
+endfunction filter_i2
 
 
-pure function filter_int32(f,x) result(filter)
+pure function filter_i4(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_int32_logical) :: f !! Filtering function
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(:),allocatable :: filter
+  procedure(f_i4_logical) :: f !! Filtering function
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -537,16 +538,16 @@ pure function filter_int32(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_int32
+endfunction filter_i4
 
 
-pure function filter_int64(f,x) result(filter)
+pure function filter_i8(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_int64_logical) :: f !! Filtering function
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int64),dimension(:),allocatable :: filter
+  procedure(f_i8_logical) :: f !! Filtering function
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -554,16 +555,16 @@ pure function filter_int64(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_int64
+endfunction filter_i8
 
 
-pure function filter_real32(f,x) result(filter)
+pure function filter_r4(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_real32_logical) :: f !! Filtering function
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  real(kind=real32),dimension(:),allocatable :: filter
+  procedure(f_r4_logical) :: f !! Filtering function
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -571,16 +572,16 @@ pure function filter_real32(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_real32
+endfunction filter_r4
 
 
-pure function filter_real64(f,x) result(filter)
+pure function filter_r8(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_real64_logical) :: f !! Filtering function
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  real(kind=real64),dimension(:),allocatable :: filter
+  procedure(f_r8_logical) :: f !! Filtering function
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -588,16 +589,16 @@ pure function filter_real64(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_real64
+endfunction filter_r8
 
 
-pure function filter_real128(f,x) result(filter)
+pure function filter_r16(f,x) result(filter)
   !! Returns a subset of `x` for which `f(x) == .true.`
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `filter`.
-  procedure(f_real128_logical) :: f !! Filtering function
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  real(kind=real128),dimension(:),allocatable :: filter
+  procedure(f_r16_logical) :: f !! Filtering function
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(:),allocatable :: filter
   logical,dimension(:),allocatable :: f_x
   integer :: i
   allocate(f_x(size(x)))
@@ -605,10 +606,10 @@ pure function filter_real128(f,x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x,f_x)
-endfunction filter_real128
+endfunction filter_r16
 
 
-pure recursive integer(kind=int8) function foldl_int8(f,start,x) result(res)
+pure recursive integer(kind=i1) function foldl_i1(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -616,18 +617,18 @@ pure recursive integer(kind=int8) function foldl_int8(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_int8) :: f !! Folding function
-  integer(kind=int8),intent(in) :: start !! Accumulator start value
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i1) :: f !! Folding function
+  integer(kind=i1),intent(in) :: start !! Accumulator start value
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_int8
+endfunction foldl_i1
 
 
-pure recursive integer(kind=int16) function foldl_int16(f,start,x) result(res)
+pure recursive integer(kind=i2) function foldl_i2(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -635,18 +636,18 @@ pure recursive integer(kind=int16) function foldl_int16(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_int16) :: f !! Folding function
-  integer(kind=int16),intent(in) :: start !! Accumulator start value
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i2) :: f !! Folding function
+  integer(kind=i2),intent(in) :: start !! Accumulator start value
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_int16
+endfunction foldl_i2
 
 
-pure recursive integer(kind=int32) function foldl_int32(f,start,x) result(res)
+pure recursive integer(kind=i4) function foldl_i4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -654,18 +655,18 @@ pure recursive integer(kind=int32) function foldl_int32(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_int32) :: f !! Folding function
-  integer(kind=int32),intent(in) :: start !! Accumulator start value
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i4) :: f !! Folding function
+  integer(kind=i4),intent(in) :: start !! Accumulator start value
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_int32
+endfunction foldl_i4
 
 
-pure recursive integer(kind=int64) function foldl_int64(f,start,x) result(res)
+pure recursive integer(kind=i8) function foldl_i8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -673,18 +674,18 @@ pure recursive integer(kind=int64) function foldl_int64(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_int64) :: f !! Folding function
-  integer(kind=int64),intent(in) :: start !! Accumulator start value
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i8) :: f !! Folding function
+  integer(kind=i8),intent(in) :: start !! Accumulator start value
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_int64
+endfunction foldl_i8
 
 
-pure recursive real(kind=real32) function foldl_real32(f,start,x) result(res)
+pure recursive real(kind=r4) function foldl_r4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -692,18 +693,18 @@ pure recursive real(kind=real32) function foldl_real32(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_real32) :: f !! Folding function
-  real(kind=real32),intent(in) :: start !! Accumulator start value
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r4) :: f !! Folding function
+  real(kind=r4),intent(in) :: start !! Accumulator start value
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_real32
+endfunction foldl_r4
 
 
-pure recursive real(kind=real64) function foldl_real64(f,start,x) result(res)
+pure recursive real(kind=r8) function foldl_r8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -711,18 +712,18 @@ pure recursive real(kind=real64) function foldl_real64(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_real64) :: f !! Folding function
-  real(kind=real64),intent(in) :: start !! Accumulator start value
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r8) :: f !! Folding function
+  real(kind=r8),intent(in) :: start !! Accumulator start value
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_real64
+endfunction foldl_r8
 
 
-pure recursive real(kind=real128) function foldl_real128(f,start,x) result(res)
+pure recursive real(kind=r16) function foldl_r16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's left fold. If the array is empty, the 
   !! result is `start`; else we recurse immediately, making the new 
@@ -730,152 +731,152 @@ pure recursive real(kind=real128) function foldl_real128(f,start,x) result(res)
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldl`.
-  procedure(f2_real128) :: f !! Folding function
-  real(kind=real128),intent(in) :: start !! Accumulator start value
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r16) :: f !! Folding function
+  real(kind=r16),intent(in) :: start !! Accumulator start value
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = foldl(f,f(start,x(1)),x(2:))
   endif
-endfunction foldl_real128
+endfunction foldl_r16
 
 
-pure recursive integer(kind=int8) function foldr_int8(f,start,x) result(res)
+pure recursive integer(kind=i1) function foldr_i1(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_int8) :: f !! Folding function
-  integer(kind=int8),intent(in) :: start !! Accumulator start value
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i1) :: f !! Folding function
+  integer(kind=i1),intent(in) :: start !! Accumulator start value
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_int8
+endfunction foldr_i1
 
 
-pure recursive integer(kind=int16) function foldr_int16(f,start,x) result(res)
+pure recursive integer(kind=i2) function foldr_i2(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_int16) :: f !! Folding function
-  integer(kind=int16),intent(in) :: start !! Accumulator start value
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i2) :: f !! Folding function
+  integer(kind=i2),intent(in) :: start !! Accumulator start value
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_int16
+endfunction foldr_i2
 
 
-pure recursive integer(kind=int32) function foldr_int32(f,start,x) result(res)
+pure recursive integer(kind=i4) function foldr_i4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_int32) :: f !! Folding function
-  integer(kind=int32),intent(in) :: start !! Accumulator start value
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i4) :: f !! Folding function
+  integer(kind=i4),intent(in) :: start !! Accumulator start value
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_int32
+endfunction foldr_i4
 
 
-pure recursive integer(kind=int64) function foldr_int64(f,start,x) result(res)
+pure recursive integer(kind=i8) function foldr_i8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_int64) :: f !! Folding function
-  integer(kind=int64),intent(in) :: start !! Accumulator start value
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i8) :: f !! Folding function
+  integer(kind=i8),intent(in) :: start !! Accumulator start value
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_int64
+endfunction foldr_i8
 
 
-pure recursive real(kind=real32) function foldr_real32(f,start,x) result(res)
+pure recursive real(kind=r4) function foldr_r4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_real32) :: f !! Folding function
-  real(kind=real32),intent(in) :: start !! Accumulator start value
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r4) :: f !! Folding function
+  real(kind=r4),intent(in) :: start !! Accumulator start value
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_real32
+endfunction foldr_r4
 
 
-pure recursive real(kind=real64) function foldr_real64(f,start,x) result(res)
+pure recursive real(kind=r8) function foldr_r8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_real64) :: f !! Folding function
-  real(kind=real64),intent(in) :: start !! Accumulator start value
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r8) :: f !! Folding function
+  real(kind=r8),intent(in) :: start !! Accumulator start value
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_real64
+endfunction foldr_r8
 
 
-pure recursive real(kind=real128) function foldr_real128(f,start,x) result(res)
+pure recursive real(kind=r16) function foldr_r16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
   !! result is `start`; else apply `f` to the first element and the 
   !! result of folding the rest.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `foldr`.
-  procedure(f2_real128) :: f !! Folding function
-  real(kind=real128),intent(in) :: start !! Accumulator start value
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r16) :: f !! Folding function
+  real(kind=r16),intent(in) :: start !! Accumulator start value
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   else
     res = f(x(1),foldr(f,start,x(2:)))
   endif
-endfunction foldr_real128
+endfunction foldr_r16
 
 
-pure recursive integer(kind=int8) function foldt_int8(f,start,x) result(res)
+pure recursive integer(kind=i1) function foldt_i1(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_int8) :: f !! Folding function
-  integer(kind=int8),intent(in) :: start !! Accumulator start value
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i1) :: f !! Folding function
+  integer(kind=i1),intent(in) :: start !! Accumulator start value
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -883,18 +884,18 @@ pure recursive integer(kind=int8) function foldt_int8(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_int8
+endfunction foldt_i1
 
 
-pure recursive integer(kind=int16) function foldt_int16(f,start,x) result(res)
+pure recursive integer(kind=i2) function foldt_i2(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_int16) :: f !! Folding function
-  integer(kind=int16),intent(in) :: start !! Accumulator start value
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i2) :: f !! Folding function
+  integer(kind=i2),intent(in) :: start !! Accumulator start value
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -902,18 +903,18 @@ pure recursive integer(kind=int16) function foldt_int16(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_int16
+endfunction foldt_i2
 
 
-pure recursive integer(kind=int32) function foldt_int32(f,start,x) result(res)
+pure recursive integer(kind=i4) function foldt_i4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_int32) :: f !! Folding function
-  integer(kind=int32),intent(in) :: start !! Accumulator start value
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i4) :: f !! Folding function
+  integer(kind=i4),intent(in) :: start !! Accumulator start value
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -921,18 +922,18 @@ pure recursive integer(kind=int32) function foldt_int32(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_int32
+endfunction foldt_i4
 
 
-pure recursive integer(kind=int64) function foldt_int64(f,start,x) result(res)
+pure recursive integer(kind=i8) function foldt_i8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_int64) :: f !! Folding function
-  integer(kind=int64),intent(in) :: start !! Accumulator start value
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_i8) :: f !! Folding function
+  integer(kind=i8),intent(in) :: start !! Accumulator start value
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -940,18 +941,18 @@ pure recursive integer(kind=int64) function foldt_int64(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_int64
+endfunction foldt_i8
 
 
-pure recursive real(kind=real32) function foldt_real32(f,start,x) result(res)
+pure recursive real(kind=r4) function foldt_r4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_real32) :: f !! Folding function
-  real(kind=real32),intent(in) :: start !! Accumulator start value
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r4) :: f !! Folding function
+  real(kind=r4),intent(in) :: start !! Accumulator start value
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -959,18 +960,18 @@ pure recursive real(kind=real32) function foldt_real32(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_real32
+endfunction foldt_r4
 
 
-pure recursive real(kind=real64) function foldt_real64(f,start,x) result(res)
+pure recursive real(kind=r8) function foldt_r8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_real64) :: f !! Folding function
-  real(kind=real64),intent(in) :: start !! Accumulator start value
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r8) :: f !! Folding function
+  real(kind=r8),intent(in) :: start !! Accumulator start value
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -978,18 +979,18 @@ pure recursive real(kind=real64) function foldt_real64(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_real64
+endfunction foldt_r8
 
 
-pure recursive real(kind=real128) function foldt_real128(f,start,x) result(res)
+pure recursive real(kind=r16) function foldt_r16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`
   !! using a tree-like fold, splitting the array into two and repeating
   !! until we deplete the array.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `foldt`.
-  procedure(f2_real128) :: f !! Folding function
-  real(kind=real128),intent(in) :: start !! Accumulator start value
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
+  procedure(f2_r16) :: f !! Folding function
+  real(kind=r16),intent(in) :: start !! Accumulator start value
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   if(size(x) < 1)then
     res = start
   elseif(size(x) == 1)then
@@ -997,247 +998,247 @@ pure recursive real(kind=real128) function foldt_real128(f,start,x) result(res)
   else
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
-endfunction foldt_real128
+endfunction foldt_r16
 
 
-pure integer(kind=int8) function head_int8(x) result(head)
+pure integer(kind=i1) function head_i1(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `head`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_int8
+endfunction head_i1
 
 
-pure integer(kind=int16) function head_int16(x) result(head)
+pure integer(kind=i2) function head_i2(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `head`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_int16
+endfunction head_i2
 
 
-pure integer(kind=int32) function head_int32(x) result(head)
+pure integer(kind=i4) function head_i4(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `head`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_int32
+endfunction head_i4
 
 
-pure integer(kind=int64) function head_int64(x) result(head)
+pure integer(kind=i8) function head_i8(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `head`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_int64
+endfunction head_i8
 
 
-pure real(kind=real32) function head_real32(x) result(head)
+pure real(kind=r4) function head_r4(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `head`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_real32
+endfunction head_r4
 
-pure complex(kind=real32) function head_complex32(x) result(head)
+pure complex(kind=r4) function head_complex32(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `head`.
-  complex(kind=real32),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
   head = x(1)
 endfunction head_complex32
 
 
 
-pure real(kind=real64) function head_real64(x) result(head)
+pure real(kind=r8) function head_r8(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `head`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_real64
+endfunction head_r8
 
 
-pure real(kind=real128) function head_real128(x) result(head)
+pure real(kind=r16) function head_r16(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `head`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_real128
+endfunction head_r16
 
 
-pure function init_int8(x) result(init)
+pure function init_i1(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `init`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(size(x)-1) :: init
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_int8
+endfunction init_i1
 
 
-pure function init_int16(x) result(init)
+pure function init_i2(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `init`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(size(x)-1) :: init
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_int16
+endfunction init_i2
 
 
-pure function init_int32(x) result(init)
+pure function init_i4(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `init`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(size(x)-1) :: init
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_int32
+endfunction init_i4
 
 
-pure function init_int64(x) result(init)
+pure function init_i8(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `init`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int64),dimension(size(x)-1) :: init
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_int64
+endfunction init_i8
 
 
-pure function init_real32(x) result(init)
+pure function init_r4(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `init`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  real(kind=real32),dimension(size(x)-1) :: init
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_real32
+endfunction init_r4
 
 
-pure function init_real64(x) result(init)
+pure function init_r8(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `init`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  real(kind=real64),dimension(size(x)-1) :: init
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_real64
+endfunction init_r8
 
 
-pure function init_real128(x) result(init)
+pure function init_r16(x) result(init)
   !! Returns all elements of `x` but the last.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `init`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  real(kind=real128),dimension(size(x)-1) :: init
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_real128
+endfunction init_r16
 
 
-pure function insert_int8(elem,ind,x) result(insert)
+pure function insert_i1(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `insert`.
-  integer(kind=int8),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(size(x)+1) :: insert
+  integer(kind=i1),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_int8
+endfunction insert_i1
 
 
-pure function insert_int16(elem,ind,x) result(insert)
+pure function insert_i2(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `insert`.
-  integer(kind=int16),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(size(x)+1) :: insert
+  integer(kind=i2),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_int16
+endfunction insert_i2
 
 
-pure function insert_int32(elem,ind,x) result(insert)
+pure function insert_i4(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `insert`.
-  integer(kind=int32),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(size(x)+1) :: insert
+  integer(kind=i4),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_int32
+endfunction insert_i4
 
 
-pure function insert_int64(elem,ind,x) result(insert)
+pure function insert_i8(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `insert`.
-  integer(kind=int64),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int64),dimension(size(x)+1) :: insert
+  integer(kind=i8),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_int64
+endfunction insert_i8
 
 
-pure function insert_real32(elem,ind,x) result(insert)
+pure function insert_r4(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `insert`.
-  real(kind=real32),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  real(kind=real32),dimension(size(x)+1) :: insert
+  real(kind=r4),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_real32
+endfunction insert_r4
 
 
-pure function insert_real64(elem,ind,x) result(insert)
+pure function insert_r8(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `insert`.
-  real(kind=real64),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  real(kind=real64),dimension(size(x)+1) :: insert
+  real(kind=r8),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_real64
+endfunction insert_r8
 
 
-pure function insert_real128(elem,ind,x) result(insert)
+pure function insert_r16(elem,ind,x) result(insert)
   !! Inserts `elem` into index `ind` of array `x`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `insert`.
-  real(kind=real128),intent(in) :: elem !! Element to insert
-  integer(kind=int32),intent(in) :: ind !! Index to insert element at
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  real(kind=real128),dimension(size(x)+1) :: insert
+  real(kind=r16),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(size(x)+1) :: insert
   insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
-endfunction insert_real128
+endfunction insert_r16
 
 
-pure function intersection_int8(x,y) result(res)
+pure function intersection_i1(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `intersection`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int8),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int8),dimension(:),allocatable :: res
-  integer(kind=int8),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i1),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i1),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i1),dimension(:),allocatable :: res
+  integer(kind=i1),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_int8,0_int8)
+  res = arange(1_i1,0_i1)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1247,21 +1248,21 @@ pure function intersection_int8(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_int8
+endfunction intersection_i1
 
 
-pure function intersection_int16(x,y) result(res)
+pure function intersection_i2(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `intersection`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int16),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int16),dimension(:),allocatable :: res
-  integer(kind=int16),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i2),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i2),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i2),dimension(:),allocatable :: res
+  integer(kind=i2),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_int16,0_int16)
+  res = arange(1_i2,0_i2)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1271,21 +1272,21 @@ pure function intersection_int16(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_int16
+endfunction intersection_i2
 
 
-pure function intersection_int32(x,y) result(res)
+pure function intersection_i4(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `intersection`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int32),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int32),dimension(:),allocatable :: res
-  integer(kind=int32),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i4),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i4),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i4),dimension(:),allocatable :: res
+  integer(kind=i4),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_int32,0_int32)
+  res = arange(1_i4,0_i4)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1295,21 +1296,21 @@ pure function intersection_int32(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_int32
+endfunction intersection_i4
 
 
-pure function intersection_int64(x,y) result(res)
+pure function intersection_i8(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `intersection`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int64),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int64),dimension(:),allocatable :: res
-  integer(kind=int64),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  integer(kind=i8),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i8),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i8),dimension(:),allocatable :: res
+  integer(kind=i8),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_int64,0_int64)
+  res = arange(1_i8,0_i8)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1319,21 +1320,21 @@ pure function intersection_int64(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_int64
+endfunction intersection_i8
 
 
-pure function intersection_real32(x,y) result(res)
+pure function intersection_r4(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `intersection`.
-  real(kind=real32),dimension(:),intent(in) :: x !! First input array
-  real(kind=real32),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real32),dimension(:),allocatable :: res
-  real(kind=real32),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  real(kind=r4),dimension(:),intent(in) :: x !! First input array
+  real(kind=r4),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r4),dimension(:),allocatable :: res
+  real(kind=r4),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1._real32,0._real32)
+  res = arange(1._r4,0._r4)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1343,21 +1344,21 @@ pure function intersection_real32(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_real32
+endfunction intersection_r4
 
 
-pure function intersection_real64(x,y) result(res)
+pure function intersection_r8(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `intersection`.
-  real(kind=real64),dimension(:),intent(in) :: x !! First input array
-  real(kind=real64),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real64),dimension(:),allocatable :: res
-  real(kind=real64),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  real(kind=r8),dimension(:),intent(in) :: x !! First input array
+  real(kind=r8),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r8),dimension(:),allocatable :: res
+  real(kind=r8),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1._real64,0._real64)
+  res = arange(1._r8,0._r8)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1367,21 +1368,21 @@ pure function intersection_real64(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_real64
+endfunction intersection_r8
 
 
-pure function intersection_real128(x,y) result(res)
+pure function intersection_r16(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `intersection`.
-  real(kind=real128),dimension(:),intent(in) :: x !! First input array
-  real(kind=real128),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real128),dimension(:),allocatable :: res
-  real(kind=real128),dimension(:),allocatable :: a,b
-  integer(kind=int32) :: n
+  real(kind=r16),dimension(:),intent(in) :: x !! First input array
+  real(kind=r16),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r16),dimension(:),allocatable :: res
+  real(kind=r16),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1._real128,0._real128)
+  res = arange(1._r16,0._r16)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1391,444 +1392,444 @@ pure function intersection_real128(x,y) result(res)
       if(any(b == a(n)))res = [res,a(n)]
     enddo
   endif
-endfunction intersection_real128
+endfunction intersection_r16
 
 
-pure integer(kind=int8) function last_int8(x) result(last)
+pure integer(kind=i1) function last_i1(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `last`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_int8
+endfunction last_i1
 
 
-pure integer(kind=int16) function last_int16(x) result(last)
+pure integer(kind=i2) function last_i2(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `last`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_int16
+endfunction last_i2
 
 
-pure integer(kind=int32) function last_int32(x) result(last)
+pure integer(kind=i4) function last_i4(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `last`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_int32
+endfunction last_i4
 
 
-pure integer(kind=int64) function last_int64(x) result(last)
+pure integer(kind=i8) function last_i8(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `last`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_int64
+endfunction last_i8
 
 
-pure real(kind=real32) function last_real32(x) result(last)
+pure real(kind=r4) function last_r4(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `last`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_real32
+endfunction last_r4
 
 
-pure real(kind=real64) function last_real64(x) result(last)
+pure real(kind=r8) function last_r8(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `last`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_real64
+endfunction last_r8
 
 
-pure real(kind=real128) function last_real128(x) result(last)
+pure real(kind=r16) function last_r16(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `last`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_real128
+endfunction last_r16
 
 
-pure elemental integer(kind=int8) function limit_int8(x,a,b) result(limit)
+pure elemental integer(kind=i1) function limit_i1(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `limit`.
-  integer(kind=int8),intent(in) :: x !! Input scalar
-  integer(kind=int8),intent(in) :: a !! First limit
-  integer(kind=int8),intent(in) :: b !! Second limit
+  integer(kind=i1),intent(in) :: x !! Input scalar
+  integer(kind=i1),intent(in) :: a !! First limit
+  integer(kind=i1),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_int8
+endfunction limit_i1
 
 
-pure elemental integer(kind=int16) function limit_int16(x,a,b) result(limit)
+pure elemental integer(kind=i2) function limit_i2(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `limit`.
-  integer(kind=int16),intent(in) :: x !! Input scalar
-  integer(kind=int16),intent(in) :: a !! First limit
-  integer(kind=int16),intent(in) :: b !! Second limit
+  integer(kind=i2),intent(in) :: x !! Input scalar
+  integer(kind=i2),intent(in) :: a !! First limit
+  integer(kind=i2),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_int16
+endfunction limit_i2
 
 
-pure elemental integer(kind=int32) function limit_int32(x,a,b) result(limit)
+pure elemental integer(kind=i4) function limit_i4(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `limit`.
-  integer(kind=int32),intent(in) :: x !! Input scalar
-  integer(kind=int32),intent(in) :: a !! First limit
-  integer(kind=int32),intent(in) :: b !! Second limit
+  integer(kind=i4),intent(in) :: x !! Input scalar
+  integer(kind=i4),intent(in) :: a !! First limit
+  integer(kind=i4),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_int32
+endfunction limit_i4
 
 
-pure elemental integer(kind=int64) function limit_int64(x,a,b) result(limit)
+pure elemental integer(kind=i8) function limit_i8(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `limit`.
-  integer(kind=int64),intent(in) :: x !! Input scalar
-  integer(kind=int64),intent(in) :: a !! First limit
-  integer(kind=int64),intent(in) :: b !! Second limit
+  integer(kind=i8),intent(in) :: x !! Input scalar
+  integer(kind=i8),intent(in) :: a !! First limit
+  integer(kind=i8),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_int64
+endfunction limit_i8
 
 
-pure elemental real(kind=real32) function limit_real32(x,a,b) result(limit)
+pure elemental real(kind=r4) function limit_r4(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `limit`.
-  real(kind=real32),intent(in) :: x !! Input scalar
-  real(kind=real32),intent(in) :: a !! First limit
-  real(kind=real32),intent(in) :: b !! Second limit
+  real(kind=r4),intent(in) :: x !! Input scalar
+  real(kind=r4),intent(in) :: a !! First limit
+  real(kind=r4),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_real32
+endfunction limit_r4
 
 
-pure elemental real(kind=real64) function limit_real64(x,a,b) result(limit)
+pure elemental real(kind=r8) function limit_r8(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `limit`.
-  real(kind=real64),intent(in) :: x !! Input scalar
-  real(kind=real64),intent(in) :: a !! First limit
-  real(kind=real64),intent(in) :: b !! Second limit
+  real(kind=r8),intent(in) :: x !! Input scalar
+  real(kind=r8),intent(in) :: a !! First limit
+  real(kind=r8),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_real64
+endfunction limit_r8
 
 
-pure elemental real(kind=real128) function limit_real128(x,a,b) result(limit)
+pure elemental real(kind=r16) function limit_r16(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `limit`.
-  real(kind=real128),intent(in) :: x !! Input scalar
-  real(kind=real128),intent(in) :: a !! First limit
-  real(kind=real128),intent(in) :: b !! Second limit
+  real(kind=r16),intent(in) :: x !! Input scalar
+  real(kind=r16),intent(in) :: a !! First limit
+  real(kind=r16),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
-endfunction limit_real128
+endfunction limit_r16
 
 
-pure function map_int8(f,x) result(map)
+pure function map_i1(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `map`.
-  procedure(f_int8) :: f !! Mapping function
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_i1) :: f !! Mapping function
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_int8
+endfunction map_i1
 
 
-pure function map_int16(f,x) result(map)
+pure function map_i2(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `map`.
-  procedure(f_int16) :: f !! Mapping function
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_i2) :: f !! Mapping function
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_int16
+endfunction map_i2
 
 
-pure function map_int32(f,x) result(map)
+pure function map_i4(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `map`.
-  procedure(f_int32) :: f !! Mapping function
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_i4) :: f !! Mapping function
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_int32
+endfunction map_i4
 
 
-pure function map_int64(f,x) result(map)
+pure function map_i8(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `map`.
-  procedure(f_int64) :: f !! Mapping function
-  integer(kind=int64),dimension(:),intent(in) :: x
-  integer(kind=int64),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_i8) :: f !! Mapping function
+  integer(kind=i8),dimension(:),intent(in) :: x
+  integer(kind=i8),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_int64
+endfunction map_i8
 
 
-pure function map_real32(f,x) result(map)
+pure function map_r4(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `map`.
-  procedure(f_real32) :: f !! Mapping function
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  real(kind=real32),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_r4) :: f !! Mapping function
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_real32
+endfunction map_r4
 
 
-pure function map_real64(f,x) result(map)
+pure function map_r8(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `map`.
-  procedure(f_real64) :: f !! Mapping function
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  real(kind=real64),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_r8) :: f !! Mapping function
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_real64
+endfunction map_r8
 
 
-pure function map_real128(f,x) result(map)
+pure function map_r16(f,x) result(map)
   !! Returns `f(x)` given input function `f` and array `x`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `map`.
-  procedure(f_real128) :: f !! Mapping function
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  real(kind=real128),dimension(size(x)) :: map
-  integer(kind=int32) :: i
+  procedure(f_r16) :: f !! Mapping function
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(size(x)) :: map
+  integer(kind=i4) :: i
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_real128
+endfunction map_r16
 
 
-pure integer(kind=int8) function iterfold_int8(f,start,x) result(iterfold)
+pure integer(kind=i1) function iterfold_i1(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_int8) :: f
-  integer(kind=int8),intent(in) :: start
-  integer(kind=int8),dimension(:),intent(in) :: x
+  procedure(f2_i1) :: f
+  integer(kind=i1),intent(in) :: start
+  integer(kind=i1),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_int8
+endfunction iterfold_i1
 
 
-pure integer(kind=int16) function iterfold_int16(f,start,x) result(iterfold)
+pure integer(kind=i2) function iterfold_i2(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_int16) :: f
-  integer(kind=int16),intent(in) :: start
-  integer(kind=int16),dimension(:),intent(in) :: x
+  procedure(f2_i2) :: f
+  integer(kind=i2),intent(in) :: start
+  integer(kind=i2),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_int16
+endfunction iterfold_i2
 
 
-pure integer(kind=int32) function iterfold_int32(f,start,x) result(iterfold)
+pure integer(kind=i4) function iterfold_i4(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_int32) :: f
-  integer(kind=int32),intent(in) :: start
-  integer(kind=int32),dimension(:),intent(in) :: x
+  procedure(f2_i4) :: f
+  integer(kind=i4),intent(in) :: start
+  integer(kind=i4),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_int32
+endfunction iterfold_i4
 
 
-pure integer(kind=int64) function iterfold_int64(f,start,x) result(iterfold)
+pure integer(kind=i8) function iterfold_i8(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_int64) :: f
-  integer(kind=int64),intent(in) :: start
-  integer(kind=int64),dimension(:),intent(in) :: x
+  procedure(f2_i8) :: f
+  integer(kind=i8),intent(in) :: start
+  integer(kind=i8),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_int64
+endfunction iterfold_i8
 
 
-pure real(kind=real32) function iterfold_real32(f,start,x) result(iterfold)
+pure real(kind=r4) function iterfold_r4(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_real32) :: f
-  real(kind=real32),intent(in) :: start
-  real(kind=real32),dimension(:),intent(in) :: x
+  procedure(f2_r4) :: f
+  real(kind=r4),intent(in) :: start
+  real(kind=r4),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_real32
+endfunction iterfold_r4
 
 
-pure real(kind=real64) function iterfold_real64(f,start,x) result(iterfold)
+pure real(kind=r8) function iterfold_r8(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_real64) :: f
-  real(kind=real64),intent(in) :: start
-  real(kind=real64),dimension(:),intent(in) :: x
+  procedure(f2_r8) :: f
+  real(kind=r8),intent(in) :: start
+  real(kind=r8),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_real64
+endfunction iterfold_r8
 
 
-pure real(kind=real128) function iterfold_real128(f,start,x) result(iterfold)
+pure real(kind=r16) function iterfold_r16(f,start,x) result(iterfold)
   !! Reduces input array `x` using input function `f(x,y)`.
   !! Initial value is `start`, if given, and zero otherwise.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_real128) :: f
-  real(kind=real128),intent(in) :: start
-  real(kind=real128),dimension(:),intent(in) :: x
+  procedure(f2_r16) :: f
+  real(kind=r16),intent(in) :: start
+  real(kind=r16),dimension(:),intent(in) :: x
   integer :: i
   iterfold = start
   do i = 1,size(x)
     iterfold = f(iterfold,x(i))
   enddo
-endfunction iterfold_real128
+endfunction iterfold_r16
 
 
-pure function reverse_int8(x) result(reverse)
+pure function reverse_i1(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `reverse`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(size(x)) :: reverse
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_int8
+endfunction reverse_i1
  
 
-pure function reverse_int16(x) result(reverse)
+pure function reverse_i2(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `reverse`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(size(x)) :: reverse
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_int16
+endfunction reverse_i2
 
 
-pure function reverse_int32(x) result(reverse)
+pure function reverse_i4(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `reverse`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(size(x)) :: reverse
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_int32
+endfunction reverse_i4
 
 
-pure function reverse_int64(x) result(reverse)
+pure function reverse_i8(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `reverse`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int64),dimension(size(x)) :: reverse
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_int64
+endfunction reverse_i8
 
 
-pure function reverse_real32(x) result(reverse)
+pure function reverse_r4(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `reverse`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  real(kind=real32),dimension(size(x)) :: reverse
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_real32
+endfunction reverse_r4
 
 
-pure function reverse_real64(x) result(reverse)
+pure function reverse_r8(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `reverse`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  real(kind=real64),dimension(size(x)) :: reverse
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_real64
+endfunction reverse_r8
 
 
-pure function reverse_real128(x) result(reverse)
+pure function reverse_r16(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `reverse`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  real(kind=real128),dimension(size(x)) :: reverse
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_real128
+endfunction reverse_r16
 
  
-pure recursive function sort_int8(x) result(res)
+pure recursive function sort_i1(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=int8),dimension(:),intent(in) :: x
-  integer(kind=int8),dimension(size(x)) :: res
-  integer(kind=int8),dimension(size(x)-1) :: rest
-  integer(kind=int8) :: pivot
+  integer(kind=i1),dimension(:),intent(in) :: x
+  integer(kind=i1),dimension(size(x)) :: res
+  integer(kind=i1),dimension(size(x)-1) :: rest
+  integer(kind=i1) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1837,18 +1838,18 @@ pure recursive function sort_int8(x) result(res)
   else
     res = x
   endif
-endfunction sort_int8
+endfunction sort_i1
 
 
-pure recursive function sort_int16(x) result(res)
+pure recursive function sort_i2(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! using binary search tree pivot.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=int16),dimension(:),intent(in) :: x
-  integer(kind=int16),dimension(size(x)) :: res
-  integer(kind=int16),dimension(size(x)-1) :: rest
-  integer(kind=int16) :: pivot
+  integer(kind=i2),dimension(:),intent(in) :: x
+  integer(kind=i2),dimension(size(x)) :: res
+  integer(kind=i2),dimension(size(x)-1) :: rest
+  integer(kind=i2) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1857,17 +1858,17 @@ pure recursive function sort_int16(x) result(res)
   else
     res = x
   endif
-endfunction sort_int16
+endfunction sort_i2
 
 
-pure recursive function sort_int32(x) result(res)
+pure recursive function sort_i4(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=int32),dimension(:),intent(in) :: x
-  integer(kind=int32),dimension(size(x)) :: res
-  integer(kind=int32),dimension(size(x)-1) :: rest
-  integer(kind=int32) :: pivot
+  integer(kind=i4),dimension(:),intent(in) :: x
+  integer(kind=i4),dimension(size(x)) :: res
+  integer(kind=i4),dimension(size(x)-1) :: rest
+  integer(kind=i4) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1876,18 +1877,18 @@ pure recursive function sort_int32(x) result(res)
   else
     res = x
   endif
-endfunction sort_int32
+endfunction sort_i4
 
 
-pure recursive function sort_int64(x) result(res)
+pure recursive function sort_i8(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! using binary search tree pivot.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=int64),dimension(:),intent(in) :: x
-  integer(kind=int64),dimension(size(x)) :: res
-  integer(kind=int64),dimension(size(x)-1) :: rest
-  integer(kind=int64) :: pivot
+  integer(kind=i8),dimension(:),intent(in) :: x
+  integer(kind=i8),dimension(size(x)) :: res
+  integer(kind=i8),dimension(size(x)-1) :: rest
+  integer(kind=i8) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1896,17 +1897,17 @@ pure recursive function sort_int64(x) result(res)
   else
     res = x
   endif
-endfunction sort_int64
+endfunction sort_i8
 
 
-pure recursive function sort_real32(x) result(res)
+pure recursive function sort_r4(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `sort`.
-  real(kind=real32),dimension(:),intent(in) :: x
-  real(kind=real32),dimension(size(x)) :: res
-  real(kind=real32),dimension(size(x)-1) :: rest
-  real(kind=real32) :: pivot
+  real(kind=r4),dimension(:),intent(in) :: x
+  real(kind=r4),dimension(size(x)) :: res
+  real(kind=r4),dimension(size(x)-1) :: rest
+  real(kind=r4) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1915,17 +1916,17 @@ pure recursive function sort_real32(x) result(res)
   else
     res = x
   endif
-endfunction sort_real32
+endfunction sort_r4
 
 
-pure recursive function sort_real64(x) result(res)
+pure recursive function sort_r8(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `sort`.
-  real(kind=real64),dimension(:),intent(in) :: x
-  real(kind=real64),dimension(size(x)) :: res
-  real(kind=real64),dimension(size(x)-1) :: rest
-  real(kind=real64) :: pivot
+  real(kind=r8),dimension(:),intent(in) :: x
+  real(kind=r8),dimension(size(x)) :: res
+  real(kind=r8),dimension(size(x)-1) :: rest
+  real(kind=r8) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1934,17 +1935,17 @@ pure recursive function sort_real64(x) result(res)
   else
     res = x
   endif
-endfunction sort_real64
+endfunction sort_r8
 
 
-pure recursive function sort_real128(x) result(res)
+pure recursive function sort_r16(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `sort`.
-  real(kind=real128),dimension(:),intent(in) :: x
-  real(kind=real128),dimension(size(x)) :: res
-  real(kind=real128),dimension(size(x)-1) :: rest
-  real(kind=real128) :: pivot
+  real(kind=r16),dimension(:),intent(in) :: x
+  real(kind=r16),dimension(size(x)) :: res
+  real(kind=r16),dimension(size(x)-1) :: rest
+  real(kind=r16) :: pivot
   if(size(x) > 1)then
     pivot = head(split(x,2))
     rest = [split(x,1),tail(split(x,2))]
@@ -1953,614 +1954,614 @@ pure recursive function sort_real128(x) result(res)
   else
     res = x
   endif
-endfunction sort_real128
+endfunction sort_r16
 
 
-pure recursive function set_int8(x) result(res)
+pure recursive function set_i1(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=int8),dimension(:),intent(in) :: x
-  integer(kind=int8),dimension(:),allocatable :: res
+  integer(kind=i1),dimension(:),intent(in) :: x
+  integer(kind=i1),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_int8
+endfunction set_i1
 
 
-pure recursive function set_int16(x) result(res)
+pure recursive function set_i2(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=int16),dimension(:),intent(in) :: x
-  integer(kind=int16),dimension(:),allocatable :: res
+  integer(kind=i2),dimension(:),intent(in) :: x
+  integer(kind=i2),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_int16
+endfunction set_i2
 
-pure recursive function set_int32(x) result(res)
+pure recursive function set_i4(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=int32),dimension(:),intent(in) :: x
-  integer(kind=int32),dimension(:),allocatable :: res
+  integer(kind=i4),dimension(:),intent(in) :: x
+  integer(kind=i4),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_int32
+endfunction set_i4
 
 
-pure recursive function set_int64(x) result(res)
+pure recursive function set_i8(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=int64),dimension(:),intent(in) :: x
-  integer(kind=int64),dimension(:),allocatable :: res
+  integer(kind=i8),dimension(:),intent(in) :: x
+  integer(kind=i8),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_int64
+endfunction set_i8
 
 
-pure recursive function set_real32(x) result(res)
+pure recursive function set_r4(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `set`.
-  real(kind=real32),dimension(:),intent(in) :: x
-  real(kind=real32),dimension(:),allocatable :: res
+  real(kind=r4),dimension(:),intent(in) :: x
+  real(kind=r4),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_real32
+endfunction set_r4
 
 
-pure recursive function set_real64(x) result(res)
+pure recursive function set_r8(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `set`.
-  real(kind=real64),dimension(:),intent(in) :: x
-  real(kind=real64),dimension(:),allocatable :: res
+  real(kind=r8),dimension(:),intent(in) :: x
+  real(kind=r8),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_real64
+endfunction set_r8
 
 
-pure recursive function set_real128(x) result(res)
+pure recursive function set_r16(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `set`.
-  real(kind=real128),dimension(:),intent(in) :: x
-  real(kind=real128),dimension(:),allocatable :: res
+  real(kind=r16),dimension(:),intent(in) :: x
+  real(kind=r16),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
   else
     res = x
   endif
-endfunction set_real128
+endfunction set_r16
 
 
-pure function split_int8(x,section) result(split)
+pure function split_i1(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `split`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  integer(kind=int8),dimension(:),allocatable :: split
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  integer(kind=i1),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_int8
+endfunction split_i1
 
 
-pure function split_int16(x,section) result(split)
+pure function split_i2(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `split`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  integer(kind=int16),dimension(:),allocatable :: split
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  integer(kind=i2),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_int16
+endfunction split_i2
 
 
-pure function split_int32(x,section) result(split)
+pure function split_i4(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `split`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  integer(kind=int32),dimension(:),allocatable :: split
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  integer(kind=i4),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_int32
+endfunction split_i4
 
 
-pure function split_int64(x,section) result(split)
+pure function split_i8(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `split`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  integer(kind=int64),dimension(:),allocatable :: split
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  integer(kind=i8),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_int64
+endfunction split_i8
 
 
-pure function split_real32(x,section) result(split)
+pure function split_r4(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `split`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  real(kind=real32),dimension(:),allocatable :: split
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  real(kind=r4),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_real32
+endfunction split_r4
 
 
-pure function split_real64(x,section) result(split)
+pure function split_r8(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `split`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  real(kind=real64),dimension(:),allocatable :: split
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  real(kind=r8),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_real64
+endfunction split_r8
 
 
-pure function split_real128(x,section) result(split)
+pure function split_r16(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
   !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `split`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),intent(in) :: section !! Array section to return
-  real(kind=real128),dimension(:),allocatable :: split
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  real(kind=r16),dimension(:),allocatable :: split
   if(section == 1)then
     split = x(1:size(x)/2)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_real128
+endfunction split_r16
 
 
-pure function subscript_int8(x,ind) result(subscript)
+pure function subscript_i1(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `subscript`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int8),dimension(:),allocatable :: subscript
-  integer(kind=int8),dimension(:),allocatable :: indices
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i1),dimension(:),allocatable :: subscript
+  integer(kind=i1),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_int8
+endfunction subscript_i1
 
 
-pure function subscript_int16(x,ind) result(subscript)
+pure function subscript_i2(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `subscript`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int16),dimension(:),allocatable :: subscript
-  integer(kind=int16),dimension(:),allocatable :: indices
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i2),dimension(:),allocatable :: subscript
+  integer(kind=i2),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_int16
+endfunction subscript_i2
 
 
-pure function subscript_int32(x,ind) result(subscript)
+pure function subscript_i4(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `subscript`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int32),dimension(:),allocatable :: subscript
-  integer(kind=int32),dimension(:),allocatable :: indices
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i4),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_int32
+endfunction subscript_i4
 
 
-pure function subscript_int64(x,ind) result(subscript)
+pure function subscript_i8(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `subscript`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int64),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int64),dimension(:),allocatable :: subscript
-  integer(kind=int64),dimension(:),allocatable :: indices
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i8),dimension(:),allocatable :: subscript
+  integer(kind=i8),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_int64
+endfunction subscript_i8
 
 
-pure function subscript_real32(x,ind) result(subscript)
+pure function subscript_r4(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `subscript`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int32),dimension(:),allocatable :: subscript
-  integer(kind=int32),dimension(:),allocatable :: indices
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i4),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_real32
+endfunction subscript_r4
 
 
-pure function subscript_real64(x,ind) result(subscript)
+pure function subscript_r8(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `subscript`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int32),dimension(:),allocatable :: subscript
-  integer(kind=int32),dimension(:),allocatable :: indices
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i4),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_real64
+endfunction subscript_r8
 
 
-pure function subscript_real128(x,ind) result(subscript)
+pure function subscript_r16(x,ind) result(subscript)
   !! Subscripts the array `x` along indices `ind`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `subscript`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=int32),dimension(:),allocatable :: subscript
-  integer(kind=int32),dimension(:),allocatable :: indices
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  integer(kind=i4),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_real128
+endfunction subscript_r16
 
 
-pure function tail_int8(x) result(tail)
+pure function tail_i1(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `tail`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int8),dimension(size(x)-1) :: tail
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i1),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_int8
+endfunction tail_i1
 
 
-pure function tail_int16(x) result(tail)
+pure function tail_i2(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `tail`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int16),dimension(size(x)-1) :: tail
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i2),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_int16
+endfunction tail_i2
 
 
-pure function tail_int32(x) result(tail)
+pure function tail_i4(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `tail`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int32),dimension(size(x)-1) :: tail
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_int32
+endfunction tail_i4
 
 
-pure function tail_int64(x) result(tail)
+pure function tail_i8(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `tail`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! Input array
-  integer(kind=int64),dimension(size(x)-1) :: tail
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i8),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_int64
+endfunction tail_i8
 
 
-pure function tail_real32(x) result(tail)
+pure function tail_r4(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `tail`.
-  real(kind=real32),dimension(:),intent(in) :: x !! Input array
-  real(kind=real32),dimension(size(x)-1) :: tail
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  real(kind=r4),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_real32
+endfunction tail_r4
 
 
-pure function tail_real64(x) result(tail)
+pure function tail_r8(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `tail`.
-  real(kind=real64),dimension(:),intent(in) :: x !! Input array
-  real(kind=real64),dimension(size(x)-1) :: tail
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  real(kind=r8),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_real64
+endfunction tail_r8
 
 
-pure function tail_real128(x) result(tail)
+pure function tail_r16(x) result(tail)
   !! Returns all elements of `x` but the first.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `tail`.
-  real(kind=real128),dimension(:),intent(in) :: x !! Input array
-  real(kind=real128),dimension(size(x)-1) :: tail
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  real(kind=r16),dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_real128
+endfunction tail_r16
 
 
-pure recursive function unfold_int8(f,x,len) result(res)
+pure recursive function unfold_i1(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_int8) :: f !! Unfolding function
-  integer(kind=int8),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int8),intent(in) :: len !! Array length to return
-  integer(kind=int8),dimension(:),allocatable :: res
+  procedure(f_i1) :: f !! Unfolding function
+  integer(kind=i1),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i1),intent(in) :: len !! Array length to return
+  integer(kind=i1),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_int8
+endfunction unfold_i1
 
 
-pure recursive function unfold_int16(f,x,len) result(res)
+pure recursive function unfold_i2(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_int16) :: f !! Unfolding function
-  integer(kind=int16),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int16),intent(in) :: len !! Array length to return
-  integer(kind=int16),dimension(:),allocatable :: res
+  procedure(f_i2) :: f !! Unfolding function
+  integer(kind=i2),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i2),intent(in) :: len !! Array length to return
+  integer(kind=i2),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_int16
+endfunction unfold_i2
 
 
-pure recursive function unfold_int32(f,x,len) result(res)
+pure recursive function unfold_i4(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_int32) :: f !! Unfolding function
-  integer(kind=int32),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int32),intent(in) :: len !! Array length to return
-  integer(kind=int32),dimension(:),allocatable :: res
+  procedure(f_i4) :: f !! Unfolding function
+  integer(kind=i4),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  integer(kind=i4),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_int32
+endfunction unfold_i4
 
 
-pure recursive function unfold_int64(f,x,len) result(res)
+pure recursive function unfold_i8(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_int64) :: f !! Unfolding function
-  integer(kind=int64),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int64),intent(in) :: len !! Array length to return
-  integer(kind=int64),dimension(:),allocatable :: res
+  procedure(f_i8) :: f !! Unfolding function
+  integer(kind=i8),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i8),intent(in) :: len !! Array length to return
+  integer(kind=i8),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_int64
+endfunction unfold_i8
 
 
-pure recursive function unfold_real32(f,x,len) result(res)
+pure recursive function unfold_r4(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_real32) :: f !! Unfolding function
-  real(kind=real32),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int32),intent(in) :: len !! Array length to return
-  real(kind=real32),dimension(:),allocatable :: res
+  procedure(f_r4) :: f !! Unfolding function
+  real(kind=r4),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  real(kind=r4),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_real32
+endfunction unfold_r4
 
 
-pure recursive function unfold_real64(f,x,len) result(res)
+pure recursive function unfold_r8(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_real64) :: f !! Unfolding function
-  real(kind=real64),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int32),intent(in) :: len !! Array length to return
-  real(kind=real64),dimension(:),allocatable :: res
+  procedure(f_r8) :: f !! Unfolding function
+  real(kind=r8),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  real(kind=r8),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_real64
+endfunction unfold_r8
 
 
-pure recursive function unfold_real128(f,x,len) result(res)
+pure recursive function unfold_r16(f,x,len) result(res)
   !! Generates an array of length `len` by unfolding starting
   !! array `x` using input function `f`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `unfold`.
-  procedure(f_real128) :: f !! Unfolding function
-  real(kind=real128),dimension(:),intent(in) :: x !! Start value
-  integer(kind=int32),intent(in) :: len !! Array length to return
-  real(kind=real128),dimension(:),allocatable :: res
+  procedure(f_r16) :: f !! Unfolding function
+  real(kind=r16),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  real(kind=r16),dimension(:),allocatable :: res
   if(size(x) >= len)then
     res = x
   else
     res = unfold(f,[x,f(last(x))],len)
   endif
-endfunction unfold_real128
+endfunction unfold_r16
 
 
-pure function union_int8(x,y) result(union)
+pure function union_i1(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `union`.
-  integer(kind=int8),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int8),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int8),dimension(:),allocatable :: union
+  integer(kind=i1),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i1),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i1),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_int8
+endfunction union_i1
 
 
-pure function union_int16(x,y) result(union)
+pure function union_i2(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `union`.
-  integer(kind=int16),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int16),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int16),dimension(:),allocatable :: union
+  integer(kind=i2),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i2),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i2),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_int16
+endfunction union_i2
 
 
-pure function union_int32(x,y) result(union)
+pure function union_i4(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `union`.
-  integer(kind=int32),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int32),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int32),dimension(:),allocatable :: union
+  integer(kind=i4),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i4),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i4),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_int32
+endfunction union_i4
 
 
-pure function union_int64(x,y) result(union)
+pure function union_i8(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `union`.
-  integer(kind=int64),dimension(:),intent(in) :: x !! First input array
-  integer(kind=int64),dimension(:),intent(in) :: y !! Second input array
-  integer(kind=int64),dimension(:),allocatable :: union
+  integer(kind=i8),dimension(:),intent(in) :: x !! First input array
+  integer(kind=i8),dimension(:),intent(in) :: y !! Second input array
+  integer(kind=i8),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_int64
+endfunction union_i8
 
 
-pure function union_real32(x,y) result(union)
+pure function union_r4(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `union`.
-  real(kind=real32),dimension(:),intent(in) :: x !! First input array
-  real(kind=real32),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real32),dimension(:),allocatable :: union
+  real(kind=r4),dimension(:),intent(in) :: x !! First input array
+  real(kind=r4),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r4),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_real32
+endfunction union_r4
 
 
-pure function union_real64(x,y) result(union)
+pure function union_r8(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `union`.
-  real(kind=real64),dimension(:),intent(in) :: x !! First input array
-  real(kind=real64),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real64),dimension(:),allocatable :: union
+  real(kind=r8),dimension(:),intent(in) :: x !! First input array
+  real(kind=r8),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r8),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_real64
+endfunction union_r8
 
 
-pure function union_real128(x,y) result(union)
+pure function union_r16(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `union`.
-  real(kind=real128),dimension(:),intent(in) :: x !! First input array
-  real(kind=real128),dimension(:),intent(in) :: y !! Second input array
-  real(kind=real128),dimension(:),allocatable :: union
+  real(kind=r16),dimension(:),intent(in) :: x !! First input array
+  real(kind=r16),dimension(:),intent(in) :: y !! Second input array
+  real(kind=r16),dimension(:),allocatable :: union
   union = set([x,y])
-endfunction union_real128
+endfunction union_r16
 
 endmodule mod_functional
