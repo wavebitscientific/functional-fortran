@@ -65,11 +65,13 @@ endinterface foldt
 interface head
   module procedure :: head_i1,head_i2,head_i4,head_i8
   module procedure :: head_r4,head_r8,head_r16
+  module procedure :: head_c_r4,head_c_r8,head_c_r16
 endinterface head
 
 interface operator(.head.)
   module procedure :: head_i1,head_i2,head_i4,head_i8
   module procedure :: head_r4,head_r8,head_r16
+  module procedure :: head_c_r4,head_c_r8,head_c_r16
 endinterface
 
 interface init
@@ -1045,15 +1047,6 @@ pure real(kind=r4) function head_r4(x) result(head)
   head = x(1)
 endfunction head_r4
 
-pure complex(kind=r4) function head_complex32(x) result(head)
-  !! Returns the first element of array `x`.
-  !! This specific procedure is for 4-byte reals.
-  !! Overloaded by generic procedure `head`.
-  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
-  head = x(1)
-endfunction head_complex32
-
-
 
 pure real(kind=r8) function head_r8(x) result(head)
   !! Returns the first element of array `x`.
@@ -1071,6 +1064,33 @@ pure real(kind=r16) function head_r16(x) result(head)
   real(kind=r16),dimension(:),intent(in) :: x !! Input array
   head = x(1)
 endfunction head_r16
+
+
+pure complex(kind=r4) function head_c_r4(x) result(head)
+  !! Returns the first element of array `x`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `head`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  head = x(1)
+endfunction head_c_r4
+
+
+pure complex(kind=r8) function head_c_r8(x) result(head)
+  !! Returns the first element of array `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `head`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  head = x(1)
+endfunction head_c_r8
+
+
+pure complex(kind=r16) function head_c_r16(x) result(head)
+  !! Returns the first element of array `x`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `head`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  head = x(1)
+endfunction head_c_r16
 
 
 pure function init_i1(x) result(init)
