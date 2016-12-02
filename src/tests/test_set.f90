@@ -1,7 +1,7 @@
 program test_set
 use iso_fortran_env,only:int8,int16,int32,int64,real32,real64,real128
 use mod_testing,only:assert,initialize_tests,report_tests
-use mod_functional,only:set,arange
+use mod_functional
 
 implicit none
 
@@ -11,7 +11,7 @@ integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
 n = 1
-ntests = 8
+ntests = 9
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(set([1_int8,2_int8,2_int8,3_int8]) == [1,2,3]),&
@@ -44,6 +44,10 @@ n = n + 1
 
 tests(n) = assert(all(set(arange(1,0)) == arange(1,0)),&
                   'set of empty array is an empty array')
+n = n + 1
+
+tests(n) = assert(all(set([1,2,2,3]) == .set.[1,2,2,3]),&
+                  'set operator, .set.x')
 n = n + 1
 
 test_failed = .false.

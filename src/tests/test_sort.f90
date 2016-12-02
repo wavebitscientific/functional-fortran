@@ -12,7 +12,7 @@ integer,parameter :: stdout = 6
 real(kind=real32),dimension(1000) :: x
 
 n = 1
-ntests = 8
+ntests = 9
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(sort([3_int8,2_int8,1_int8]) == [1,2,3]),&
@@ -48,6 +48,11 @@ tests(n) = assert(all(tail(sort(x)) >= init(sort(x))),&
                   'all(tail(sort(x)) >= init(sort(x))')
 n = n + 1
 
+tests(n) = assert(all(sort(x) == .sort.x),&
+                  'sort operator, .sort.x')
+n = n + 1
+
+test_failed = .false.
 test_failed = .false.
 call report_tests(tests,test_failed)
 if(test_failed)stop 1

@@ -15,6 +15,17 @@ public :: arange,complement,filter,foldl,foldr,foldt,head,init,insert,&
           intersection,iterfold,last,limit,map,reverse,set,sort,split,&
           subscript,tail,unfold,union
 
+public :: operator(.complement.)
+public :: operator(.head.)
+public :: operator(.init.)
+public :: operator(.intersection.)
+public :: operator(.last.)
+public :: operator(.reverse.)
+public :: operator(.set.)
+public :: operator(.sort.)
+public :: operator(.tail.)
+public :: operator(.union.)
+
 interface arange
   module procedure :: arange_int8,arange_int16,arange_int32,arange_int64
   module procedure :: arange_real32,arange_real64,arange_real128
@@ -24,6 +35,11 @@ interface complement
   module procedure :: complement_int8,complement_int16,complement_int32,complement_int64
   module procedure :: complement_real32,complement_real64,complement_real128
 endinterface complement
+
+interface operator(.complement.)
+  module procedure :: complement_int8,complement_int16,complement_int32,complement_int64
+  module procedure :: complement_real32,complement_real64,complement_real128
+endinterface
 
 interface filter
   module procedure :: filter_int8,filter_int16,filter_int32,filter_int64
@@ -50,10 +66,20 @@ interface head
   module procedure :: head_real32,head_real64,head_real128
 endinterface head
 
+interface operator(.head.)
+  module procedure :: head_int8,head_int16,head_int32,head_int64
+  module procedure :: head_real32,head_real64,head_real128
+endinterface
+
 interface init
   module procedure :: init_int8,init_int16,init_int32,init_int64
   module procedure :: init_real32,init_real64,init_real128
 endinterface init
+
+interface operator(.init.)
+  module procedure :: init_int8,init_int16,init_int32,init_int64
+  module procedure :: init_real32,init_real64,init_real128
+endinterface
 
 interface insert
   module procedure :: insert_int8,insert_int16,insert_int32,insert_int64
@@ -65,6 +91,11 @@ interface intersection
   module procedure :: intersection_real32,intersection_real64,intersection_real128
 endinterface intersection
 
+interface operator(.intersection.)
+  module procedure :: intersection_int8,intersection_int16,intersection_int32,intersection_int64
+  module procedure :: intersection_real32,intersection_real64,intersection_real128
+endinterface
+
 interface iterfold
   module procedure :: iterfold_int8,iterfold_int16,iterfold_int32,iterfold_int64
   module procedure :: iterfold_real32,iterfold_real64,iterfold_real128
@@ -74,6 +105,11 @@ interface last
   module procedure :: last_int8,last_int16,last_int32,last_int64
   module procedure :: last_real32,last_real64,last_real128
 endinterface last
+
+interface operator(.last.)
+  module procedure :: last_int8,last_int16,last_int32,last_int64
+  module procedure :: last_real32,last_real64,last_real128
+endinterface
 
 interface limit
   module procedure :: limit_int8,limit_int16,limit_int32,limit_int64
@@ -90,15 +126,30 @@ interface reverse
   module procedure :: reverse_real32,reverse_real64,reverse_real128
 endinterface reverse
 
+interface operator(.reverse.)
+  module procedure :: reverse_int8,reverse_int16,reverse_int32,reverse_int64
+  module procedure :: reverse_real32,reverse_real64,reverse_real128
+endinterface
+
 interface set
   module procedure :: set_int8,set_int16,set_int32,set_int64
   module procedure :: set_real32,set_real64,set_real128
 endinterface set
 
+interface operator(.set.)
+  module procedure :: set_int8,set_int16,set_int32,set_int64
+  module procedure :: set_real32,set_real64,set_real128
+endinterface
+
 interface sort
   module procedure :: sort_int8,sort_int16,sort_int32,sort_int64
   module procedure :: sort_real32,sort_real64,sort_real128
 endinterface sort
+
+interface operator(.sort.)
+  module procedure :: sort_int8,sort_int16,sort_int32,sort_int64
+  module procedure :: sort_real32,sort_real64,sort_real128
+endinterface
 
 interface split
   module procedure :: split_int8,split_int16,split_int32,split_int64
@@ -115,6 +166,11 @@ interface tail
   module procedure :: tail_real32,tail_real64,tail_real128
 endinterface tail
 
+interface operator(.tail.)
+  module procedure :: tail_int8,tail_int16,tail_int32,tail_int64
+  module procedure :: tail_real32,tail_real64,tail_real128
+endinterface
+
 interface unfold
   module procedure :: unfold_int8,unfold_int16,unfold_int32,unfold_int64
   module procedure :: unfold_real32,unfold_real64,unfold_real128
@@ -124,6 +180,11 @@ interface union
   module procedure :: union_int8,union_int16,union_int32,union_int64
   module procedure :: union_real32,union_real64,union_real128
 endinterface union
+
+interface operator(.union.)
+  module procedure :: union_int8,union_int16,union_int32,union_int64
+  module procedure :: union_real32,union_real64,union_real128
+endinterface
 
 contains
 

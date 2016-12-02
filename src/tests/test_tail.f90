@@ -1,7 +1,7 @@
 program test_tail
 use iso_fortran_env,only:int8,int16,int32,int64,real32,real64,real128
 use mod_testing,only:assert,initialize_tests,report_tests
-use mod_functional,only:tail
+use mod_functional
 
 implicit none
 
@@ -11,7 +11,7 @@ integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
 n = 1
-ntests = 9
+ntests = 10
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(tail([1_int8,2_int8]) == [2_int8]),'tail, int8')
@@ -39,6 +39,9 @@ tests(n) = assert(size(tail([1._real32])) == 0,'size(tail([1])) == 0')
 n = n + 1
 
 tests(n) = assert(size(tail(tail([1._real32]))) == 0,'size(tail(tail([1]))) == 0')
+n = n + 1
+
+tests(n) = assert(all(tail([1,2]) == .tail.[1,2]),'tail operator, .tail.x')
 n = n + 1
 
 test_failed = .false.

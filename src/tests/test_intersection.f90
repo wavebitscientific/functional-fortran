@@ -1,7 +1,7 @@
 program test_intersection
 use iso_fortran_env,only:int8,int16,int32,int64,real32,real64,real128
 use mod_testing,only:assert,initialize_tests,report_tests
-use mod_functional,only:intersection
+use mod_functional
 
 implicit none
 
@@ -11,7 +11,7 @@ integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
 n = 1
-ntests = 7
+ntests = 8
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(intersection([1_int8,2_int8],[2_int8,3_int8]) == [2]),&
@@ -40,6 +40,10 @@ n = n + 1
 
 tests(n) = assert(all(intersection([1._real128,2._real128],[2._real128,3._real128]) == [2]),&
                   'intersection, real128')
+n = n + 1
+
+tests(n) = assert(all(intersection([1,2],[2,3]) == ([1,2].intersection.[2,3])),&
+                  'intersection operator, x.intersection.y')
 n = n + 1
 
 test_failed = .false.
