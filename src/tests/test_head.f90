@@ -15,8 +15,8 @@ complex(kind=real64),dimension(:),allocatable :: c_r8
 complex(kind=real128),dimension(:),allocatable :: c_r16
 
 c_r4 = [(1,2),(2,4)]
-c_r8 = [(1,2),(2,4)]
-c_r16 = [(1,2),(2,4)]
+c_r8 = c_r4
+c_r16 = c_r4
 
 n = 1
 ntests = 11
