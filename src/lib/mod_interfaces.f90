@@ -13,12 +13,16 @@ private
 
 public :: f_i1,f_i2,f_i4,f_i8
 public :: f_r4,f_r8,f_r16
+public :: f_c4,f_c8,f_c16
 public :: f_array_i1,f_array_i2,f_array_i4,f_array_i8
 public :: f_array_r4,f_array_r8,f_array_r16
+public :: f_array_c4,f_array_c8,f_array_c16
 public :: f2_i1,f2_i2,f2_i4,f2_i8
 public :: f2_r4,f2_r8,f2_r16
+public :: f2_c4,f2_c8,f2_c16
 public :: f_i1_logical,f_i2_logical,f_i4_logical,f_i8_logical
 public :: f_r4_logical,f_r8_logical,f_r16_logical
+public :: f_c4_logical,f_c8_logical,f_c16_logical
 
 interface
 
@@ -63,6 +67,24 @@ interface
     import :: r16
     real(kind=r16),intent(in) :: x
   endfunction f_r16
+
+  pure complex(kind=r4) function f_c4(x)
+    !! f :: c4 -> c4
+    import :: r4
+    complex(kind=r4),intent(in) :: x
+  endfunction f_c4
+
+  pure complex(kind=r8) function f_c8(x)
+    !! f :: c8 -> c8
+    import :: r8
+    complex(kind=r8),intent(in) :: x
+  endfunction f_c8
+
+  pure complex(kind=r16) function f_c16(x)
+    !! f :: c16 -> c16
+    import :: r16
+    complex(kind=r16),intent(in) :: x
+  endfunction f_c16
 
   pure function f_array_i1(x) result(f)
     !! f :: [i1] -> [i1]
@@ -113,6 +135,27 @@ interface
     real(kind=r16),dimension(:),allocatable :: f
   endfunction f_array_r16
 
+  pure function f_array_c4(x) result(f)
+    !! f :: [c4] -> [c4]
+    import :: r4
+    complex(kind=r4),dimension(:),intent(in) :: x
+    complex(kind=r4),dimension(:),allocatable :: f
+  endfunction f_array_c4
+
+  pure function f_array_c8(x) result(f)
+    !! f :: [c8] -> [c8]
+    import :: r8
+    complex(kind=r8),dimension(:),intent(in) :: x
+    complex(kind=r8),dimension(:),allocatable :: f
+  endfunction f_array_c8
+
+  pure function f_array_c16(x) result(f)
+    !! f :: [c16] -> [c16]
+    import :: r16
+    complex(kind=r16),dimension(:),intent(in) :: x
+    complex(kind=r16),dimension(:),allocatable :: f
+  endfunction f_array_c16
+
   pure integer(kind=i1) function f2_i1(x,y)
     !! f :: i1 i1 -> i1
     import :: i1
@@ -155,6 +198,24 @@ interface
     real(kind=r16),intent(in) :: x,y
   endfunction f2_r16
 
+  pure complex(kind=r4) function f2_c4(x,y)
+    !! f :: c4 c4 -> c4
+    import :: r4
+    complex(kind=r4),intent(in) :: x,y
+  endfunction f2_c4
+
+  pure complex(kind=r8) function f2_c8(x,y)
+    !! f :: c8 c8 -> c8
+    import :: r8
+    complex(kind=r8),intent(in) :: x,y
+  endfunction f2_c8
+
+  pure complex(kind=r16) function f2_c16(x,y)
+    !! f :: c16 c16 -> c16
+    import :: r16
+    complex(kind=r16),intent(in) :: x,y
+  endfunction f2_c16
+
   pure logical function f_i1_logical(x)
     !! f :: i1 -> logical
     import :: i1
@@ -196,6 +257,24 @@ interface
     import :: r16
     real(kind=r16),intent(in) :: x
   endfunction f_r16_logical
+
+  pure logical function f_c4_logical(x)
+    !! f :: c4 -> logical
+    import :: r4
+    complex(kind=r4),intent(in) :: x
+  endfunction f_c4_logical
+
+  pure logical function f_c8_logical(x)
+    !! f :: c8 -> logical
+    import :: r8
+    complex(kind=r8),intent(in) :: x
+  endfunction f_c8_logical
+
+  pure logical function f_c16_logical(x)
+    !! f :: c16 -> logical
+    import :: r16
+    complex(kind=r16),intent(in) :: x
+  endfunction f_c16_logical
 
 endinterface
 
