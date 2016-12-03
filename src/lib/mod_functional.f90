@@ -314,7 +314,7 @@ pure function arange_r4(start,end,increment) result(arange)
   else
     incr = 1
   endif
-  length = int((end-start)/incr)+1
+  length = (end-start+0.5*incr)/incr+1
   allocate(arange(length))
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
@@ -339,7 +339,7 @@ pure function arange_r8(start,end,increment) result(arange)
   else
     incr = 1
   endif
-  length = int((end-start)/incr)+1
+  length = (end-start+0.5*incr)/incr+1
   allocate(arange(length))
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
@@ -364,7 +364,7 @@ pure function arange_r16(start,end,increment) result(arange)
   else
     incr = 1
   endif
-  length = int((end-start)/incr)+1
+  length = (end-start+0.5*incr)/incr+1
   allocate(arange(length))
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr

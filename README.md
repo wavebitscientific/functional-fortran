@@ -107,12 +107,6 @@ write(*,*)arange(1.,1.5,0.1)
    1.00000000       1.10000002       1.20000005       1.29999995       1.39999998       1.50000000    
 ```
 
-Be mindful of floating-point arithmetic:
-```fortran
-write(*,*)arange(1.,1.4,0.1)
-   1.00000000       1.10000002       1.20000005       1.29999995    
-```
-
 If `start` is greater than `end` and increment is positive,
 `arange` returns an empty array:
 ```fortran
@@ -209,7 +203,7 @@ write(*,*)limit(5,1,4)
            4
 
 ! flipping the bounds works just as well
-write(*,*)limit(5,1,4)
+write(*,*)limit(5,4,1)
            4
 ```
 `limit` also works on arrays:
