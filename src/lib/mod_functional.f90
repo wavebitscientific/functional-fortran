@@ -65,23 +65,25 @@ endinterface foldt
 interface head
   module procedure :: head_i1,head_i2,head_i4,head_i8
   module procedure :: head_r4,head_r8,head_r16
-  module procedure :: head_c_r4,head_c_r8,head_c_r16
+  module procedure :: head_c4,head_c8,head_c16
 endinterface head
 
 interface operator(.head.)
   module procedure :: head_i1,head_i2,head_i4,head_i8
   module procedure :: head_r4,head_r8,head_r16
-  module procedure :: head_c_r4,head_c_r8,head_c_r16
+  module procedure :: head_c4,head_c8,head_c16
 endinterface
 
 interface init
   module procedure :: init_i1,init_i2,init_i4,init_i8
   module procedure :: init_r4,init_r8,init_r16
+  module procedure :: init_c4,init_c8,init_c16
 endinterface init
 
 interface operator(.init.)
   module procedure :: init_i1,init_i2,init_i4,init_i8
   module procedure :: init_r4,init_r8,init_r16
+  module procedure :: init_c4,init_c8,init_c16
 endinterface
 
 interface insert
@@ -107,11 +109,13 @@ endinterface iterfold
 interface last
   module procedure :: last_i1,last_i2,last_i4,last_i8
   module procedure :: last_r4,last_r8,last_r16
+  module procedure :: last_c4,last_c8,last_c16
 endinterface last
 
 interface operator(.last.)
   module procedure :: last_i1,last_i2,last_i4,last_i8
   module procedure :: last_r4,last_r8,last_r16
+  module procedure :: last_c4,last_c8,last_c16
 endinterface
 
 interface limit
@@ -167,11 +171,13 @@ endinterface subscript
 interface tail
   module procedure :: tail_i1,tail_i2,tail_i4,tail_i8
   module procedure :: tail_r4,tail_r8,tail_r16
+  module procedure :: tail_c4,tail_c8,tail_c16
 endinterface tail
 
 interface operator(.tail.)
   module procedure :: tail_i1,tail_i2,tail_i4,tail_i8
   module procedure :: tail_r4,tail_r8,tail_r16
+  module procedure :: tail_c4,tail_c8,tail_c16
 endinterface
 
 interface unfold
@@ -1066,31 +1072,31 @@ pure real(kind=r16) function head_r16(x) result(head)
 endfunction head_r16
 
 
-pure complex(kind=r4) function head_c_r4(x) result(head)
+pure complex(kind=r4) function head_c4(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 4-byte complex reals.
   !! Overloaded by generic procedure `head`.
   complex(kind=r4),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_c_r4
+endfunction head_c4
 
 
-pure complex(kind=r8) function head_c_r8(x) result(head)
+pure complex(kind=r8) function head_c8(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `head`.
   complex(kind=r8),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_c_r8
+endfunction head_c8
 
 
-pure complex(kind=r16) function head_c_r16(x) result(head)
+pure complex(kind=r16) function head_c16(x) result(head)
   !! Returns the first element of array `x`.
   !! This specific procedure is for 16-byte complex reals.
   !! Overloaded by generic procedure `head`.
   complex(kind=r16),dimension(:),intent(in) :: x !! Input array
   head = x(1)
-endfunction head_c_r16
+endfunction head_c16
 
 
 pure function init_i1(x) result(init)
@@ -1161,6 +1167,36 @@ pure function init_r16(x) result(init)
   real(kind=r16),dimension(size(x)-1) :: init
   init = x(:size(x)-1)
 endfunction init_r16
+
+
+pure function init_c4(x) result(init)
+  !! Returns all elements of `x` but the last.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `init`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(size(x)-1) :: init
+  init = x(:size(x)-1)
+endfunction init_c4
+
+
+pure function init_c8(x) result(init)
+  !! Returns all elements of `x` but the last.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `init`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(size(x)-1) :: init
+  init = x(:size(x)-1)
+endfunction init_c8
+
+
+pure function init_c16(x) result(init)
+  !! Returns all elements of `x` but the last.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `init`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(size(x)-1) :: init
+  init = x(:size(x)-1)
+endfunction init_c16
 
 
 pure function insert_i1(elem,ind,x) result(insert)
@@ -1476,6 +1512,33 @@ pure real(kind=r16) function last_r16(x) result(last)
   real(kind=r16),dimension(:),intent(in) :: x !! Input array
   last = x(size(x))
 endfunction last_r16
+
+
+pure complex(kind=r4) function last_c4(x) result(last)
+  !! Returns the last element of array `x`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `last`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  last = x(size(x))
+endfunction last_c4
+
+
+pure complex(kind=r8) function last_c8(x) result(last)
+  !! Returns the last element of array `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `last`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  last = x(size(x))
+endfunction last_c8
+
+
+pure complex(kind=r16) function last_c16(x) result(last)
+  !! Returns the last element of array `x`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `last`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  last = x(size(x))
+endfunction last_c16
 
 
 pure elemental integer(kind=i1) function limit_i1(x,a,b) result(limit)
@@ -2387,6 +2450,36 @@ pure function tail_r16(x) result(tail)
   real(kind=r16),dimension(size(x)-1) :: tail
   tail = x(2:)
 endfunction tail_r16
+
+
+pure function tail_c4(x) result(tail)
+  !! Returns all elements of `x` but the first.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `tail`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(size(x)-1) :: tail
+  tail = x(2:)
+endfunction tail_c4
+
+
+pure function tail_c8(x) result(tail)
+  !! Returns all elements of `x` but the first.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `tail`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(size(x)-1) :: tail
+  tail = x(2:)
+endfunction tail_c8
+
+
+pure function tail_c16(x) result(tail)
+  !! Returns all elements of `x` but the first.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `tail`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(size(x)-1) :: tail
+  tail = x(2:)
+endfunction tail_c16
 
 
 pure recursive function unfold_i1(f,x,len) result(res)
