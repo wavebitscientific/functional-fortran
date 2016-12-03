@@ -30,6 +30,7 @@ public :: operator(.union.)
 interface arange
   module procedure :: arange_i1,arange_i2,arange_i4,arange_i8
   module procedure :: arange_r4,arange_r8,arange_r16
+  module procedure :: arange_c4,arange_c8,arange_c16
 endinterface arange
 
 interface complement
@@ -370,6 +371,105 @@ pure function arange_r16(start,end,increment) result(arange)
     arange(i) = start+(i-1)*incr
   enddo
 endfunction arange_r16
+
+
+pure function arange_c4(start,end,increment) result(arange)
+  !! Returns an array of complex reals given `start`, `end`, and 
+  !! `increment` values. Increment defaults to (1,0) if not provided.
+  !! Size of the resulting array is determined with real components of 
+  !! `start`, `end`, and  `increment` values if `real(increment) /= 0`,
+  !! and imaginary components otherwise.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Oveloaded by generic procedure `arange`.
+  complex(kind=r4),intent(in) :: start !! Start value of the array
+  complex(kind=r4),intent(in) :: end !! End value of the array
+  complex(kind=r4),intent(in),optional :: increment !! Array increment
+  complex(kind=r4),dimension(:),allocatable :: arange
+  complex(kind=r4) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
+  if(present(increment))then
+    incr = increment
+  else
+    incr = (1,0)
+  endif
+  if(real(incr) /= 0)then
+    length = (real(end)-real(start)+0.5*real(incr))/real(incr)+1
+  else
+    length = (aimag(end)-aimag(start)+0.5*aimag(incr))/aimag(incr)+1
+  endif
+  allocate(arange(length))
+  do concurrent(i = 1:length)
+    arange(i) = cmplx(real(start)+(i-1)*real(incr),&
+                      aimag(start)+(i-1)*aimag(incr))
+  enddo
+endfunction arange_c4
+
+
+pure function arange_c8(start,end,increment) result(arange)
+  !! Returns an array of complex reals given `start`, `end`, and 
+  !! `increment` values. Increment defaults to (1,0) if not provided.
+  !! Size of the resulting array is determined with real components of 
+  !! `start`, `end`, and  `increment` values if `real(increment) /= 0`,
+  !! and imaginary components otherwise.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Oveloaded by generic procedure `arange`.
+  complex(kind=r8),intent(in) :: start !! Start value of the array
+  complex(kind=r8),intent(in) :: end !! End value of the array
+  complex(kind=r8),intent(in),optional :: increment !! Array increment
+  complex(kind=r8),dimension(:),allocatable :: arange
+  complex(kind=r8) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
+  if(present(increment))then
+    incr = increment
+  else
+    incr = (1,0)
+  endif
+  if(real(incr) /= 0)then
+    length = (real(end)-real(start)+0.5*real(incr))/real(incr)+1
+  else
+    length = (aimag(end)-aimag(start)+0.5*aimag(incr))/aimag(incr)+1
+  endif
+  allocate(arange(length))
+  do concurrent(i = 1:length)
+    arange(i) = cmplx(real(start)+(i-1)*real(incr),&
+                      aimag(start)+(i-1)*aimag(incr))
+  enddo
+endfunction arange_c8
+
+
+pure function arange_c16(start,end,increment) result(arange)
+  !! Returns an array of complex reals given `start`, `end`, and 
+  !! `increment` values. Increment defaults to (1,0) if not provided.
+  !! Size of the resulting array is determined with real components of 
+  !! `start`, `end`, and  `increment` values if `real(increment) /= 0`,
+  !! and imaginary components otherwise.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Oveloaded by generic procedure `arange`. 
+  complex(kind=r16),intent(in) :: start !! Start value of the array
+  complex(kind=r16),intent(in) :: end !! End value of the array
+  complex(kind=r16),intent(in),optional :: increment !! Array increment
+  complex(kind=r16),dimension(:),allocatable :: arange
+  complex(kind=r16) :: incr
+  integer(kind=i4) :: i
+  integer(kind=i4) :: length
+  if(present(increment))then
+    incr = increment
+  else
+    incr = (1,0)
+  endif
+  if(real(incr) /= 0)then
+    length = (real(end)-real(start)+0.5*real(incr))/real(incr)+1
+  else
+    length = (aimag(end)-aimag(start)+0.5*aimag(incr))/aimag(incr)+1
+  endif
+  allocate(arange(length))
+  do concurrent(i = 1:length)
+    arange(i) = cmplx(real(start)+(i-1)*real(incr),&
+                      aimag(start)+(i-1)*aimag(incr))
+  enddo
+endfunction arange_c16
 
 
 pure function complement_i1(x,y) result(complement)
