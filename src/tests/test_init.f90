@@ -10,8 +10,16 @@ logical :: test_failed
 integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
+complex(kind=real32),dimension(:),allocatable :: c_r4
+complex(kind=real64),dimension(:),allocatable :: c_r8
+complex(kind=real128),dimension(:),allocatable :: c_r16
+
+c_r4 = [(1,2),(2,4)]
+c_r8 = c_r4
+c_r16 = c_r4
+
 n = 1
-ntests = 10
+ntests = 13
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(init([1_int8,2_int8]) == [1_int8]),'init, int8')
@@ -33,6 +41,15 @@ tests(n) = assert(all(init([1._real64,2._real64]) == [1._real64]),'init, real64'
 n = n + 1
 
 tests(n) = assert(all(init([1._real128,2._real128]) == [1._real128]),'init, real128')
+n = n + 1
+
+tests(n) = assert(all(init(c_r4) == [c_r4(1)]),'init, complex real32')
+n = n + 1
+
+tests(n) = assert(all(init(c_r8) == [c_r8(1)]),'init, complex real64')
+n = n + 1
+
+tests(n) = assert(all(init(c_r16) == [c_r16(1)]),'init, complex real128')
 n = n + 1
 
 tests(n) = assert(size(init([1])) == 0,'size(init([1])) == 0')
