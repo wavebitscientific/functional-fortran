@@ -46,6 +46,7 @@ endinterface
 interface filter
   module procedure :: filter_i1,filter_i2,filter_i4,filter_i8
   module procedure :: filter_r4,filter_r8,filter_r16
+  module procedure :: filter_c4,filter_c8,filter_c16
 endinterface filter
 
 interface foldl
@@ -127,6 +128,7 @@ endinterface limit
 interface map
   module procedure :: map_i1,map_i2,map_i4,map_i8
   module procedure :: map_r4,map_r8,map_r16
+  module procedure :: map_c4,map_c8,map_c16
 endinterface map
 
 interface reverse
@@ -715,6 +717,57 @@ pure function filter_r16(f,x) result(filter)
   enddo
   filter = pack(x,f_x)
 endfunction filter_r16
+
+
+pure function filter_c4(f,x) result(filter)
+  !! Returns a subset of `x` for which `f(x) == .true.`
+  !! This specific procedure is for 4-byte reals.
+  !! Overloaded by generic procedure `filter`.
+  procedure(f_c4_logical) :: f !! Filtering function
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(:),allocatable :: filter
+  logical,dimension(:),allocatable :: f_x
+  integer :: i
+  allocate(f_x(size(x)))
+  do concurrent(i = 1:size(x))
+    f_x(i) = f(x(i))
+  enddo
+  filter = pack(x,f_x)
+endfunction filter_c4
+
+
+pure function filter_c8(f,x) result(filter)
+  !! Returns a subset of `x` for which `f(x) == .true.`
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `filter`.
+  procedure(f_c8_logical) :: f !! Filtering function
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(:),allocatable :: filter
+  logical,dimension(:),allocatable :: f_x
+  integer :: i
+  allocate(f_x(size(x)))
+  do concurrent(i = 1:size(x))
+    f_x(i) = f(x(i))
+  enddo
+  filter = pack(x,f_x)
+endfunction filter_c8
+
+
+pure function filter_c16(f,x) result(filter)
+  !! Returns a subset of `x` for which `f(x) == .true.`
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `filter`.
+  procedure(f_c16_logical) :: f !! Filtering function
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(:),allocatable :: filter
+  logical,dimension(:),allocatable :: f_x
+  integer :: i
+  allocate(f_x(size(x)))
+  do concurrent(i = 1:size(x))
+    f_x(i) = f(x(i))
+  enddo
+  filter = pack(x,f_x)
+endfunction filter_c16
 
 
 pure recursive integer(kind=i1) function foldl_i1(f,start,x) result(res)
@@ -1821,6 +1874,48 @@ pure function map_r16(f,x) result(map)
     map(i) = f(x(i))
   enddo
 endfunction map_r16
+
+
+pure function map_c4(f,x) result(map)
+  !! Returns `f(x)` given input function `f` and array `x`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `map`.
+  procedure(f_c4) :: f !! Mapping function
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(size(x)) :: map
+  integer(kind=i4) :: i
+  do concurrent(i = 1:size(x))
+    map(i) = f(x(i))
+  enddo
+endfunction map_c4
+
+
+pure function map_c8(f,x) result(map)
+  !! Returns `f(x)` given input function `f` and array `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `map`.
+  procedure(f_c8) :: f !! Mapping function
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(size(x)) :: map
+  integer(kind=i4) :: i
+  do concurrent(i = 1:size(x))
+    map(i) = f(x(i))
+  enddo
+endfunction map_c8
+
+
+pure function map_c16(f,x) result(map)
+  !! Returns `f(x)` given input function `f` and array `x`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `map`.
+  procedure(f_c16) :: f !! Mapping function
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(size(x)) :: map
+  integer(kind=i4) :: i
+  do concurrent(i = 1:size(x))
+    map(i) = f(x(i))
+  enddo
+endfunction map_c16
 
 
 pure integer(kind=i1) function iterfold_i1(f,start,x) result(iterfold)

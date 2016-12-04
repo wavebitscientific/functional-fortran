@@ -41,6 +41,21 @@ pure real(kind=real128) function xpowx_r16(x) result(res)
   real(kind=real128),intent(in) :: x
   res = x**x
 endfunction xpowx_r16
+
+pure complex(kind=real32) function xpowx_c4(x) result(res)
+  complex(kind=real32),intent(in) :: x
+  res = x**x
+endfunction xpowx_c4
+
+pure complex(kind=real64) function xpowx_c8(x) result(res)
+  complex(kind=real64),intent(in) :: x
+  res = x**x
+endfunction xpowx_c8
+
+pure complex(kind=real128) function xpowx_c16(x) result(res)
+  complex(kind=real128),intent(in) :: x
+  res = x**x
+endfunction xpowx_c16
   
 endmodule mod_map_functions
 
@@ -57,10 +72,12 @@ logical :: test_failed
 integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
-real(kind=real32),dimension(:),allocatable :: arr
+complex(kind=real32),dimension(:),allocatable :: c4
+complex(kind=real64),dimension(:),allocatable :: c8
+complex(kind=real128),dimension(:),allocatable :: c16
 
 n = 1
-ntests = 7
+ntests = 10
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(map(xpowx_i1,[1_int8,2_int8,3_int8])&
@@ -89,6 +106,23 @@ n = n + 1
 
 tests(n) = assert(all(map(xpowx_r16,[1._real128,2._real128,3._real128])&
   == [1._real128,4._real128,27._real128]),'map, real128')
+n = n + 1
+
+c4 = [cmplx(1.,0.),cmplx(2.,0.),cmplx(3.,0.)]
+c8 = [cmplx(1._real64,0._real64),&
+      cmplx(2._real64,0._real64),&
+      cmplx(3._real64,0._real64)]
+c16 = [cmplx(1._real128,0._real128),&
+       cmplx(2._real128,0._real128),&
+       cmplx(3._real128,0._real128)]
+
+tests(n) = assert(all(map(xpowx_c4,c4) == c4**c4),'map, complex real32')
+n = n + 1
+
+tests(n) = assert(all(map(xpowx_c8,c8) == c8**c8),'map, complex real64')
+n = n + 1
+
+tests(n) = assert(all(map(xpowx_c16,c16) == c16**c16),'map, complex real128')
 n = n + 1
 
 test_failed = .false.
