@@ -36,11 +36,13 @@ endinterface arange
 interface complement
   module procedure :: complement_i1,complement_i2,complement_i4,complement_i8
   module procedure :: complement_r4,complement_r8,complement_r16
+  module procedure :: complement_c4,complement_c8,complement_c16
 endinterface complement
 
 interface operator(.complement.)
   module procedure :: complement_i1,complement_i2,complement_i4,complement_i8
   module procedure :: complement_r4,complement_r8,complement_r16
+  module procedure :: complement_c4,complement_c8,complement_c16
 endinterface
 
 interface filter
@@ -123,6 +125,7 @@ endinterface
 interface limit
   module procedure :: limit_i1,limit_i2,limit_i4,limit_i8
   module procedure :: limit_r4,limit_r8,limit_r16
+  module procedure :: limit_c4,limit_c8,limit_c16
 endinterface limit
 
 interface map
@@ -144,11 +147,13 @@ endinterface
 interface set
   module procedure :: set_i1,set_i2,set_i4,set_i8
   module procedure :: set_r4,set_r8,set_r16
+  module procedure :: set_c4,set_c8,set_c16
 endinterface set
 
 interface operator(.set.)
   module procedure :: set_i1,set_i2,set_i4,set_i8
   module procedure :: set_r4,set_r8,set_r16
+  module procedure :: set_c4,set_c8,set_c16
 endinterface
 
 interface sort
@@ -598,6 +603,60 @@ pure function complement_r16(x,y) result(complement)
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
 endfunction complement_r16
+
+
+pure function complement_c4(x,y) result(complement)
+  !! Returns a set complement of two arrays.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `complement`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r4),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r4),dimension(:),allocatable :: complement
+  complex(kind=r4),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
+  a = set(x)
+  b = set(y)
+  complement = arange(cmplx(1._r4,0._r4),cmplx(0._r4,0._r4))
+  do concurrent (n = 1:size(a))
+    if(.not. any(b == a(n)))complement = [complement,a(n)]
+  enddo
+endfunction complement_c4
+
+
+pure function complement_c8(x,y) result(complement)
+  !! Returns a set complement of two arrays.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `complement`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r8),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r8),dimension(:),allocatable :: complement
+  complex(kind=r8),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
+  a = set(x)
+  b = set(y)
+  complement = arange(cmplx(1._r4,0._r4),cmplx(0._r4,0._r4))
+  do concurrent (n = 1:size(a))
+    if(.not. any(b == a(n)))complement = [complement,a(n)]
+  enddo
+endfunction complement_c8
+
+
+pure function complement_c16(x,y) result(complement)
+  !! Returns a set complement of two arrays.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `complement`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r16),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r16),dimension(:),allocatable :: complement
+  complex(kind=r16),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
+  a = set(x)
+  b = set(y)
+  complement = arange(cmplx(1._r16,0._r16),cmplx(0._r16,0._r16))
+  do concurrent (n = 1:size(a))
+    if(.not. any(b == a(n)))complement = [complement,a(n)]
+  enddo
+endfunction complement_c16
 
 
 pure function filter_i1(f,x) result(filter)
@@ -1696,7 +1755,7 @@ endfunction last_c16
 
 pure elemental integer(kind=i1) function limit_i1(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i1),intent(in) :: x !! Input scalar
@@ -1708,7 +1767,7 @@ endfunction limit_i1
 
 pure elemental integer(kind=i2) function limit_i2(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i2),intent(in) :: x !! Input scalar
@@ -1720,7 +1779,7 @@ endfunction limit_i2
 
 pure elemental integer(kind=i4) function limit_i4(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i4),intent(in) :: x !! Input scalar
@@ -1732,7 +1791,7 @@ endfunction limit_i4
 
 pure elemental integer(kind=i8) function limit_i8(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i8),intent(in) :: x !! Input scalar
@@ -1744,7 +1803,7 @@ endfunction limit_i8
 
 pure elemental real(kind=r4) function limit_r4(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `limit`.
   real(kind=r4),intent(in) :: x !! Input scalar
@@ -1756,7 +1815,7 @@ endfunction limit_r4
 
 pure elemental real(kind=r8) function limit_r8(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `limit`.
   real(kind=r8),intent(in) :: x !! Input scalar
@@ -1768,7 +1827,7 @@ endfunction limit_r8
 
 pure elemental real(kind=r16) function limit_r16(x,a,b) result(limit)
   !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
-  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `limit`.
   real(kind=r16),intent(in) :: x !! Input scalar
@@ -1776,6 +1835,48 @@ pure elemental real(kind=r16) function limit_r16(x,a,b) result(limit)
   real(kind=r16),intent(in) :: b !! Second limit
   limit = min(max(x,min(a,b)),max(a,b)) 
 endfunction limit_r16
+
+
+pure elemental complex(kind=r4) function limit_c4(x,a,b) result(limit)
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`,
+  !! for Re and Im components each.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `limit`.
+  complex(kind=r4),intent(in) :: x !! Input scalar
+  complex(kind=r4),intent(in) :: a !! First limit
+  complex(kind=r4),intent(in) :: b !! Second limit
+  limit = cmplx(min(max(real(x),min(real(a),real(b))),max(real(a),real(b))),&
+    min(max(aimag(x),min(aimag(a),aimag(b))),max(aimag(a),aimag(b))))
+endfunction limit_c4
+
+
+pure elemental complex(kind=r8) function limit_c8(x,a,b) result(limit)
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`,
+  !! for Re and Im components each.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `limit`.
+  complex(kind=r8),intent(in) :: x !! Input scalar
+  complex(kind=r8),intent(in) :: a !! First limit
+  complex(kind=r8),intent(in) :: b !! Second limit
+  limit = cmplx(min(max(real(x),min(real(a),real(b))),max(real(a),real(b))),&
+    min(max(aimag(x),min(aimag(a),aimag(b))),max(aimag(a),aimag(b))))
+endfunction limit_c8
+
+
+pure elemental complex(kind=r16) function limit_c16(x,a,b) result(limit)
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`,
+  !! for Re and Im components each.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `limit`.
+  complex(kind=r16),intent(in) :: x !! Input scalar
+  complex(kind=r16),intent(in) :: a !! First limit
+  complex(kind=r16),intent(in) :: b !! Second limit
+  limit = cmplx(min(max(real(x),min(real(a),real(b))),max(real(a),real(b))),&
+    min(max(aimag(x),min(aimag(a),aimag(b))),max(aimag(a),aimag(b))))
+endfunction limit_c16
 
 
 pure function map_i1(f,x) result(map)
@@ -2239,7 +2340,7 @@ pure recursive function set_i1(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=i1),dimension(:),intent(in) :: x
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   integer(kind=i1),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2253,7 +2354,7 @@ pure recursive function set_i2(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=i2),dimension(:),intent(in) :: x
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   integer(kind=i2),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2266,7 +2367,7 @@ pure recursive function set_i4(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=i4),dimension(:),intent(in) :: x
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   integer(kind=i4),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2280,7 +2381,7 @@ pure recursive function set_i8(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `set`.
-  integer(kind=i8),dimension(:),intent(in) :: x
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   integer(kind=i8),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2294,7 +2395,7 @@ pure recursive function set_r4(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `set`.
-  real(kind=r4),dimension(:),intent(in) :: x
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   real(kind=r4),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2308,7 +2409,7 @@ pure recursive function set_r8(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `set`.
-  real(kind=r8),dimension(:),intent(in) :: x
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   real(kind=r8),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2322,7 +2423,7 @@ pure recursive function set_r16(x) result(res)
   !! Returns a set given array `x`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `set`.
-  real(kind=r16),dimension(:),intent(in) :: x
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   real(kind=r16),dimension(:),allocatable :: res
   if(size(x) > 1)then
     res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
@@ -2330,6 +2431,48 @@ pure recursive function set_r16(x) result(res)
     res = x
   endif
 endfunction set_r16
+
+
+pure recursive function set_c4(x) result(res)
+  !! Returns a set given array `x`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `set`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(:),allocatable :: res
+  if(size(x) > 1)then
+    res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
+  else
+    res = x
+  endif
+endfunction set_c4
+
+
+pure recursive function set_c8(x) result(res)
+  !! Returns a set given array `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `set`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(:),allocatable :: res
+  if(size(x) > 1)then
+    res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
+  else
+    res = x
+  endif
+endfunction set_c8
+
+
+pure recursive function set_c16(x) result(res)
+  !! Returns a set given array `x`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `set`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(:),allocatable :: res
+  if(size(x) > 1)then
+    res = [x(1),set(pack(x(2:),.not. x(2:) == x(1)))]
+  else
+    res = x
+  endif
+endfunction set_c16
 
 
 pure function split_i1(x,section) result(split)

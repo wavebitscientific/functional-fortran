@@ -53,7 +53,6 @@ tests(n) = assert(all(sort(x) == .sort.x),&
 n = n + 1
 
 test_failed = .false.
-test_failed = .false.
 call report_tests(tests,test_failed)
 if(test_failed)stop 1
 
