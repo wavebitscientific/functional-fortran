@@ -54,16 +54,19 @@ endinterface filter
 interface foldl
   module procedure :: foldl_i1,foldl_i2,foldl_i4,foldl_i8
   module procedure :: foldl_r4,foldl_r8,foldl_r16
+  module procedure :: foldl_c4,foldl_c8,foldl_c16
 endinterface foldl
 
 interface foldr
   module procedure :: foldr_i1,foldr_i2,foldr_i4,foldr_i8
   module procedure :: foldr_r4,foldr_r8,foldr_r16
+  module procedure :: foldr_c4,foldr_c8,foldr_c16
 endinterface foldr
 
 interface foldt
   module procedure :: foldt_i1,foldt_i2,foldt_i4,foldt_i8
   module procedure :: foldt_r4,foldt_r8,foldt_r16
+  module procedure :: foldt_c4,foldt_c8,foldt_c16
 endinterface foldt
 
 interface head
@@ -93,16 +96,19 @@ endinterface
 interface insert
   module procedure :: insert_i1,insert_i2,insert_i4,insert_i8
   module procedure :: insert_r4,insert_r8,insert_r16
+  module procedure :: insert_c4,insert_c8,insert_c16
 endinterface insert
 
 interface intersection
   module procedure :: intersection_i1,intersection_i2,intersection_i4,intersection_i8
   module procedure :: intersection_r4,intersection_r8,intersection_r16
+  module procedure :: intersection_c4,intersection_c8,intersection_c16
 endinterface intersection
 
 interface operator(.intersection.)
   module procedure :: intersection_i1,intersection_i2,intersection_i4,intersection_i8
   module procedure :: intersection_r4,intersection_r8,intersection_r16
+  module procedure :: intersection_c4,intersection_c8,intersection_c16
 endinterface
 
 interface iterfold
@@ -169,6 +175,7 @@ endinterface
 interface split
   module procedure :: split_i1,split_i2,split_i4,split_i8
   module procedure :: split_r4,split_r8,split_r16
+  module procedure :: split_c4,split_c8,split_c16
 endinterface split
 
 interface subscript
@@ -962,6 +969,63 @@ pure recursive real(kind=r16) function foldl_r16(f,start,x) result(res)
 endfunction foldl_r16
 
 
+pure recursive complex(kind=r4) function foldl_c4(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`.
+  !! Equivalent to haskell's left fold. If the array is empty, the 
+  !! result is `start`; else we recurse immediately, making the new 
+  !! initial value the result of combining the old initial value 
+  !! with the first element of `x`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `foldl`.
+  procedure(f2_c4) :: f !! Folding function
+  complex(kind=r4),intent(in) :: start !! Accumulator start value
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  else
+    res = foldl(f,f(start,x(1)),x(2:))
+  endif
+endfunction foldl_c4
+
+
+pure recursive complex(kind=r8) function foldl_c8(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`.
+  !! Equivalent to haskell's left fold. If the array is empty, the 
+  !! result is `start`; else we recurse immediately, making the new 
+  !! initial value the result of combining the old initial value 
+  !! with the first element of `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `foldl`.
+  procedure(f2_c8) :: f !! Folding function
+  complex(kind=r8),intent(in) :: start !! Accumulator start value
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  else
+    res = foldl(f,f(start,x(1)),x(2:))
+  endif
+endfunction foldl_c8
+
+
+pure recursive complex(kind=r16) function foldl_c16(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`.
+  !! Equivalent to haskell's left fold. If the array is empty, the 
+  !! result is `start`; else we recurse immediately, making the new 
+  !! initial value the result of combining the old initial value 
+  !! with the first element of `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `foldl`.
+  procedure(f2_c16) :: f !! Folding function
+  complex(kind=r16),intent(in) :: start !! Accumulator start value
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  else
+    res = foldl(f,f(start,x(1)),x(2:))
+  endif
+endfunction foldl_c16
+
+
 pure recursive integer(kind=i1) function foldr_i1(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
   !! Equivalent to haskell's right fold. If the list is empty, the 
@@ -1086,6 +1150,60 @@ pure recursive real(kind=r16) function foldr_r16(f,start,x) result(res)
     res = f(x(1),foldr(f,start,x(2:)))
   endif
 endfunction foldr_r16
+
+
+pure recursive complex(kind=r4) function foldr_c4(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`.
+  !! Equivalent to haskell's right fold. If the list is empty, the 
+  !! result is `start`; else apply `f` to the first element and the 
+  !! result of folding the rest.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `foldr`.
+  procedure(f2_c4) :: f !! Folding function
+  complex(kind=r4),intent(in) :: start !! Accumulator start value
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  else
+    res = f(x(1),foldr(f,start,x(2:)))
+  endif
+endfunction foldr_c4
+
+
+pure recursive complex(kind=r8) function foldr_c8(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`.
+  !! Equivalent to haskell's right fold. If the list is empty, the 
+  !! result is `start`; else apply `f` to the first element and the 
+  !! result of folding the rest.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `foldr`.
+  procedure(f2_c8) :: f !! Folding function
+  complex(kind=r8),intent(in) :: start !! Accumulator start value
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  else
+    res = f(x(1),foldr(f,start,x(2:)))
+  endif
+endfunction foldr_c8
+
+
+pure recursive complex(kind=r16) function foldr_c16(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`.
+  !! Equivalent to haskell's right fold. If the list is empty, the 
+  !! result is `start`; else apply `f` to the first element and the 
+  !! result of folding the rest.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `foldr`.
+  procedure(f2_c16) :: f !! Folding function
+  complex(kind=r16),intent(in) :: start !! Accumulator start value
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  else
+    res = f(x(1),foldr(f,start,x(2:)))
+  endif
+endfunction foldr_c16
 
 
 pure recursive integer(kind=i1) function foldt_i1(f,start,x) result(res)
@@ -1219,6 +1337,63 @@ pure recursive real(kind=r16) function foldt_r16(f,start,x) result(res)
     res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
   endif
 endfunction foldt_r16
+
+
+pure recursive complex(kind=r4) function foldt_c4(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`
+  !! using a tree-like fold, splitting the array into two and repeating
+  !! until we deplete the array.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `foldt`.
+  procedure(f2_c4) :: f !! Folding function
+  complex(kind=r4),intent(in) :: start !! Accumulator start value
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  elseif(size(x) == 1)then
+    res = f(start,x(1))
+  else
+    res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
+  endif
+endfunction foldt_c4
+
+
+pure recursive complex(kind=r8) function foldt_c8(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`
+  !! using a tree-like fold, splitting the array into two and repeating
+  !! until we deplete the array.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `foldt`.
+  procedure(f2_c8) :: f !! Folding function
+  complex(kind=r8),intent(in) :: start !! Accumulator start value
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  elseif(size(x) == 1)then
+    res = f(start,x(1))
+  else
+    res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
+  endif
+endfunction foldt_c8
+
+
+pure recursive complex(kind=r16) function foldt_c16(f,start,x) result(res)
+  !! Applies function `f` recursively along elements of array `x`
+  !! using a tree-like fold, splitting the array into two and repeating
+  !! until we deplete the array.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `foldt`.
+  procedure(f2_c16) :: f !! Folding function
+  complex(kind=r16),intent(in) :: start !! Accumulator start value
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  if(size(x) < 1)then
+    res = start
+  elseif(size(x) == 1)then
+    res = f(start,x(1))
+  else
+    res = foldt(f,foldt(f,start,split(x,1)),split(x,2))
+  endif
+endfunction foldt_c16
 
 
 pure integer(kind=i1) function head_i1(x) result(head)
@@ -1495,6 +1670,42 @@ pure function insert_r16(elem,ind,x) result(insert)
 endfunction insert_r16
 
 
+pure function insert_c4(elem,ind,x) result(insert)
+  !! Inserts `elem` into index `ind` of array `x`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `insert`.
+  complex(kind=r4),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(size(x)+1) :: insert
+  insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
+endfunction insert_c4
+
+
+pure function insert_c8(elem,ind,x) result(insert)
+  !! Inserts `elem` into index `ind` of array `x`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `insert`.
+  complex(kind=r8),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(size(x)+1) :: insert
+  insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
+endfunction insert_c8
+
+
+pure function insert_c16(elem,ind,x) result(insert)
+  !! Inserts `elem` into index `ind` of array `x`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `insert`.
+  complex(kind=r16),intent(in) :: elem !! Element to insert
+  integer(kind=i4),intent(in) :: ind !! Index to insert element at
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(size(x)+1) :: insert
+  insert = [x(:limit(ind,1,size(x)+1)-1),elem,x(limit(ind,1,size(x)+1):)]
+endfunction insert_c16
+
+
 pure function intersection_i1(x,y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 1-byte integers.
@@ -1661,6 +1872,78 @@ pure function intersection_r16(x,y) result(res)
     enddo
   endif
 endfunction intersection_r16
+
+
+pure function intersection_c4(x,y) result(res)
+  !! Returns a set intersection of two arrays.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `intersection`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r4),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r4),dimension(:),allocatable :: res
+  complex(kind=r4),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
+  a = set(x)
+  b = set(y)
+  res = arange(cmplx(1._r4,0._r4),cmplx(0._r4,0._r4))
+  if(size(a) > size(b))then
+    do concurrent (n = 1:size(b))
+      if(any(a == b(n)))res = [res,b(n)]
+    enddo
+  else
+    do concurrent (n = 1:size(a))
+      if(any(b == a(n)))res = [res,a(n)]
+    enddo
+  endif
+endfunction intersection_c4
+
+
+pure function intersection_c8(x,y) result(res)
+  !! Returns a set intersection of two arrays.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `intersection`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r8),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r8),dimension(:),allocatable :: res
+  complex(kind=r8),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
+  a = set(x)
+  b = set(y)
+  res = arange(cmplx(1._r8,0._r8),cmplx(0._r8,0._r8))
+  if(size(a) > size(b))then
+    do concurrent (n = 1:size(b))
+      if(any(a == b(n)))res = [res,b(n)]
+    enddo
+  else
+    do concurrent (n = 1:size(a))
+      if(any(b == a(n)))res = [res,a(n)]
+    enddo
+  endif
+endfunction intersection_c8
+
+
+pure function intersection_c16(x,y) result(res)
+  !! Returns a set intersection of two arrays.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `intersection`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r16),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r16),dimension(:),allocatable :: res
+  complex(kind=r16),dimension(:),allocatable :: a,b
+  integer(kind=i4) :: n
+  a = set(x)
+  b = set(y)
+  res = arange(cmplx(1._r16,0._r16),cmplx(0._r16,0._r16))
+  if(size(a) > size(b))then
+    do concurrent (n = 1:size(b))
+      if(any(a == b(n)))res = [res,b(n)]
+    enddo
+  else
+    do concurrent (n = 1:size(a))
+      if(any(b == a(n)))res = [res,a(n)]
+    enddo
+  endif
+endfunction intersection_c16
 
 
 pure integer(kind=i1) function last_i1(x) result(last)
@@ -2200,141 +2483,6 @@ pure function reverse_r16(x) result(reverse)
   reverse = x(size(x):1:-1)
 endfunction reverse_r16
 
- 
-pure recursive function sort_i1(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! This specific procedure is for 1-byte integers.
-  !! Overloaded by generic procedure `sort`.
-  integer(kind=i1),dimension(:),intent(in) :: x
-  integer(kind=i1),dimension(size(x)) :: res
-  integer(kind=i1),dimension(size(x)-1) :: rest
-  integer(kind=i1) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_i1
-
-
-pure recursive function sort_i2(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! using binary search tree pivot.
-  !! This specific procedure is for 2-byte integers.
-  !! Overloaded by generic procedure `sort`.
-  integer(kind=i2),dimension(:),intent(in) :: x
-  integer(kind=i2),dimension(size(x)) :: res
-  integer(kind=i2),dimension(size(x)-1) :: rest
-  integer(kind=i2) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_i2
-
-
-pure recursive function sort_i4(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! This specific procedure is for 4-byte integers.
-  !! Overloaded by generic procedure `sort`.
-  integer(kind=i4),dimension(:),intent(in) :: x
-  integer(kind=i4),dimension(size(x)) :: res
-  integer(kind=i4),dimension(size(x)-1) :: rest
-  integer(kind=i4) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_i4
-
-
-pure recursive function sort_i8(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! using binary search tree pivot.
-  !! This specific procedure is for 1-byte integers.
-  !! Overloaded by generic procedure `sort`.
-  integer(kind=i8),dimension(:),intent(in) :: x
-  integer(kind=i8),dimension(size(x)) :: res
-  integer(kind=i8),dimension(size(x)-1) :: rest
-  integer(kind=i8) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_i8
-
-
-pure recursive function sort_r4(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! This specific procedure is for 4-byte reals.
-  !! Overloaded by generic procedure `sort`.
-  real(kind=r4),dimension(:),intent(in) :: x
-  real(kind=r4),dimension(size(x)) :: res
-  real(kind=r4),dimension(size(x)-1) :: rest
-  real(kind=r4) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_r4
-
-
-pure recursive function sort_r8(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! This specific procedure is for 8-byte reals.
-  !! Overloaded by generic procedure `sort`.
-  real(kind=r8),dimension(:),intent(in) :: x
-  real(kind=r8),dimension(size(x)) :: res
-  real(kind=r8),dimension(size(x)-1) :: rest
-  real(kind=r8) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_r8
-
-
-pure recursive function sort_r16(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
-  !! This specific procedure is for 16-byte reals.
-  !! Overloaded by generic procedure `sort`.
-  real(kind=r16),dimension(:),intent(in) :: x
-  real(kind=r16),dimension(size(x)) :: res
-  real(kind=r16),dimension(size(x)-1) :: rest
-  real(kind=r16) :: pivot
-  if(size(x) > 1)then
-    pivot = head(split(x,2))
-    rest = [split(x,1),tail(split(x,2))]
-    res = [sort(pack(rest,rest < pivot)),pivot,&
-           sort(pack(rest,rest >= pivot))]
-  else
-    res = x
-  endif
-endfunction sort_r16
-
 
 pure recursive function set_i1(x) result(res)
   !! Returns a set given array `x`.
@@ -2475,6 +2623,141 @@ pure recursive function set_c16(x) result(res)
 endfunction set_c16
 
 
+pure recursive function sort_i1(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 1-byte integers.
+  !! Overloaded by generic procedure `sort`.
+  integer(kind=i1),dimension(:),intent(in) :: x
+  integer(kind=i1),dimension(size(x)) :: res
+  integer(kind=i1),dimension(size(x)-1) :: rest
+  integer(kind=i1) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_i1
+
+
+pure recursive function sort_i2(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! using binary search tree pivot.
+  !! This specific procedure is for 2-byte integers.
+  !! Overloaded by generic procedure `sort`.
+  integer(kind=i2),dimension(:),intent(in) :: x
+  integer(kind=i2),dimension(size(x)) :: res
+  integer(kind=i2),dimension(size(x)-1) :: rest
+  integer(kind=i2) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_i2
+
+
+pure recursive function sort_i4(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 4-byte integers.
+  !! Overloaded by generic procedure `sort`.
+  integer(kind=i4),dimension(:),intent(in) :: x
+  integer(kind=i4),dimension(size(x)) :: res
+  integer(kind=i4),dimension(size(x)-1) :: rest
+  integer(kind=i4) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_i4
+
+
+pure recursive function sort_i8(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! using binary search tree pivot.
+  !! This specific procedure is for 1-byte integers.
+  !! Overloaded by generic procedure `sort`.
+  integer(kind=i8),dimension(:),intent(in) :: x
+  integer(kind=i8),dimension(size(x)) :: res
+  integer(kind=i8),dimension(size(x)-1) :: rest
+  integer(kind=i8) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_i8
+
+
+pure recursive function sort_r4(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 4-byte reals.
+  !! Overloaded by generic procedure `sort`.
+  real(kind=r4),dimension(:),intent(in) :: x
+  real(kind=r4),dimension(size(x)) :: res
+  real(kind=r4),dimension(size(x)-1) :: rest
+  real(kind=r4) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_r4
+
+
+pure recursive function sort_r8(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 8-byte reals.
+  !! Overloaded by generic procedure `sort`.
+  real(kind=r8),dimension(:),intent(in) :: x
+  real(kind=r8),dimension(size(x)) :: res
+  real(kind=r8),dimension(size(x)-1) :: rest
+  real(kind=r8) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_r8
+
+
+pure recursive function sort_r16(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 16-byte reals.
+  !! Overloaded by generic procedure `sort`.
+  real(kind=r16),dimension(:),intent(in) :: x
+  real(kind=r16),dimension(size(x)) :: res
+  real(kind=r16),dimension(size(x)-1) :: rest
+  real(kind=r16) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_r16
+
+
 pure function split_i1(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
@@ -2599,6 +2882,60 @@ pure function split_r16(x,section) result(split)
     split = x(size(x)/2+1:)
   endif
 endfunction split_r16
+
+
+pure function split_c4(x,section) result(split)
+  !! Returns the first half of the array `x` if `section == 1`,
+  !! the second half of the array `x` if `section == 2`,
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! returns and empty array, and `split(x,2)` returns `x(1)`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `split`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  complex(kind=r4),dimension(:),allocatable :: split
+  if(section == 1)then
+    split = x(1:size(x)/2)
+  elseif(section == 2)then
+    split = x(size(x)/2+1:)
+  endif
+endfunction split_c4
+
+
+pure function split_c8(x,section) result(split)
+  !! Returns the first half of the array `x` if `section == 1`,
+  !! the second half of the array `x` if `section == 2`,
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! returns and empty array, and `split(x,2)` returns `x(1)`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `split`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  complex(kind=r8),dimension(:),allocatable :: split
+  if(section == 1)then
+    split = x(1:size(x)/2)
+  elseif(section == 2)then
+    split = x(size(x)/2+1:)
+  endif
+endfunction split_c8
+
+
+pure function split_c16(x,section) result(split)
+  !! Returns the first half of the array `x` if `section == 1`,
+  !! the second half of the array `x` if `section == 2`,
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! returns and empty array, and `split(x,2)` returns `x(1)`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `split`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),intent(in) :: section !! Array section to return
+  complex(kind=r16),dimension(:),allocatable :: split
+  if(section == 1)then
+    split = x(1:size(x)/2)
+  elseif(section == 2)then
+    split = x(size(x)/2+1:)
+  endif
+endfunction split_c16
 
 
 pure function subscript_i1(x,ind) result(subscript)
