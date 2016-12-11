@@ -66,7 +66,13 @@ The following functions are provided:
 * `union` - returns a set union of two arrays
 
 All of the above functions are compatible with the standard Fortran 2008 kinds:
-`int8`, `int16`, `int32`, `int64`, `real32`, `real64`, `real128`.
+`int8`, `int16`, `int32`, `int64`, `real32`, `real64`, `real128`,
+`complex(real32)`, `complex(real64)`, and `complex(real128)`.
+
+Functions that operate on one or two arguments are also available as 
+unary or binary operators, respectively. These are:
+`.complement.`, `.head.`, `.init.`, `.intersection.`, `.last.`, 
+`.reverse.`, `.set.`, `.sort.`, `.tail.`, and `.union.`.
 
 ## Example usage
 
@@ -105,12 +111,6 @@ We can use floating-point increments:
 ```fortran
 write(*,*)arange(1.,1.5,0.1)
    1.00000000       1.10000002       1.20000005       1.29999995       1.39999998       1.50000000    
-```
-
-Be mindful of floating-point arithmetic:
-```fortran
-write(*,*)arange(1.,1.4,0.1)
-   1.00000000       1.10000002       1.20000005       1.29999995    
 ```
 
 If `start` is greater than `end` and increment is positive,
@@ -209,7 +209,7 @@ write(*,*)limit(5,1,4)
            4
 
 ! flipping the bounds works just as well
-write(*,*)limit(5,1,4)
+write(*,*)limit(5,4,1)
            4
 ```
 `limit` also works on arrays:

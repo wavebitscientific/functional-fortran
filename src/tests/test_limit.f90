@@ -11,7 +11,7 @@ integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
 n = 1
-ntests = 8
+ntests = 11
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(limit(2_int8,1_int8,3_int8) == 2_int8,&
@@ -40,6 +40,20 @@ n = n + 1
 
 tests(n) = assert(limit(2._real128,1._real128,3._real128) == 2._real128,&
                   'limit, real128')
+n = n + 1
+
+tests(n) = assert(limit(cmplx(-0.5,1.5),cmplx(0,0),cmplx(1,1)) == cmplx(0,1),&
+                  'limit, complex real32')
+n = n + 1
+
+tests(n) = assert(limit(cmplx(-0.5_real64,1.5_real64),cmplx(0._real64,0._real64),&
+                        cmplx(1._real64,1._real64)) == cmplx(0._real64,1._real64),&
+                  'limit, complex real64')
+n = n + 1
+
+tests(n) = assert(limit(cmplx(-0.5_real128,1.5_real128),cmplx(0._real128,0._real128),&
+                        cmplx(1._real128,1._real128)) == cmplx(0._real128,1._real128),&
+                  'limit, complex real128')
 n = n + 1
 
 tests(n) = assert(all(limit(arange(1,3),2,2) == [2,2,2]),&

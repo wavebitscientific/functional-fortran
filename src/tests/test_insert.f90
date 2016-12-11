@@ -11,7 +11,7 @@ integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
 n = 1
-ntests = 9
+ntests = 12
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(insert(2_int8,2,[1_int8,3_int8]) == [1,2,3]),&
@@ -39,6 +39,24 @@ tests(n) = assert(all(insert(2._real64,2,[1._real64,3._real64]) == [1,2,3]),&
 n = n + 1
 
 tests(n) = assert(all(insert(2._real128,2,[1._real128,3._real128]) == [1,2,3]),&
+                  'insert, real128')
+n = n + 1
+
+tests(n) = assert(all(insert(cmplx(2._real32,0._real32),2,&
+                             [cmplx(1._real32,0._real32),cmplx(3._real32,0._real32)])&
+                       == arange(cmplx(1._real32,0._real32),cmplx(3._real32,0._real32))),&
+                  'insert, real32')
+n = n + 1
+
+tests(n) = assert(all(insert(cmplx(2._real64,0._real64),2,&
+                             [cmplx(1._real64,0._real64),cmplx(3._real64,0._real64)])&
+                       == arange(cmplx(1._real64,0._real64),cmplx(3._real64,0._real64))),&
+                  'insert, real64')
+n = n + 1
+
+tests(n) = assert(all(insert(cmplx(2._real128,0._real128),2,&
+                             [cmplx(1._real128,0._real128),cmplx(3._real128,0._real128)])&
+                       == arange(cmplx(1._real128,0._real128),cmplx(3._real128,0._real128))),&
                   'insert, real128')
 n = n + 1
 

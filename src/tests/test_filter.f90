@@ -47,6 +47,24 @@ pure logical function gt3lt5_r16(x) result(res)
   real(kind=real128),intent(in) :: x
   res = x > 3 .and. x < 5
 endfunction gt3lt5_r16
+
+pure logical function gt3lt5_c4(x) result(res)
+  use iso_fortran_env,only:real32
+  complex(kind=real32),intent(in) :: x
+  res = real(x) > 3 .and. real(x) < 5
+endfunction gt3lt5_c4
+
+pure logical function gt3lt5_c8(x) result(res)
+  use iso_fortran_env,only:real64
+  complex(kind=real64),intent(in) :: x
+  res = real(x) > 3 .and. real(x) < 5
+endfunction gt3lt5_c8
+
+pure logical function gt3lt5_c16(x) result(res)
+  use iso_fortran_env,only:real128
+  complex(kind=real128),intent(in) :: x
+  res = real(x) > 3 .and. real(x) < 5
+endfunction gt3lt5_c16
   
 endmodule mod_filter_functions
 
@@ -63,10 +81,11 @@ logical :: test_failed
 integer :: n,norder,ntests
 integer,parameter :: stdout = 6
 
-real(kind=real32),dimension(:),allocatable :: arr
+complex(kind=real64),dimension(:),allocatable :: c8
+complex(kind=real128),dimension(:),allocatable :: c16
 
 n = 1
-ntests = 8
+ntests = 11
 call initialize_tests(tests,ntests)
 
 tests(n) = assert(all(filter(gt3lt5_i1,[3_int8,4_int8,5_int8]) == [4]),&
@@ -95,6 +114,29 @@ n = n + 1
 
 tests(n) = assert(all(filter(gt3lt5_r16,[3._real128,4._real128,5._real128]) == [4]),&
                   'filter, real128')
+n = n + 1
+
+tests(n) = assert(all(filter(gt3lt5_c4,&
+  [cmplx(3.,0.),cmplx(4.,0.),cmplx(5.,0.)]) == [cmplx(4.,0.)]),&
+  'filter, complex real32')
+n = n + 1
+
+! Need to assign to a variable first because cmplx() by default
+! returns single-precision complex number which breaks the generic
+! interface
+c8 = [cmplx(3._real64,0._real64),&
+      cmplx(4._real64,0._real64),&
+      cmplx(5._real64,0._real64)]
+c16 = [cmplx(3._real128,0._real128),&
+       cmplx(4._real128,0._real128),&
+       cmplx(5._real128,0._real128)]
+
+tests(n) = assert(all(filter(gt3lt5_c8,c8) == [cmplx(4.,0.)]),&
+                  'filter, complex real64')
+n = n + 1
+
+tests(n) = assert(all(filter(gt3lt5_c16,c16) == [cmplx(4.,0.)]),&
+                  'filter, complex real128')
 n = n + 1
 
 tests(n) = assert(size(filter(gt3lt5_i4,[1,2,3,5,6])) == 0,&
