@@ -114,6 +114,7 @@ endinterface
 interface iterfold
   module procedure :: iterfold_i1,iterfold_i2,iterfold_i4,iterfold_i8
   module procedure :: iterfold_r4,iterfold_r8,iterfold_r16
+  module procedure :: iterfold_c4,iterfold_c8,iterfold_c16
 endinterface iterfold
 
 interface last
@@ -143,11 +144,13 @@ endinterface map
 interface reverse
   module procedure :: reverse_i1,reverse_i2,reverse_i4,reverse_i8
   module procedure :: reverse_r4,reverse_r8,reverse_r16
+  module procedure :: reverse_c4,reverse_c8,reverse_c16
 endinterface reverse
 
 interface operator(.reverse.)
   module procedure :: reverse_i1,reverse_i2,reverse_i4,reverse_i8
   module procedure :: reverse_r4,reverse_r8,reverse_r16
+  module procedure :: reverse_c4,reverse_c8,reverse_c16
 endinterface
 
 interface set
@@ -165,11 +168,13 @@ endinterface
 interface sort
   module procedure :: sort_i1,sort_i2,sort_i4,sort_i8
   module procedure :: sort_r4,sort_r8,sort_r16
+  module procedure :: sort_c4,sort_c8,sort_c16
 endinterface sort
 
 interface operator(.sort.)
   module procedure :: sort_i1,sort_i2,sort_i4,sort_i8
   module procedure :: sort_r4,sort_r8,sort_r16
+  module procedure :: sort_c4,sort_c8,sort_c16
 endinterface
 
 interface split
@@ -181,6 +186,7 @@ endinterface split
 interface subscript
   module procedure :: subscript_i1,subscript_i2,subscript_i4,subscript_i8
   module procedure :: subscript_r4,subscript_r8,subscript_r16
+  module procedure :: subscript_c4,subscript_c8,subscript_c16
 endinterface subscript
 
 interface tail
@@ -198,19 +204,68 @@ endinterface
 interface unfold
   module procedure :: unfold_i1,unfold_i2,unfold_i4,unfold_i8
   module procedure :: unfold_r4,unfold_r8,unfold_r16
+  module procedure :: unfold_c4,unfold_c8,unfold_c16
 endinterface unfold
 
 interface union
   module procedure :: union_i1,union_i2,union_i4,union_i8
   module procedure :: union_r4,union_r8,union_r16
+  module procedure :: union_c4,union_c8,union_c16
 endinterface union
 
 interface operator(.union.)
   module procedure :: union_i1,union_i2,union_i4,union_i8
   module procedure :: union_r4,union_r8,union_r16
+  module procedure :: union_c4,union_c8,union_c16
 endinterface
 
+interface operator(<)
+  module procedure :: lt_c4,lt_c8,lt_c16
+endinterface operator(<) 
+
+interface operator(>=)
+  module procedure :: ge_c4,ge_c8,ge_c16
+endinterface operator(>=) 
+
 contains
+
+
+pure elemental logical function ge_c4(lhs,rhs) result(res)
+  !! Private `>=` implementation for 4-byte complex numbers. 
+  complex(kind=r4),intent(in) :: lhs,rhs
+  res = abs(lhs) >= abs(rhs)
+endfunction ge_c4
+
+pure elemental logical function ge_c8(lhs,rhs) result(res)
+  !! Private `>=` implementation for 8-byte complex numbers. 
+  complex(kind=r8),intent(in) :: lhs,rhs
+  res = abs(lhs) >= abs(rhs)
+endfunction ge_c8
+
+pure elemental logical function ge_c16(lhs,rhs) result(res)
+  !! Private `>=` implementation for 16-byte complex numbers. 
+  complex(kind=r16),intent(in) :: lhs,rhs
+  res = abs(lhs) >= abs(rhs)
+endfunction ge_c16
+
+pure elemental logical function lt_c4(lhs,rhs) result(res)
+  !! Private `<` implementation for 4-byte complex numbers. 
+  complex(kind=r4),intent(in) :: lhs,rhs
+  res = abs(lhs) < abs(rhs)
+endfunction lt_c4
+
+pure elemental logical function lt_c8(lhs,rhs) result(res)
+  !! Private `<` implementation for 8-byte complex numbers. 
+  complex(kind=r8),intent(in) :: lhs,rhs
+  res = abs(lhs) < abs(rhs)
+endfunction lt_c8
+
+pure elemental logical function lt_c16(lhs,rhs) result(res)
+  !! Private `<` implementation for 16-byte complex numbers. 
+  complex(kind=r16),intent(in) :: lhs,rhs
+  res = abs(lhs) < abs(rhs)
+endfunction lt_c16
+
 
 pure function arange_i1(start,end,increment) result(arange)
   !! Returns an array of integers given `start`, `end`, and `increment` values.
@@ -2414,6 +2469,54 @@ pure real(kind=r16) function iterfold_r16(f,start,x) result(iterfold)
 endfunction iterfold_r16
 
 
+pure complex(kind=r4) function iterfold_c4(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_c4) :: f
+  complex(kind=r4),intent(in) :: start
+  complex(kind=r4),dimension(:),intent(in) :: x
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_c4
+
+
+pure complex(kind=r8) function iterfold_c8(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_c8) :: f
+  complex(kind=r8),intent(in) :: start
+  complex(kind=r8),dimension(:),intent(in) :: x
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_c8
+
+
+pure complex(kind=r16) function iterfold_c16(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_c16) :: f
+  complex(kind=r16),intent(in) :: start
+  complex(kind=r16),dimension(:),intent(in) :: x
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_c16
+
+
 pure function reverse_i1(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 1-byte integers.
@@ -2482,6 +2585,36 @@ pure function reverse_r16(x) result(reverse)
   real(kind=r16),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
 endfunction reverse_r16
+
+
+pure function reverse_c4(x) result(reverse)
+  !! Returns the array `x` in reverse order.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `reverse`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r4),dimension(size(x)) :: reverse
+  reverse = x(size(x):1:-1)
+endfunction reverse_c4
+
+
+pure function reverse_c8(x) result(reverse)
+  !! Returns the array `x` in reverse order.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `reverse`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r8),dimension(size(x)) :: reverse
+  reverse = x(size(x):1:-1)
+endfunction reverse_c8
+
+
+pure function reverse_c16(x) result(reverse)
+  !! Returns the array `x` in reverse order.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `reverse`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  complex(kind=r16),dimension(size(x)) :: reverse
+  reverse = x(size(x):1:-1)
+endfunction reverse_c16
 
 
 pure recursive function set_i1(x) result(res)
@@ -2758,6 +2891,63 @@ pure recursive function sort_r16(x) result(res)
 endfunction sort_r16
 
 
+pure recursive function sort_c4(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `sort`.
+  complex(kind=r4),dimension(:),intent(in) :: x
+  complex(kind=r4),dimension(size(x)) :: res
+  complex(kind=r4),dimension(size(x)-1) :: rest
+  complex(kind=r4) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_c4
+
+
+pure recursive function sort_c8(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `sort`.
+  complex(kind=r8),dimension(:),intent(in) :: x
+  complex(kind=r8),dimension(size(x)) :: res
+  complex(kind=r8),dimension(size(x)-1) :: rest
+  complex(kind=r8) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_c8
+
+
+pure recursive function sort_c16(x) result(res)
+  !! Recursive quicksort using binary tree pivot. 
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `sort`.
+  complex(kind=r16),dimension(:),intent(in) :: x
+  complex(kind=r16),dimension(size(x)) :: res
+  complex(kind=r16),dimension(size(x)-1) :: rest
+  complex(kind=r16) :: pivot
+  if(size(x) > 1)then
+    pivot = head(split(x,2))
+    rest = [split(x,1),tail(split(x,2))]
+    res = [sort(pack(rest,rest < pivot)),pivot,&
+           sort(pack(rest,rest >= pivot))]
+  else
+    res = x
+  endif
+endfunction sort_c16
+
+
 pure function split_i1(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
@@ -3012,7 +3202,7 @@ pure function subscript_r4(x,ind) result(subscript)
   !! Overloaded by generic procedure `subscript`.
   real(kind=r4),dimension(:),intent(in) :: x !! Input array
   integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=i4),dimension(:),allocatable :: subscript
+  real(kind=r4),dimension(:),allocatable :: subscript
   integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
@@ -3029,7 +3219,7 @@ pure function subscript_r8(x,ind) result(subscript)
   !! Overloaded by generic procedure `subscript`.
   real(kind=r8),dimension(:),intent(in) :: x !! Input array
   integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=i4),dimension(:),allocatable :: subscript
+  real(kind=r8),dimension(:),allocatable :: subscript
   integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
@@ -3046,7 +3236,7 @@ pure function subscript_r16(x,ind) result(subscript)
   !! Overloaded by generic procedure `subscript`.
   real(kind=r16),dimension(:),intent(in) :: x !! Input array
   integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
-  integer(kind=i4),dimension(:),allocatable :: subscript
+  real(kind=r16),dimension(:),allocatable :: subscript
   integer(kind=i4),dimension(:),allocatable :: indices
   integer :: i
   indices = pack(ind,ind > 0 .and. ind < size(x))
@@ -3055,6 +3245,57 @@ pure function subscript_r16(x,ind) result(subscript)
     subscript(i) = x(indices(i))
   enddo
 endfunction subscript_r16
+
+
+pure function subscript_c4(x,ind) result(subscript)
+  !! Subscripts the array `x` along indices `ind`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `subscript`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  complex(kind=r4),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
+  integer :: i
+  indices = pack(ind,ind > 0 .and. ind < size(x))
+  allocate(subscript(size(indices)))
+  do concurrent(i = 1:size(indices))
+    subscript(i) = x(indices(i))
+  enddo
+endfunction subscript_c4
+
+
+pure function subscript_c8(x,ind) result(subscript)
+  !! Subscripts the array `x` along indices `ind`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `subscript`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  complex(kind=r8),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
+  integer :: i
+  indices = pack(ind,ind > 0 .and. ind < size(x))
+  allocate(subscript(size(indices)))
+  do concurrent(i = 1:size(indices))
+    subscript(i) = x(indices(i))
+  enddo
+endfunction subscript_c8
+
+
+pure function subscript_c16(x,ind) result(subscript)
+  !! Subscripts the array `x` along indices `ind`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `subscript`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  integer(kind=i4),dimension(:),intent(in) :: ind !! Indices to subscript
+  complex(kind=r16),dimension(:),allocatable :: subscript
+  integer(kind=i4),dimension(:),allocatable :: indices
+  integer :: i
+  indices = pack(ind,ind > 0 .and. ind < size(x))
+  allocate(subscript(size(indices)))
+  do concurrent(i = 1:size(indices))
+    subscript(i) = x(indices(i))
+  enddo
+endfunction subscript_c16
 
 
 pure function tail_i1(x) result(tail)
@@ -3276,6 +3517,57 @@ pure recursive function unfold_r16(f,x,len) result(res)
 endfunction unfold_r16
 
 
+pure recursive function unfold_c4(f,x,len) result(res)
+  !! Generates an array of length `len` by unfolding starting
+  !! array `x` using input function `f`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `unfold`.
+  procedure(f_c4) :: f !! Unfolding function
+  complex(kind=r4),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  complex(kind=r4),dimension(:),allocatable :: res
+  if(size(x) >= len)then
+    res = x
+  else
+    res = unfold(f,[x,f(last(x))],len)
+  endif
+endfunction unfold_c4
+
+
+pure recursive function unfold_c8(f,x,len) result(res)
+  !! Generates an array of length `len` by unfolding starting
+  !! array `x` using input function `f`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `unfold`.
+  procedure(f_c8) :: f !! Unfolding function
+  complex(kind=r8),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  complex(kind=r8),dimension(:),allocatable :: res
+  if(size(x) >= len)then
+    res = x
+  else
+    res = unfold(f,[x,f(last(x))],len)
+  endif
+endfunction unfold_c8
+
+
+pure recursive function unfold_c16(f,x,len) result(res)
+  !! Generates an array of length `len` by unfolding starting
+  !! array `x` using input function `f`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `unfold`.
+  procedure(f_c16) :: f !! Unfolding function
+  complex(kind=r16),dimension(:),intent(in) :: x !! Start value
+  integer(kind=i4),intent(in) :: len !! Array length to return
+  complex(kind=r16),dimension(:),allocatable :: res
+  if(size(x) >= len)then
+    res = x
+  else
+    res = unfold(f,[x,f(last(x))],len)
+  endif
+endfunction unfold_c16
+
+
 pure function union_i1(x,y) result(union)
   !! Returns a union of two arrays.
   !! This specific procedure is for 1-byte integers.
@@ -3351,5 +3643,38 @@ pure function union_r16(x,y) result(union)
   real(kind=r16),dimension(:),allocatable :: union
   union = set([x,y])
 endfunction union_r16
+
+
+pure function union_c4(x,y) result(union)
+  !! Returns a union of two arrays.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `union`.
+  complex(kind=r4),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r4),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r4),dimension(:),allocatable :: union
+  union = set([x,y])
+endfunction union_c4
+
+
+pure function union_c8(x,y) result(union)
+  !! Returns a union of two arrays.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `union`.
+  complex(kind=r8),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r8),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r8),dimension(:),allocatable :: union
+  union = set([x,y])
+endfunction union_c8
+
+
+pure function union_c16(x,y) result(union)
+  !! Returns a union of two arrays.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `union`.
+  complex(kind=r16),dimension(:),intent(in) :: x !! First input array
+  complex(kind=r16),dimension(:),intent(in) :: y !! Second input array
+  complex(kind=r16),dimension(:),allocatable :: union
+  union = set([x,y])
+endfunction union_c16
 
 endmodule mod_functional
