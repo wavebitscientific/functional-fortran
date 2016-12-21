@@ -24,6 +24,7 @@ make
 ctest
 ```
 Start using functional-fortran in your code by including the module:
+
 ```
 use mod_functional
 ```
