@@ -5,12 +5,12 @@ Functional programming for modern Fortran.
 [![Build Status](https://travis-ci.org/wavebitscientific/functional-fortran.svg?branch=master)](https://travis-ci.org/wavebitscientific/functional-fortran)
 [![GitHub issues](https://img.shields.io/github/issues/wavebitscientific/functional-fortran.svg)](https://github.com/wavebitscientific/functional-fortran/issues)
 
-* [Getting started](https://github.com/wavebitscientific/functional-fortran#getting-started)
-* [Why functional-fortran?](https://github.com/wavebitscientific/functional-fortran#why-functional-fortran)
-* [What's included?](https://github.com/wavebitscientific/functional-fortran#whats-included)
-* [Example usage](https://github.com/wavebitscientific/functional-fortran#example-usage)
-* [Contributing](https://github.com/wavebitscientific/functional-fortran#contributing)
-* [Further reading](https://github.com/wavebitscientific/functional-fortran#further-reading)
+* [Getting started](#getting-started)
+* [Why functional-fortran?](#why-functional-fortran)
+* [What's included?](#whats-included)
+* [Example usage](#example-usage)
+* [Contributing](#contributing)
+* [Further reading](#further-reading)
 
 ## Getting started
 
