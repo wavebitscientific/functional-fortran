@@ -38,3 +38,6 @@ foreach(execid arange complement filter foldl foldr foldt head init insert inter
   target_link_libraries(test_${execid} functional testing)
   add_test(test_${execid} bin/test_${execid})
 endforeach()
+
+install(DIRECTORY "${CMAKE_Fortran_MODULE_DIRECTORY}" DESTINATION "${CMAKE_INSTALL_PREFIX}")
+install(DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}" DESTINATION "${CMAKE_INSTALL_PREFIX}")
