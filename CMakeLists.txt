@@ -27,6 +27,13 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES Intel)
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
 endif()
 
+# compiler flags for Cray ftn
+if(CMAKE_Fortran_COMPILER_ID MATCHES Cray)
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -h noomp")
+  set(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+endif()
+
 # library to archive (libfunctional.a)
 add_library(functional src/lib/mod_functional.f90 src/lib/mod_interfaces.f90)
 add_library(testing src/tests/mod_testing.f90)
