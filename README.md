@@ -45,6 +45,7 @@ The following functions are provided:
 
 * `arange` - returns a regularly spaced array
 * `complement` - returns a set complement of two arrays
+* `empty` - returns an empty array
 * `filter` - filters an array using a logical input function
 * `foldl` - recursively left-folds an array using an input function
 * `foldr` - recursively right-folds an array using an input function
@@ -123,6 +124,17 @@ If `start` is greater than `end` and increment is positive,
 write(*,*)arange(5,1)
 
 ```
+
+Use `empty` to generate a zero-length array of any Fortran standard
+kind:
+
+```fortran
+write(*,*)size(empty(1))
+           0
+```
+which may be useful to initialize accumulators, for example
+see the implementation of set `intersection` in this library.
+
 
 `head` returns the first element of the array:
 
