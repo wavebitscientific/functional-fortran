@@ -2001,6 +2001,166 @@ pure function intersection_c16(x,y) result(res)
 endfunction intersection_c16
 
 
+pure integer(kind=i1) function iterfold_i1(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 1-byte integers.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_i1) :: f !! Folding function
+  integer(kind=i1),intent(in) :: start !! Accumulator start value
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_i1
+
+
+pure integer(kind=i2) function iterfold_i2(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 2-byte integers.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_i2) :: f !! Folding function
+  integer(kind=i2),intent(in) :: start !! Accumulator start value
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_i2
+
+
+pure integer(kind=i4) function iterfold_i4(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 4-byte integers.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_i4) :: f !! Folding function
+  integer(kind=i4),intent(in) :: start !! Accumulator start value
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_i4
+
+
+pure integer(kind=i8) function iterfold_i8(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 8-byte integers.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_i8) :: f !! Folding function
+  integer(kind=i8),intent(in) :: start !! Accumulator start value
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_i8
+
+
+pure real(kind=r4) function iterfold_r4(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 4-byte reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_r4) :: f !! Folding function
+  real(kind=r4),intent(in) :: start !! Accumulator start value
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_r4
+
+
+pure real(kind=r8) function iterfold_r8(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 8-byte reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_r8) :: f !! Folding function
+  real(kind=r8),intent(in) :: start !! Accumulator start value
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_r8
+
+
+pure real(kind=r16) function iterfold_r16(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 16-byte reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_r16) :: f !! Folding function
+  real(kind=r16),intent(in) :: start !! Accumulator start value
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_r16
+
+
+pure complex(kind=r4) function iterfold_c4(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_c4) :: f !! Folding function
+  complex(kind=r4),intent(in) :: start !! Accumulator start value
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_c4
+
+
+pure complex(kind=r8) function iterfold_c8(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_c8) :: f !! Folding function
+  complex(kind=r8),intent(in) :: start !! Accumulator start value
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_c8
+
+
+pure complex(kind=r16) function iterfold_c16(f,start,x) result(iterfold)
+  !! Reduces input array `x` using input function `f(x,y)`.
+  !! Initial value is `start`, if given, and zero otherwise.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `iterfold`.
+  procedure(f2_c16) :: f !! Folding function
+  complex(kind=r16),intent(in) :: start !! Accumulator start value
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
+  integer :: i
+  iterfold = start
+  do i = 1,size(x)
+    iterfold = f(iterfold,x(i))
+  enddo
+endfunction iterfold_c16
+
+
 pure integer(kind=i1) function last_i1(x) result(last)
   !! Returns the last element of array `x`.
   !! This specific procedure is for 1-byte integers.
@@ -2357,166 +2517,6 @@ pure function map_c16(f,x) result(map)
 endfunction map_c16
 
 
-pure integer(kind=i1) function iterfold_i1(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 1-byte integers.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_i1) :: f
-  integer(kind=i1),intent(in) :: start
-  integer(kind=i1),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_i1
-
-
-pure integer(kind=i2) function iterfold_i2(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 2-byte integers.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_i2) :: f
-  integer(kind=i2),intent(in) :: start
-  integer(kind=i2),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_i2
-
-
-pure integer(kind=i4) function iterfold_i4(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 4-byte integers.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_i4) :: f
-  integer(kind=i4),intent(in) :: start
-  integer(kind=i4),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_i4
-
-
-pure integer(kind=i8) function iterfold_i8(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 8-byte integers.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_i8) :: f
-  integer(kind=i8),intent(in) :: start
-  integer(kind=i8),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_i8
-
-
-pure real(kind=r4) function iterfold_r4(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 4-byte reals.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_r4) :: f
-  real(kind=r4),intent(in) :: start
-  real(kind=r4),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_r4
-
-
-pure real(kind=r8) function iterfold_r8(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 8-byte reals.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_r8) :: f
-  real(kind=r8),intent(in) :: start
-  real(kind=r8),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_r8
-
-
-pure real(kind=r16) function iterfold_r16(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 16-byte reals.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_r16) :: f
-  real(kind=r16),intent(in) :: start
-  real(kind=r16),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_r16
-
-
-pure complex(kind=r4) function iterfold_c4(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 4-byte complex reals.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_c4) :: f
-  complex(kind=r4),intent(in) :: start
-  complex(kind=r4),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_c4
-
-
-pure complex(kind=r8) function iterfold_c8(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 8-byte complex reals.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_c8) :: f
-  complex(kind=r8),intent(in) :: start
-  complex(kind=r8),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_c8
-
-
-pure complex(kind=r16) function iterfold_c16(f,start,x) result(iterfold)
-  !! Reduces input array `x` using input function `f(x,y)`.
-  !! Initial value is `start`, if given, and zero otherwise.
-  !! This specific procedure is for 16-byte complex reals.
-  !! Overloaded by generic procedure `iterfold`.
-  procedure(f2_c16) :: f
-  complex(kind=r16),intent(in) :: start
-  complex(kind=r16),dimension(:),intent(in) :: x
-  integer :: i
-  iterfold = start
-  do i = 1,size(x)
-    iterfold = f(iterfold,x(i))
-  enddo
-endfunction iterfold_c16
-
-
 pure function reverse_i1(x) result(reverse)
   !! Returns the array `x` in reverse order.
   !! This specific procedure is for 1-byte integers.
@@ -2760,7 +2760,7 @@ pure recursive function sort_i1(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=i1),dimension(:),intent(in) :: x
+  integer(kind=i1),dimension(:),intent(in) :: x !! Input array
   integer(kind=i1),dimension(size(x)) :: res
   integer(kind=i1),dimension(size(x)-1) :: rest
   integer(kind=i1) :: pivot
@@ -2780,7 +2780,7 @@ pure recursive function sort_i2(x) result(res)
   !! using binary search tree pivot.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=i2),dimension(:),intent(in) :: x
+  integer(kind=i2),dimension(:),intent(in) :: x !! Input array
   integer(kind=i2),dimension(size(x)) :: res
   integer(kind=i2),dimension(size(x)-1) :: rest
   integer(kind=i2) :: pivot
@@ -2799,7 +2799,7 @@ pure recursive function sort_i4(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=i4),dimension(:),intent(in) :: x
+  integer(kind=i4),dimension(:),intent(in) :: x !! Input array
   integer(kind=i4),dimension(size(x)) :: res
   integer(kind=i4),dimension(size(x)-1) :: rest
   integer(kind=i4) :: pivot
@@ -2819,7 +2819,7 @@ pure recursive function sort_i8(x) result(res)
   !! using binary search tree pivot.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `sort`.
-  integer(kind=i8),dimension(:),intent(in) :: x
+  integer(kind=i8),dimension(:),intent(in) :: x !! Input array
   integer(kind=i8),dimension(size(x)) :: res
   integer(kind=i8),dimension(size(x)-1) :: rest
   integer(kind=i8) :: pivot
@@ -2838,7 +2838,7 @@ pure recursive function sort_r4(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `sort`.
-  real(kind=r4),dimension(:),intent(in) :: x
+  real(kind=r4),dimension(:),intent(in) :: x !! Input array
   real(kind=r4),dimension(size(x)) :: res
   real(kind=r4),dimension(size(x)-1) :: rest
   real(kind=r4) :: pivot
@@ -2857,7 +2857,7 @@ pure recursive function sort_r8(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `sort`.
-  real(kind=r8),dimension(:),intent(in) :: x
+  real(kind=r8),dimension(:),intent(in) :: x !! Input array
   real(kind=r8),dimension(size(x)) :: res
   real(kind=r8),dimension(size(x)-1) :: rest
   real(kind=r8) :: pivot
@@ -2876,7 +2876,7 @@ pure recursive function sort_r16(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `sort`.
-  real(kind=r16),dimension(:),intent(in) :: x
+  real(kind=r16),dimension(:),intent(in) :: x !! Input array
   real(kind=r16),dimension(size(x)) :: res
   real(kind=r16),dimension(size(x)-1) :: rest
   real(kind=r16) :: pivot
@@ -2895,7 +2895,7 @@ pure recursive function sort_c4(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 4-byte complex reals.
   !! Overloaded by generic procedure `sort`.
-  complex(kind=r4),dimension(:),intent(in) :: x
+  complex(kind=r4),dimension(:),intent(in) :: x !! Input array
   complex(kind=r4),dimension(size(x)) :: res
   complex(kind=r4),dimension(size(x)-1) :: rest
   complex(kind=r4) :: pivot
@@ -2914,7 +2914,7 @@ pure recursive function sort_c8(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `sort`.
-  complex(kind=r8),dimension(:),intent(in) :: x
+  complex(kind=r8),dimension(:),intent(in) :: x !! Input array
   complex(kind=r8),dimension(size(x)) :: res
   complex(kind=r8),dimension(size(x)-1) :: rest
   complex(kind=r8) :: pivot
@@ -2933,7 +2933,7 @@ pure recursive function sort_c16(x) result(res)
   !! Recursive quicksort using binary tree pivot. 
   !! This specific procedure is for 16-byte complex reals.
   !! Overloaded by generic procedure `sort`.
-  complex(kind=r16),dimension(:),intent(in) :: x
+  complex(kind=r16),dimension(:),intent(in) :: x !! Input array
   complex(kind=r16),dimension(size(x)) :: res
   complex(kind=r16),dimension(size(x)-1) :: rest
   complex(kind=r16) :: pivot
