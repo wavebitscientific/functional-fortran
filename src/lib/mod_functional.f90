@@ -12,9 +12,9 @@ implicit none
 
 private
 
-public :: arange,complement,filter,foldl,foldr,foldt,head,init,insert,&
-          intersection,iterfold,last,limit,map,reverse,set,sort,split,&
-          subscript,tail,unfold,union
+public :: arange,complement,empty,filter,foldl,foldr,foldt,head,init,&
+          insert,intersection,iterfold,last,limit,map,reverse,set,sort,&
+          split,subscript,tail,unfold,union
 
 public :: operator(.complement.)
 public :: operator(.head.)
@@ -44,6 +44,12 @@ interface operator(.complement.)
   module procedure :: complement_r4,complement_r8,complement_r16
   module procedure :: complement_c4,complement_c8,complement_c16
 endinterface
+
+interface empty
+  module procedure :: empty_i1,empty_i2,empty_i4,empty_i8
+  module procedure :: empty_r4,empty_r8,empty_r16
+  module procedure :: empty_c4,empty_c8,empty_c16
+endinterface empty
 
 interface filter
   module procedure :: filter_i1,filter_i2,filter_i4,filter_i8
@@ -719,6 +725,116 @@ pure function complement_c16(x,y) result(complement)
     if(.not. any(b == a(n)))complement = [complement,a(n)]
   enddo
 endfunction complement_c16
+
+
+pure function empty_i1(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 1-byte integers.
+  !! Overloaded by generic procedure `empty`.
+  integer(kind=i1),intent(in) :: a !! Input scalar
+  integer(kind=i1),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_i1
+
+
+pure function empty_i2(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 2-byte integers.
+  !! Overloaded by generic procedure `empty`.
+  integer(kind=i2),intent(in) :: a !! Input scalar
+  integer(kind=i2),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_i2
+
+
+pure function empty_i4(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 4-byte integers.
+  !! Overloaded by generic procedure `empty`.
+  integer(kind=i4),intent(in) :: a !! Input scalar
+  integer(kind=i4),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_i4
+
+
+pure function empty_i8(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 8-byte integers.
+  !! Overloaded by generic procedure `empty`.
+  integer(kind=i8),intent(in) :: a !! Input scalar
+  integer(kind=i8),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_i8
+
+
+pure function empty_r4(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 4-byte reals.
+  !! Overloaded by generic procedure `empty`.
+  real(kind=r4),intent(in) :: a !! Input scalar
+  real(kind=r4),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_r4
+
+
+pure function empty_r8(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 8-byte reals.
+  !! Overloaded by generic procedure `empty`.
+  real(kind=r8),intent(in) :: a !! Input scalar
+  real(kind=r8),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_r8
+
+
+pure function empty_r16(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 16-byte reals.
+  !! Overloaded by generic procedure `empty`.
+  real(kind=r16),intent(in) :: a !! Input scalar
+  real(kind=r16),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_r16
+
+
+pure function empty_c4(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 4-byte complex reals.
+  !! Overloaded by generic procedure `empty`.
+  complex(kind=r4),intent(in) :: a !! Input scalar
+  complex(kind=r4),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_c4
+
+
+pure function empty_c8(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 8-byte complex reals.
+  !! Overloaded by generic procedure `empty`.
+  complex(kind=r8),intent(in) :: a !! Input scalar
+  complex(kind=r8),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_c8
+
+
+pure function empty_c16(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `empty`.
+  complex(kind=r16),intent(in) :: a !! Input scalar
+  complex(kind=r16),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_c16
 
 
 pure function filter_i1(f,x) result(filter)
@@ -1772,7 +1888,7 @@ pure function intersection_i1(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_i1,0_i1)
+  res = empty(1_i1)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1796,7 +1912,7 @@ pure function intersection_i2(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_i2,0_i2)
+  res = empty(1_i2)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1820,7 +1936,7 @@ pure function intersection_i4(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_i4,0_i4)
+  res = empty(1_i4)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1844,7 +1960,7 @@ pure function intersection_i8(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1_i8,0_i8)
+  res = empty(1_i8)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1868,7 +1984,7 @@ pure function intersection_r4(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1._r4,0._r4)
+  res = empty(1._r4)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1892,7 +2008,7 @@ pure function intersection_r8(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1._r8,0._r8)
+  res = empty(1._r8)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1916,7 +2032,7 @@ pure function intersection_r16(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(1._r16,0._r16)
+  res = empty(1._r16)
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1940,7 +2056,7 @@ pure function intersection_c4(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(cmplx(1._r4,0._r4),cmplx(0._r4,0._r4))
+  res = empty(cmplx(1._r4,0._r4))
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1964,7 +2080,7 @@ pure function intersection_c8(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(cmplx(1._r8,0._r8),cmplx(0._r8,0._r8))
+  res = empty(cmplx(1._r8,0._r8))
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
@@ -1988,7 +2104,7 @@ pure function intersection_c16(x,y) result(res)
   integer(kind=i4) :: n
   a = set(x)
   b = set(y)
-  res = arange(cmplx(1._r16,0._r16),cmplx(0._r16,0._r16))
+  res = empty(cmplx(1._r16,0._r16))
   if(size(a) > size(b))then
     do concurrent (n = 1:size(b))
       if(any(a == b(n)))res = [res,b(n)]
