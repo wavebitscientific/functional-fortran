@@ -1,5 +1,5 @@
 ! functional-fortran - Functional programming for modern Fortran
-! Copyright (c) 2016, Wavebit Scientific LLC
+! Copyright (c) 2016-2017, Wavebit Scientific LLC
 ! All rights reserved.
 !
 ! Licensed under the BSD-3 clause license. See LICENSE for details.
