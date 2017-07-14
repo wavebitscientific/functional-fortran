@@ -12,9 +12,9 @@ implicit none
 
 private
 
-public :: arange,complement,empty,filter,foldl,foldr,foldt,head,init,&
-          insert,intersection,iterfold,last,limit,map,reverse,set,sort,&
-          split,subscript,tail,unfold,union
+public :: arange,arrstr,complement,empty,filter,foldl,foldr,foldt,head,init,&
+          insert,intersection,iterfold,last,limit,map,reverse,set,sort,split,&
+          strarr,subscript,tail,unfold,union
 
 public :: operator(.complement.)
 public :: operator(.head.)
@@ -545,6 +545,18 @@ pure function arange_c16(start,end,increment) result(arange)
                       aimag(start)+(i-1)*aimag(incr))
   enddo
 endfunction arange_c16
+
+
+pure function arrstr(array) result(string)
+  !! Returns a string given an array of len=1 characters.
+  character(len=1),dimension(:),allocatable,intent(in) :: array !! Input array
+  character(len=:),allocatable :: string
+  integer :: n
+  allocate(character(len=size(array)) :: string)
+  do concurrent(n = 1:size(array))
+    string(n:n) = array(n)
+  enddo
+endfunction arrstr
 
 
 pure function complement_i1(x,y) result(complement)
@@ -3242,6 +3254,18 @@ pure function split_c16(x,section) result(split)
     split = x(size(x)/2+1:)
   endif
 endfunction split_c16
+
+
+pure function strarr(string) result(array)
+  !! Returns an array of len=1 characters given a string.
+  character(len=*),intent(in) :: string !! Input string
+  character(len=1),dimension(:),allocatable :: array
+  integer :: n
+  allocate(array(len(string)))
+  do concurrent(n = 1:len(string))
+    array(n) = string(n:n)
+  enddo
+endfunction strarr
 
 
 pure function subscript_i1(x,ind) result(subscript)
