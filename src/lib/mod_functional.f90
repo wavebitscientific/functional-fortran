@@ -49,6 +49,7 @@ interface empty
   module procedure :: empty_i1,empty_i2,empty_i4,empty_i8
   module procedure :: empty_r4,empty_r8,empty_r16
   module procedure :: empty_c4,empty_c8,empty_c16
+  module procedure :: empty_char
 endinterface empty
 
 interface filter
@@ -549,7 +550,7 @@ endfunction arange_c16
 
 pure function arrstr(array) result(string)
   !! Returns a string given an array of len=1 characters.
-  character(len=1),dimension(:),allocatable,intent(in) :: array !! Input array
+  character(len=1),dimension(:),intent(in) :: array !! Input array
   character(len=:),allocatable :: string
   integer :: n
   allocate(character(len=size(array)) :: string)
@@ -847,6 +848,17 @@ pure function empty_c16(a) result(empty)
   complex(kind=r16),dimension(:),allocatable :: empty
   allocate(empty(0))
 endfunction empty_c16
+
+
+pure function empty_char(a) result(empty)
+  !! Returns an allocated array of length `0`,
+  !! and type and kind same as that of scalar `a`.
+  !! This specific procedure is for len=1 character.
+  !! Overloaded by generic procedure `empty`.
+  character(len=1),intent(in) :: a !! Input scalar
+  character(len=1),dimension(:),allocatable :: empty
+  allocate(empty(0))
+endfunction empty_char
 
 
 pure function filter_i1(f,x) result(filter)
