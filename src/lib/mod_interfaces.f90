@@ -23,6 +23,7 @@ public :: f2_c4,f2_c8,f2_c16
 public :: f_i1_logical,f_i2_logical,f_i4_logical,f_i8_logical
 public :: f_r4_logical,f_r8_logical,f_r16_logical
 public :: f_c4_logical,f_c8_logical,f_c16_logical
+public :: f_char_logical
 
 interface
 
@@ -275,6 +276,11 @@ interface
     import :: r16
     complex(kind=r16),intent(in) :: x
   endfunction f_c16_logical
+
+  pure logical function f_char_logical(x)
+    !! f :: character -> logical
+    character(len=1),intent(in) :: x
+  endfunction f_char_logical
 
 endinterface
 
