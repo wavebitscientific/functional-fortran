@@ -228,47 +228,47 @@ endinterface
 
 interface operator(<)
   module procedure :: lt_c4,lt_c8,lt_c16
-endinterface operator(<) 
+endinterface operator(<)
 
 interface operator(>=)
   module procedure :: ge_c4,ge_c8,ge_c16
-endinterface operator(>=) 
+endinterface operator(>=)
 
 contains
 
 
 pure elemental logical function ge_c4(lhs,rhs) result(res)
-  !! Private `>=` implementation for 4-byte complex numbers. 
+  !! Private `>=` implementation for 4-byte complex numbers.
   complex(kind=r4),intent(in) :: lhs,rhs
   res = abs(lhs) >= abs(rhs)
 endfunction ge_c4
 
 pure elemental logical function ge_c8(lhs,rhs) result(res)
-  !! Private `>=` implementation for 8-byte complex numbers. 
+  !! Private `>=` implementation for 8-byte complex numbers.
   complex(kind=r8),intent(in) :: lhs,rhs
   res = abs(lhs) >= abs(rhs)
 endfunction ge_c8
 
 pure elemental logical function ge_c16(lhs,rhs) result(res)
-  !! Private `>=` implementation for 16-byte complex numbers. 
+  !! Private `>=` implementation for 16-byte complex numbers.
   complex(kind=r16),intent(in) :: lhs,rhs
   res = abs(lhs) >= abs(rhs)
 endfunction ge_c16
 
 pure elemental logical function lt_c4(lhs,rhs) result(res)
-  !! Private `<` implementation for 4-byte complex numbers. 
+  !! Private `<` implementation for 4-byte complex numbers.
   complex(kind=r4),intent(in) :: lhs,rhs
   res = abs(lhs) < abs(rhs)
 endfunction lt_c4
 
 pure elemental logical function lt_c8(lhs,rhs) result(res)
-  !! Private `<` implementation for 8-byte complex numbers. 
+  !! Private `<` implementation for 8-byte complex numbers.
   complex(kind=r8),intent(in) :: lhs,rhs
   res = abs(lhs) < abs(rhs)
 endfunction lt_c8
 
 pure elemental logical function lt_c16(lhs,rhs) result(res)
-  !! Private `<` implementation for 16-byte complex numbers. 
+  !! Private `<` implementation for 16-byte complex numbers.
   complex(kind=r16),intent(in) :: lhs,rhs
   res = abs(lhs) < abs(rhs)
 endfunction lt_c16
@@ -450,9 +450,9 @@ endfunction arange_r16
 
 
 pure function arange_c4(start,end,increment) result(arange)
-  !! Returns an array of complex reals given `start`, `end`, and 
+  !! Returns an array of complex reals given `start`, `end`, and
   !! `increment` values. Increment defaults to (1,0) if not provided.
-  !! Size of the resulting array is determined with real components of 
+  !! Size of the resulting array is determined with real components of
   !! `start`, `end`, and  `increment` values if `real(increment) /= 0`,
   !! and imaginary components otherwise.
   !! This specific procedure is for 4-byte complex reals.
@@ -483,9 +483,9 @@ endfunction arange_c4
 
 
 pure function arange_c8(start,end,increment) result(arange)
-  !! Returns an array of complex reals given `start`, `end`, and 
+  !! Returns an array of complex reals given `start`, `end`, and
   !! `increment` values. Increment defaults to (1,0) if not provided.
-  !! Size of the resulting array is determined with real components of 
+  !! Size of the resulting array is determined with real components of
   !! `start`, `end`, and  `increment` values if `real(increment) /= 0`,
   !! and imaginary components otherwise.
   !! This specific procedure is for 8-byte complex reals.
@@ -516,13 +516,13 @@ endfunction arange_c8
 
 
 pure function arange_c16(start,end,increment) result(arange)
-  !! Returns an array of complex reals given `start`, `end`, and 
+  !! Returns an array of complex reals given `start`, `end`, and
   !! `increment` values. Increment defaults to (1,0) if not provided.
-  !! Size of the resulting array is determined with real components of 
+  !! Size of the resulting array is determined with real components of
   !! `start`, `end`, and  `increment` values if `real(increment) /= 0`,
   !! and imaginary components otherwise.
   !! This specific procedure is for 16-byte complex reals.
-  !! Oveloaded by generic procedure `arange`. 
+  !! Oveloaded by generic procedure `arange`.
   complex(kind=r16),intent(in) :: start !! Start value of the array
   complex(kind=r16),intent(in) :: end !! End value of the array
   complex(kind=r16),intent(in),optional :: increment !! Array increment
@@ -1033,9 +1033,9 @@ endfunction filter_c16
 
 pure recursive integer(kind=i1) function foldl_i1(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `foldl`.
@@ -1052,9 +1052,9 @@ endfunction foldl_i1
 
 pure recursive integer(kind=i2) function foldl_i2(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `foldl`.
@@ -1071,9 +1071,9 @@ endfunction foldl_i2
 
 pure recursive integer(kind=i4) function foldl_i4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `foldl`.
@@ -1090,9 +1090,9 @@ endfunction foldl_i4
 
 pure recursive integer(kind=i8) function foldl_i8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `foldl`.
@@ -1109,9 +1109,9 @@ endfunction foldl_i8
 
 pure recursive real(kind=r4) function foldl_r4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `foldl`.
@@ -1128,9 +1128,9 @@ endfunction foldl_r4
 
 pure recursive real(kind=r8) function foldl_r8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldl`.
@@ -1147,9 +1147,9 @@ endfunction foldl_r8
 
 pure recursive real(kind=r16) function foldl_r16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldl`.
@@ -1166,9 +1166,9 @@ endfunction foldl_r16
 
 pure recursive complex(kind=r4) function foldl_c4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 4-byte complex reals.
   !! Overloaded by generic procedure `foldl`.
@@ -1185,9 +1185,9 @@ endfunction foldl_c4
 
 pure recursive complex(kind=r8) function foldl_c8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `foldl`.
@@ -1204,9 +1204,9 @@ endfunction foldl_c8
 
 pure recursive complex(kind=r16) function foldl_c16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's left fold. If the array is empty, the 
-  !! result is `start`; else we recurse immediately, making the new 
-  !! initial value the result of combining the old initial value 
+  !! Equivalent to haskell's left fold. If the array is empty, the
+  !! result is `start`; else we recurse immediately, making the new
+  !! initial value the result of combining the old initial value
   !! with the first element of `x`.
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `foldl`.
@@ -1223,8 +1223,8 @@ endfunction foldl_c16
 
 pure recursive integer(kind=i1) function foldr_i1(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `foldr`.
@@ -1241,8 +1241,8 @@ endfunction foldr_i1
 
 pure recursive integer(kind=i2) function foldr_i2(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `foldr`.
@@ -1259,8 +1259,8 @@ endfunction foldr_i2
 
 pure recursive integer(kind=i4) function foldr_i4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `foldr`.
@@ -1277,8 +1277,8 @@ endfunction foldr_i4
 
 pure recursive integer(kind=i8) function foldr_i8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `foldr`.
@@ -1295,8 +1295,8 @@ endfunction foldr_i8
 
 pure recursive real(kind=r4) function foldr_r4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `foldr`.
@@ -1313,8 +1313,8 @@ endfunction foldr_r4
 
 pure recursive real(kind=r8) function foldr_r8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `foldr`.
@@ -1331,8 +1331,8 @@ endfunction foldr_r8
 
 pure recursive real(kind=r16) function foldr_r16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `foldr`.
@@ -1349,8 +1349,8 @@ endfunction foldr_r16
 
 pure recursive complex(kind=r4) function foldr_c4(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 4-byte complex reals.
   !! Overloaded by generic procedure `foldr`.
@@ -1367,8 +1367,8 @@ endfunction foldr_c4
 
 pure recursive complex(kind=r8) function foldr_c8(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `foldr`.
@@ -1385,8 +1385,8 @@ endfunction foldr_c8
 
 pure recursive complex(kind=r16) function foldr_c16(f,start,x) result(res)
   !! Applies function `f` recursively along elements of array `x`.
-  !! Equivalent to haskell's right fold. If the list is empty, the 
-  !! result is `start`; else apply `f` to the first element and the 
+  !! Equivalent to haskell's right fold. If the list is empty, the
+  !! result is `start`; else apply `f` to the first element and the
   !! result of folding the rest.
   !! This specific procedure is for 16-byte complex reals.
   !! Overloaded by generic procedure `foldr`.
@@ -2392,91 +2392,91 @@ endfunction last_c16
 
 
 pure elemental integer(kind=i1) function limit_i1(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i1),intent(in) :: x !! Input scalar
   integer(kind=i1),intent(in) :: a !! First limit
   integer(kind=i1),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_i1
 
 
 pure elemental integer(kind=i2) function limit_i2(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i2),intent(in) :: x !! Input scalar
   integer(kind=i2),intent(in) :: a !! First limit
   integer(kind=i2),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_i2
 
 
 pure elemental integer(kind=i4) function limit_i4(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i4),intent(in) :: x !! Input scalar
   integer(kind=i4),intent(in) :: a !! First limit
   integer(kind=i4),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_i4
 
 
 pure elemental integer(kind=i8) function limit_i8(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `limit`.
   integer(kind=i8),intent(in) :: x !! Input scalar
   integer(kind=i8),intent(in) :: a !! First limit
   integer(kind=i8),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_i8
 
 
 pure elemental real(kind=r4) function limit_r4(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `limit`.
   real(kind=r4),intent(in) :: x !! Input scalar
   real(kind=r4),intent(in) :: a !! First limit
   real(kind=r4),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_r4
 
 
 pure elemental real(kind=r8) function limit_r8(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `limit`.
   real(kind=r8),intent(in) :: x !! Input scalar
   real(kind=r8),intent(in) :: a !! First limit
   real(kind=r8),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_r8
 
 
 pure elemental real(kind=r16) function limit_r16(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `limit`.
   real(kind=r16),intent(in) :: x !! Input scalar
   real(kind=r16),intent(in) :: a !! First limit
   real(kind=r16),intent(in) :: b !! Second limit
-  limit = min(max(x,min(a,b)),max(a,b)) 
+  limit = min(max(x,min(a,b)),max(a,b))
 endfunction limit_r16
 
 
 pure elemental complex(kind=r4) function limit_c4(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`,
   !! for Re and Im components each.
   !! This specific procedure is for 4-byte complex reals.
@@ -2490,7 +2490,7 @@ endfunction limit_c4
 
 
 pure elemental complex(kind=r8) function limit_c8(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`,
   !! for Re and Im components each.
   !! This specific procedure is for 8-byte complex reals.
@@ -2504,7 +2504,7 @@ endfunction limit_c8
 
 
 pure elemental complex(kind=r16) function limit_c16(x,a,b) result(limit)
-  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`, 
+  !! Returns `x` if `min(a,b) <= x .and. x <= max(a,b)`,
   !! `min(a,b) if `x < min(a,b)` and `max(a,b) if `x < max(a,b)`,
   !! for Re and Im components each.
   !! This specific procedure is for 16-byte complex reals.
@@ -2665,7 +2665,7 @@ pure function reverse_i1(x) result(reverse)
   integer(kind=i1),dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
 endfunction reverse_i1
- 
+
 
 pure function reverse_i2(x) result(reverse)
   !! Returns the array `x` in reverse order.
@@ -2897,7 +2897,7 @@ endfunction set_c16
 
 
 pure recursive function sort_i1(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `sort`.
   integer(kind=i1),dimension(:),intent(in) :: x !! Input array
@@ -2916,7 +2916,7 @@ endfunction sort_i1
 
 
 pure recursive function sort_i2(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! using binary search tree pivot.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `sort`.
@@ -2936,7 +2936,7 @@ endfunction sort_i2
 
 
 pure recursive function sort_i4(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `sort`.
   integer(kind=i4),dimension(:),intent(in) :: x !! Input array
@@ -2955,7 +2955,7 @@ endfunction sort_i4
 
 
 pure recursive function sort_i8(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! using binary search tree pivot.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `sort`.
@@ -2975,7 +2975,7 @@ endfunction sort_i8
 
 
 pure recursive function sort_r4(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `sort`.
   real(kind=r4),dimension(:),intent(in) :: x !! Input array
@@ -2994,7 +2994,7 @@ endfunction sort_r4
 
 
 pure recursive function sort_r8(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `sort`.
   real(kind=r8),dimension(:),intent(in) :: x !! Input array
@@ -3013,7 +3013,7 @@ endfunction sort_r8
 
 
 pure recursive function sort_r16(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `sort`.
   real(kind=r16),dimension(:),intent(in) :: x !! Input array
@@ -3032,7 +3032,7 @@ endfunction sort_r16
 
 
 pure recursive function sort_c4(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 4-byte complex reals.
   !! Overloaded by generic procedure `sort`.
   complex(kind=r4),dimension(:),intent(in) :: x !! Input array
@@ -3051,7 +3051,7 @@ endfunction sort_c4
 
 
 pure recursive function sort_c8(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `sort`.
   complex(kind=r8),dimension(:),intent(in) :: x !! Input array
@@ -3070,7 +3070,7 @@ endfunction sort_c8
 
 
 pure recursive function sort_c16(x) result(res)
-  !! Recursive quicksort using binary tree pivot. 
+  !! Recursive quicksort using binary tree pivot.
   !! This specific procedure is for 16-byte complex reals.
   !! Overloaded by generic procedure `sort`.
   complex(kind=r16),dimension(:),intent(in) :: x !! Input array
@@ -3091,7 +3091,7 @@ endfunction sort_c16
 pure function split_i1(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 1-byte integers.
   !! Overloaded by generic procedure `split`.
@@ -3109,7 +3109,7 @@ endfunction split_i1
 pure function split_i2(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 2-byte integers.
   !! Overloaded by generic procedure `split`.
@@ -3127,7 +3127,7 @@ endfunction split_i2
 pure function split_i4(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 4-byte integers.
   !! Overloaded by generic procedure `split`.
@@ -3145,7 +3145,7 @@ endfunction split_i4
 pure function split_i8(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 8-byte integers.
   !! Overloaded by generic procedure `split`.
@@ -3163,7 +3163,7 @@ endfunction split_i8
 pure function split_r4(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 4-byte reals.
   !! Overloaded by generic procedure `split`.
@@ -3181,7 +3181,7 @@ endfunction split_r4
 pure function split_r8(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 8-byte reals.
   !! Overloaded by generic procedure `split`.
@@ -3199,7 +3199,7 @@ endfunction split_r8
 pure function split_r16(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 16-byte reals.
   !! Overloaded by generic procedure `split`.
@@ -3217,7 +3217,7 @@ endfunction split_r16
 pure function split_c4(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 4-byte complex reals.
   !! Overloaded by generic procedure `split`.
@@ -3235,7 +3235,7 @@ endfunction split_c4
 pure function split_c8(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 8-byte complex reals.
   !! Overloaded by generic procedure `split`.
@@ -3253,7 +3253,7 @@ endfunction split_c8
 pure function split_c16(x,section) result(split)
   !! Returns the first half of the array `x` if `section == 1`,
   !! the second half of the array `x` if `section == 2`,
-  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)` 
+  !! and an empty array otherwise. If `size(x) == 1`, `split(x,1)`
   !! returns and empty array, and `split(x,2)` returns `x(1)`.
   !! This specific procedure is for 16-byte complex reals.
   !! Overloaded by generic procedure `split`.
