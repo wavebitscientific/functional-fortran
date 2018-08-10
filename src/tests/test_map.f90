@@ -10,54 +10,54 @@ contains
 pure integer(int8) function xpowx_i1(x) result(res)
   integer(int8), intent(in) :: x
   res = x**x
-endfunction xpowx_i1
+end function xpowx_i1
   
 pure integer(int16) function xpowx_i2(x) result(res)
   integer(int16), intent(in) :: x
   res = x**x
-endfunction xpowx_i2
+end function xpowx_i2
   
 pure integer(int32) function xpowx_i4(x) result(res)
   integer(int32), intent(in) :: x
   res = x**x
-endfunction xpowx_i4
+end function xpowx_i4
   
 pure integer(int64) function xpowx_i8(x) result(res)
   integer(int64), intent(in) :: x
   res = x**x
-endfunction xpowx_i8
+end function xpowx_i8
  
 pure real(real32) function xpowx_r4(x) result(res)
   real(real32), intent(in) :: x
   res = x**x
-endfunction xpowx_r4
+end function xpowx_r4
  
 pure real(real64) function xpowx_r8(x) result(res)
   real(real64), intent(in) :: x
   res = x**x
-endfunction xpowx_r8
+end function xpowx_r8
  
 pure real(real128) function xpowx_r16(x) result(res)
   real(real128), intent(in) :: x
   res = x**x
-endfunction xpowx_r16
+end function xpowx_r16
 
 pure complex(real32) function xpowx_c4(x) result(res)
   complex(real32), intent(in) :: x
   res = x**x
-endfunction xpowx_c4
+end function xpowx_c4
 
 pure complex(real64) function xpowx_c8(x) result(res)
   complex(real64), intent(in) :: x
   res = x**x
-endfunction xpowx_c8
+end function xpowx_c8
 
 pure complex(real128) function xpowx_c16(x) result(res)
   complex(real128), intent(in) :: x
   res = x**x
-endfunction xpowx_c16
+end function xpowx_c16
   
-endmodule mod_map_functions
+end module mod_map_functions
 
 program test_map
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
@@ -129,5 +129,5 @@ test_failed = .false.
 call report_tests(tests, test_failed)
 if(test_failed)stop 1
 
-endprogram test_map
+end program test_map
 

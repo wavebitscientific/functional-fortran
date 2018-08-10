@@ -10,63 +10,63 @@ pure integer(int8) function addone_i1(x) result(res)
   use iso_fortran_env, only:int8
   integer(int8), intent(in) :: x
   res = x+1
-endfunction addone_i1
+end function addone_i1
 
 pure integer(int16) function addone_i2(x) result(res)
   use iso_fortran_env, only:int16
   integer(int16), intent(in) :: x
   res = x+1
-endfunction addone_i2
+end function addone_i2
   
 pure integer(int32) function addone_i4(x) result(res)
   use iso_fortran_env, only:int32
   integer(int32), intent(in) :: x
   res = x+1
-endfunction addone_i4
+end function addone_i4
   
 pure integer(int64) function addone_i8(x) result(res)
   use iso_fortran_env, only:int64
   integer(int64), intent(in) :: x
   res = x+1
-endfunction addone_i8
+end function addone_i8
   
 pure real(real32) function addone_r4(x) result(res)
   use iso_fortran_env, only:real32
   real(real32), intent(in) :: x
   res = x+1
-endfunction addone_r4
+end function addone_r4
   
 pure real(real64) function addone_r8(x) result(res)
   use iso_fortran_env, only:real64
   real(real64), intent(in) :: x
   res = x+1
-endfunction addone_r8
+end function addone_r8
   
 pure real(real128) function addone_r16(x) result(res)
   use iso_fortran_env, only:real128
   real(real128), intent(in) :: x
   res = x+1
-endfunction addone_r16
+end function addone_r16
 
 pure complex(real32) function addone_c4(x) result(res)
   use iso_fortran_env, only:real32
   complex(real32), intent(in) :: x
   res = x+1
-endfunction addone_c4
+end function addone_c4
 
 pure complex(real64) function addone_c8(x) result(res)
   use iso_fortran_env, only:real64
   complex(real64), intent(in) :: x
   res = x+1
-endfunction addone_c8
+end function addone_c8
 
 pure complex(real128) function addone_c16(x) result(res)
   use iso_fortran_env, only:real128
   complex(real128), intent(in) :: x
   res = x+1
-endfunction addone_c16
+end function addone_c16
   
-endmodule mod_unfold_functions
+end module mod_unfold_functions
 
 program test_unfold
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
@@ -140,4 +140,4 @@ test_failed = .false.
 call report_tests(tests, test_failed)
 if(test_failed)stop 1
 
-endprogram test_unfold
+end program test_unfold

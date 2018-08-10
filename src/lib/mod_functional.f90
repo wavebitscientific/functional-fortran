@@ -25,212 +25,212 @@ interface arange
   module procedure :: arange_i1, arange_i2, arange_i4, arange_i8
   module procedure :: arange_r4, arange_r8, arange_r16
   module procedure :: arange_c4, arange_c8, arange_c16
-endinterface arange
+end interface arange
 
 interface complement
   module procedure :: complement_i1, complement_i2, complement_i4, complement_i8
   module procedure :: complement_r4, complement_r8, complement_r16
   module procedure :: complement_c4, complement_c8, complement_c16
-endinterface complement
+end interface complement
 
 interface operator(.complement.)
   module procedure :: complement_i1, complement_i2, complement_i4, complement_i8
   module procedure :: complement_r4, complement_r8, complement_r16
   module procedure :: complement_c4, complement_c8, complement_c16
-endinterface
+end interface
 
 interface empty
   module procedure :: empty_i1, empty_i2, empty_i4, empty_i8
   module procedure :: empty_r4, empty_r8, empty_r16
   module procedure :: empty_c4, empty_c8, empty_c16
   module procedure :: empty_char
-endinterface empty
+end interface empty
 
 interface filter
   module procedure :: filter_i1, filter_i2, filter_i4, filter_i8
   module procedure :: filter_r4, filter_r8, filter_r16
   module procedure :: filter_c4, filter_c8, filter_c16
-endinterface filter
+end interface filter
 
 interface foldl
   module procedure :: foldl_i1, foldl_i2, foldl_i4, foldl_i8
   module procedure :: foldl_r4, foldl_r8, foldl_r16
   module procedure :: foldl_c4, foldl_c8, foldl_c16
-endinterface foldl
+end interface foldl
 
 interface foldr
   module procedure :: foldr_i1, foldr_i2, foldr_i4, foldr_i8
   module procedure :: foldr_r4, foldr_r8, foldr_r16
   module procedure :: foldr_c4, foldr_c8, foldr_c16
-endinterface foldr
+end interface foldr
 
 interface foldt
   module procedure :: foldt_i1, foldt_i2, foldt_i4, foldt_i8
   module procedure :: foldt_r4, foldt_r8, foldt_r16
   module procedure :: foldt_c4, foldt_c8, foldt_c16
-endinterface foldt
+end interface foldt
 
 interface head
   module procedure :: head_i1, head_i2, head_i4, head_i8
   module procedure :: head_r4, head_r8, head_r16
   module procedure :: head_c4, head_c8, head_c16
   module procedure :: head_char
-endinterface head
+end interface head
 
 interface operator(.head.)
   module procedure :: head_i1, head_i2, head_i4, head_i8
   module procedure :: head_r4, head_r8, head_r16
   module procedure :: head_c4, head_c8, head_c16
   module procedure :: head_char
-endinterface
+end interface
 
 interface init
   module procedure :: init_i1, init_i2, init_i4, init_i8
   module procedure :: init_r4, init_r8, init_r16
   module procedure :: init_c4, init_c8, init_c16
   module procedure :: init_char
-endinterface init
+end interface init
 
 interface operator(.init.)
   module procedure :: init_i1, init_i2, init_i4, init_i8
   module procedure :: init_r4, init_r8, init_r16
   module procedure :: init_c4, init_c8, init_c16
   module procedure :: init_char
-endinterface
+end interface
 
 interface insert
   module procedure :: insert_i1, insert_i2, insert_i4, insert_i8
   module procedure :: insert_r4, insert_r8, insert_r16
   module procedure :: insert_c4, insert_c8, insert_c16
-endinterface insert
+end interface insert
 
 interface intersection
   module procedure :: intersection_i1, intersection_i2, intersection_i4, intersection_i8
   module procedure :: intersection_r4, intersection_r8, intersection_r16
   module procedure :: intersection_c4, intersection_c8, intersection_c16
-endinterface intersection
+end interface intersection
 
 interface operator(.intersection.)
   module procedure :: intersection_i1, intersection_i2, intersection_i4, intersection_i8
   module procedure :: intersection_r4, intersection_r8, intersection_r16
   module procedure :: intersection_c4, intersection_c8, intersection_c16
-endinterface
+end interface
 
 interface iterfold
   module procedure :: iterfold_i1, iterfold_i2, iterfold_i4, iterfold_i8
   module procedure :: iterfold_r4, iterfold_r8, iterfold_r16
   module procedure :: iterfold_c4, iterfold_c8, iterfold_c16
-endinterface iterfold
+end interface iterfold
 
 interface last
   module procedure :: last_i1, last_i2, last_i4, last_i8
   module procedure :: last_r4, last_r8, last_r16
   module procedure :: last_c4, last_c8, last_c16
-endinterface last
+end interface last
 
 interface operator(.last.)
   module procedure :: last_i1, last_i2, last_i4, last_i8
   module procedure :: last_r4, last_r8, last_r16
   module procedure :: last_c4, last_c8, last_c16
-endinterface
+end interface
 
 interface limit
   module procedure :: limit_i1, limit_i2, limit_i4, limit_i8
   module procedure :: limit_r4, limit_r8, limit_r16
   module procedure :: limit_c4, limit_c8, limit_c16
-endinterface limit
+end interface limit
 
 interface map
   module procedure :: map_i1, map_i2, map_i4, map_i8
   module procedure :: map_r4, map_r8, map_r16
   module procedure :: map_c4, map_c8, map_c16
-endinterface map
+end interface map
 
 interface reverse
   module procedure :: reverse_i1, reverse_i2, reverse_i4, reverse_i8
   module procedure :: reverse_r4, reverse_r8, reverse_r16
   module procedure :: reverse_c4, reverse_c8, reverse_c16
-endinterface reverse
+end interface reverse
 
 interface operator(.reverse.)
   module procedure :: reverse_i1, reverse_i2, reverse_i4, reverse_i8
   module procedure :: reverse_r4, reverse_r8, reverse_r16
   module procedure :: reverse_c4, reverse_c8, reverse_c16
-endinterface
+end interface
 
 interface set
   module procedure :: set_i1, set_i2, set_i4, set_i8
   module procedure :: set_r4, set_r8, set_r16
   module procedure :: set_c4, set_c8, set_c16
-endinterface set
+end interface set
 
 interface operator(.set.)
   module procedure :: set_i1, set_i2, set_i4, set_i8
   module procedure :: set_r4, set_r8, set_r16
   module procedure :: set_c4, set_c8, set_c16
-endinterface
+end interface
 
 interface sort
   module procedure :: sort_i1, sort_i2, sort_i4, sort_i8
   module procedure :: sort_r4, sort_r8, sort_r16
   module procedure :: sort_c4, sort_c8, sort_c16
-endinterface sort
+end interface sort
 
 interface operator(.sort.)
   module procedure :: sort_i1, sort_i2, sort_i4, sort_i8
   module procedure :: sort_r4, sort_r8, sort_r16
   module procedure :: sort_c4, sort_c8, sort_c16
-endinterface
+end interface
 
 interface split
   module procedure :: split_i1, split_i2, split_i4, split_i8
   module procedure :: split_r4, split_r8, split_r16
   module procedure :: split_c4, split_c8, split_c16
-endinterface split
+end interface split
 
 interface subscript
   module procedure :: subscript_i1, subscript_i2, subscript_i4, subscript_i8
   module procedure :: subscript_r4, subscript_r8, subscript_r16
   module procedure :: subscript_c4, subscript_c8, subscript_c16
-endinterface subscript
+end interface subscript
 
 interface tail
   module procedure :: tail_i1, tail_i2, tail_i4, tail_i8
   module procedure :: tail_r4, tail_r8, tail_r16
   module procedure :: tail_c4, tail_c8, tail_c16
-endinterface tail
+end interface tail
 
 interface operator(.tail.)
   module procedure :: tail_i1, tail_i2, tail_i4, tail_i8
   module procedure :: tail_r4, tail_r8, tail_r16
   module procedure :: tail_c4, tail_c8, tail_c16
-endinterface
+end interface
 
 interface unfold
   module procedure :: unfold_i1, unfold_i2, unfold_i4, unfold_i8
   module procedure :: unfold_r4, unfold_r8, unfold_r16
   module procedure :: unfold_c4, unfold_c8, unfold_c16
-endinterface unfold
+end interface unfold
 
 interface union
   module procedure :: union_i1, union_i2, union_i4, union_i8
   module procedure :: union_r4, union_r8, union_r16
   module procedure :: union_c4, union_c8, union_c16
-endinterface union
+end interface union
 
 interface operator(.union.)
   module procedure :: union_i1, union_i2, union_i4, union_i8
   module procedure :: union_r4, union_r8, union_r16
   module procedure :: union_c4, union_c8, union_c16
-endinterface
+end interface
 
 interface operator(<)
   module procedure :: lt_c4, lt_c8, lt_c16
-endinterface operator(<)
+end interface operator(<)
 
 interface operator(>=)
   module procedure :: ge_c4, ge_c8, ge_c16
-endinterface operator(>=)
+end interface operator(>=)
 
 contains
 
@@ -239,37 +239,37 @@ pure elemental logical function ge_c4(lhs, rhs) result(res)
   !! Private `>=` implementation for 4-byte complex numbers.
   complex(r4), intent(in) :: lhs, rhs
   res = abs(lhs) >= abs(rhs)
-endfunction ge_c4
+end function ge_c4
 
 pure elemental logical function ge_c8(lhs, rhs) result(res)
   !! Private `>=` implementation for 8-byte complex numbers.
   complex(r8), intent(in) :: lhs, rhs
   res = abs(lhs) >= abs(rhs)
-endfunction ge_c8
+end function ge_c8
 
 pure elemental logical function ge_c16(lhs, rhs) result(res)
   !! Private `>=` implementation for 16-byte complex numbers.
   complex(r16), intent(in) :: lhs, rhs
   res = abs(lhs) >= abs(rhs)
-endfunction ge_c16
+end function ge_c16
 
 pure elemental logical function lt_c4(lhs, rhs) result(res)
   !! Private `<` implementation for 4-byte complex numbers.
   complex(r4), intent(in) :: lhs, rhs
   res = abs(lhs) < abs(rhs)
-endfunction lt_c4
+end function lt_c4
 
 pure elemental logical function lt_c8(lhs, rhs) result(res)
   !! Private `<` implementation for 8-byte complex numbers.
   complex(r8), intent(in) :: lhs, rhs
   res = abs(lhs) < abs(rhs)
-endfunction lt_c8
+end function lt_c8
 
 pure elemental logical function lt_c16(lhs, rhs) result(res)
   !! Private `<` implementation for 16-byte complex numbers.
   complex(r16), intent(in) :: lhs, rhs
   res = abs(lhs) < abs(rhs)
-endfunction lt_c16
+end function lt_c16
 
 
 pure function arange_i1(start, end, increment) result(arange)
@@ -294,7 +294,7 @@ pure function arange_i1(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_i1
+end function arange_i1
 
 
 pure function arange_i2(start, end, increment) result(arange)
@@ -319,7 +319,7 @@ pure function arange_i2(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_i2
+end function arange_i2
 
 
 pure function arange_i4(start, end, increment) result(arange)
@@ -344,7 +344,7 @@ pure function arange_i4(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_i4
+end function arange_i4
 
 
 pure function arange_i8(start, end, increment) result(arange)
@@ -369,7 +369,7 @@ pure function arange_i8(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_i8
+end function arange_i8
 
 
 pure function arange_r4(start, end, increment) result(arange)
@@ -394,7 +394,7 @@ pure function arange_r4(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_r4
+end function arange_r4
 
 
 pure function arange_r8(start, end, increment) result(arange)
@@ -419,7 +419,7 @@ pure function arange_r8(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_r8
+end function arange_r8
 
 
 pure function arange_r16(start, end, increment) result(arange)
@@ -444,7 +444,7 @@ pure function arange_r16(start, end, increment) result(arange)
   do concurrent(i = 1:length)
     arange(i) = start+(i-1)*incr
   enddo
-endfunction arange_r16
+end function arange_r16
 
 
 pure function arange_c4(start, end, increment) result(arange)
@@ -477,7 +477,7 @@ pure function arange_c4(start, end, increment) result(arange)
     arange(i) = cmplx(real(start)+(i-1)*real(incr), &
                       aimag(start)+(i-1)*aimag(incr))
   enddo
-endfunction arange_c4
+end function arange_c4
 
 
 pure function arange_c8(start, end, increment) result(arange)
@@ -510,7 +510,7 @@ pure function arange_c8(start, end, increment) result(arange)
     arange(i) = cmplx(real(start)+(i-1)*real(incr), &
                       aimag(start)+(i-1)*aimag(incr))
   enddo
-endfunction arange_c8
+end function arange_c8
 
 
 pure function arange_c16(start, end, increment) result(arange)
@@ -543,7 +543,7 @@ pure function arange_c16(start, end, increment) result(arange)
     arange(i) = cmplx(real(start)+(i-1)*real(incr), &
                       aimag(start)+(i-1)*aimag(incr))
   enddo
-endfunction arange_c16
+end function arange_c16
 
 
 pure function arrstr(array) result(string)
@@ -555,7 +555,7 @@ pure function arrstr(array) result(string)
   do concurrent(n = 1:size(array))
     string(n:n) = array(n)
   enddo
-endfunction arrstr
+end function arrstr
 
 
 pure function complement_i1(x, y) result(complement)
@@ -573,7 +573,7 @@ pure function complement_i1(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_i1
+end function complement_i1
 
 
 pure function complement_i2(x, y) result(complement)
@@ -591,7 +591,7 @@ pure function complement_i2(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_i2
+end function complement_i2
 
 
 pure function complement_i4(x, y) result(complement)
@@ -609,7 +609,7 @@ pure function complement_i4(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_i4
+end function complement_i4
 
 
 pure function complement_i8(x, y) result(complement)
@@ -627,7 +627,7 @@ pure function complement_i8(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_i8
+end function complement_i8
 
 
 pure function complement_r4(x, y) result(complement)
@@ -645,7 +645,7 @@ pure function complement_r4(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_r4
+end function complement_r4
 
 
 pure function complement_r8(x, y) result(complement)
@@ -663,7 +663,7 @@ pure function complement_r8(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_r8
+end function complement_r8
 
 
 pure function complement_r16(x, y) result(complement)
@@ -681,7 +681,7 @@ pure function complement_r16(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_r16
+end function complement_r16
 
 
 pure function complement_c4(x, y) result(complement)
@@ -699,7 +699,7 @@ pure function complement_c4(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_c4
+end function complement_c4
 
 
 pure function complement_c8(x, y) result(complement)
@@ -717,7 +717,7 @@ pure function complement_c8(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_c8
+end function complement_c8
 
 
 pure function complement_c16(x, y) result(complement)
@@ -735,7 +735,7 @@ pure function complement_c16(x, y) result(complement)
   do concurrent (n = 1:size(a))
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
-endfunction complement_c16
+end function complement_c16
 
 
 pure function empty_i1(a) result(empty)
@@ -746,7 +746,7 @@ pure function empty_i1(a) result(empty)
   integer(i1), intent(in) :: a !! Input scalar
   integer(i1), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_i1
+end function empty_i1
 
 
 pure function empty_i2(a) result(empty)
@@ -757,7 +757,7 @@ pure function empty_i2(a) result(empty)
   integer(i2), intent(in) :: a !! Input scalar
   integer(i2), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_i2
+end function empty_i2
 
 
 pure function empty_i4(a) result(empty)
@@ -768,7 +768,7 @@ pure function empty_i4(a) result(empty)
   integer(i4), intent(in) :: a !! Input scalar
   integer(i4), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_i4
+end function empty_i4
 
 
 pure function empty_i8(a) result(empty)
@@ -779,7 +779,7 @@ pure function empty_i8(a) result(empty)
   integer(i8), intent(in) :: a !! Input scalar
   integer(i8), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_i8
+end function empty_i8
 
 
 pure function empty_r4(a) result(empty)
@@ -790,7 +790,7 @@ pure function empty_r4(a) result(empty)
   real(r4), intent(in) :: a !! Input scalar
   real(r4), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_r4
+end function empty_r4
 
 
 pure function empty_r8(a) result(empty)
@@ -801,7 +801,7 @@ pure function empty_r8(a) result(empty)
   real(r8), intent(in) :: a !! Input scalar
   real(r8), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_r8
+end function empty_r8
 
 
 pure function empty_r16(a) result(empty)
@@ -812,7 +812,7 @@ pure function empty_r16(a) result(empty)
   real(r16), intent(in) :: a !! Input scalar
   real(r16), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_r16
+end function empty_r16
 
 
 pure function empty_c4(a) result(empty)
@@ -823,7 +823,7 @@ pure function empty_c4(a) result(empty)
   complex(r4), intent(in) :: a !! Input scalar
   complex(r4), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_c4
+end function empty_c4
 
 
 pure function empty_c8(a) result(empty)
@@ -834,7 +834,7 @@ pure function empty_c8(a) result(empty)
   complex(r8), intent(in) :: a !! Input scalar
   complex(r8), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_c8
+end function empty_c8
 
 
 pure function empty_c16(a) result(empty)
@@ -845,7 +845,7 @@ pure function empty_c16(a) result(empty)
   complex(r16), intent(in) :: a !! Input scalar
   complex(r16), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_c16
+end function empty_c16
 
 
 pure function empty_char(a) result(empty)
@@ -856,7 +856,7 @@ pure function empty_char(a) result(empty)
   character(len=1), intent(in) :: a !! Input scalar
   character(len=1), dimension(:), allocatable :: empty
   allocate(empty(0))
-endfunction empty_char
+end function empty_char
 
 
 pure function filter_i1(f, x) result(filter)
@@ -873,7 +873,7 @@ pure function filter_i1(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_i1
+end function filter_i1
 
 
 pure function filter_i2(f, x) result(filter)
@@ -890,7 +890,7 @@ pure function filter_i2(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_i2
+end function filter_i2
 
 
 pure function filter_i4(f, x) result(filter)
@@ -907,7 +907,7 @@ pure function filter_i4(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_i4
+end function filter_i4
 
 
 pure function filter_i8(f, x) result(filter)
@@ -924,7 +924,7 @@ pure function filter_i8(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_i8
+end function filter_i8
 
 
 pure function filter_r4(f, x) result(filter)
@@ -941,7 +941,7 @@ pure function filter_r4(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_r4
+end function filter_r4
 
 
 pure function filter_r8(f, x) result(filter)
@@ -958,7 +958,7 @@ pure function filter_r8(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_r8
+end function filter_r8
 
 
 pure function filter_r16(f, x) result(filter)
@@ -975,7 +975,7 @@ pure function filter_r16(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_r16
+end function filter_r16
 
 
 pure function filter_c4(f, x) result(filter)
@@ -992,7 +992,7 @@ pure function filter_c4(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_c4
+end function filter_c4
 
 
 pure function filter_c8(f, x) result(filter)
@@ -1009,7 +1009,7 @@ pure function filter_c8(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_c8
+end function filter_c8
 
 
 pure function filter_c16(f, x) result(filter)
@@ -1026,7 +1026,7 @@ pure function filter_c16(f, x) result(filter)
     f_x(i) = f(x(i))
   enddo
   filter = pack(x, f_x)
-endfunction filter_c16
+end function filter_c16
 
 
 pure recursive integer(i1) function foldl_i1(f, start, x) result(res)
@@ -1045,7 +1045,7 @@ pure recursive integer(i1) function foldl_i1(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_i1
+end function foldl_i1
 
 
 pure recursive integer(i2) function foldl_i2(f, start, x) result(res)
@@ -1064,7 +1064,7 @@ pure recursive integer(i2) function foldl_i2(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_i2
+end function foldl_i2
 
 
 pure recursive integer(i4) function foldl_i4(f, start, x) result(res)
@@ -1083,7 +1083,7 @@ pure recursive integer(i4) function foldl_i4(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_i4
+end function foldl_i4
 
 
 pure recursive integer(i8) function foldl_i8(f, start, x) result(res)
@@ -1102,7 +1102,7 @@ pure recursive integer(i8) function foldl_i8(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_i8
+end function foldl_i8
 
 
 pure recursive real(r4) function foldl_r4(f, start, x) result(res)
@@ -1121,7 +1121,7 @@ pure recursive real(r4) function foldl_r4(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_r4
+end function foldl_r4
 
 
 pure recursive real(r8) function foldl_r8(f, start, x) result(res)
@@ -1140,7 +1140,7 @@ pure recursive real(r8) function foldl_r8(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_r8
+end function foldl_r8
 
 
 pure recursive real(r16) function foldl_r16(f, start, x) result(res)
@@ -1159,7 +1159,7 @@ pure recursive real(r16) function foldl_r16(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_r16
+end function foldl_r16
 
 
 pure recursive complex(r4) function foldl_c4(f, start, x) result(res)
@@ -1178,7 +1178,7 @@ pure recursive complex(r4) function foldl_c4(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_c4
+end function foldl_c4
 
 
 pure recursive complex(r8) function foldl_c8(f, start, x) result(res)
@@ -1197,7 +1197,7 @@ pure recursive complex(r8) function foldl_c8(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_c8
+end function foldl_c8
 
 
 pure recursive complex(r16) function foldl_c16(f, start, x) result(res)
@@ -1216,7 +1216,7 @@ pure recursive complex(r16) function foldl_c16(f, start, x) result(res)
   else
     res = foldl(f, f(start, x(1)), x(2:))
   endif
-endfunction foldl_c16
+end function foldl_c16
 
 
 pure recursive integer(i1) function foldr_i1(f, start, x) result(res)
@@ -1234,7 +1234,7 @@ pure recursive integer(i1) function foldr_i1(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_i1
+end function foldr_i1
 
 
 pure recursive integer(i2) function foldr_i2(f, start, x) result(res)
@@ -1252,7 +1252,7 @@ pure recursive integer(i2) function foldr_i2(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_i2
+end function foldr_i2
 
 
 pure recursive integer(i4) function foldr_i4(f, start, x) result(res)
@@ -1270,7 +1270,7 @@ pure recursive integer(i4) function foldr_i4(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_i4
+end function foldr_i4
 
 
 pure recursive integer(i8) function foldr_i8(f, start, x) result(res)
@@ -1288,7 +1288,7 @@ pure recursive integer(i8) function foldr_i8(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_i8
+end function foldr_i8
 
 
 pure recursive real(r4) function foldr_r4(f, start, x) result(res)
@@ -1306,7 +1306,7 @@ pure recursive real(r4) function foldr_r4(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_r4
+end function foldr_r4
 
 
 pure recursive real(r8) function foldr_r8(f, start, x) result(res)
@@ -1324,7 +1324,7 @@ pure recursive real(r8) function foldr_r8(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_r8
+end function foldr_r8
 
 
 pure recursive real(r16) function foldr_r16(f, start, x) result(res)
@@ -1342,7 +1342,7 @@ pure recursive real(r16) function foldr_r16(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_r16
+end function foldr_r16
 
 
 pure recursive complex(r4) function foldr_c4(f, start, x) result(res)
@@ -1360,7 +1360,7 @@ pure recursive complex(r4) function foldr_c4(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_c4
+end function foldr_c4
 
 
 pure recursive complex(r8) function foldr_c8(f, start, x) result(res)
@@ -1378,7 +1378,7 @@ pure recursive complex(r8) function foldr_c8(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_c8
+end function foldr_c8
 
 
 pure recursive complex(r16) function foldr_c16(f, start, x) result(res)
@@ -1396,7 +1396,7 @@ pure recursive complex(r16) function foldr_c16(f, start, x) result(res)
   else
     res = f(x(1), foldr(f, start, x(2:)))
   endif
-endfunction foldr_c16
+end function foldr_c16
 
 
 pure recursive integer(i1) function foldt_i1(f, start, x) result(res)
@@ -1415,7 +1415,7 @@ pure recursive integer(i1) function foldt_i1(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_i1
+end function foldt_i1
 
 
 pure recursive integer(i2) function foldt_i2(f, start, x) result(res)
@@ -1434,7 +1434,7 @@ pure recursive integer(i2) function foldt_i2(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_i2
+end function foldt_i2
 
 
 pure recursive integer(i4) function foldt_i4(f, start, x) result(res)
@@ -1453,7 +1453,7 @@ pure recursive integer(i4) function foldt_i4(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_i4
+end function foldt_i4
 
 
 pure recursive integer(i8) function foldt_i8(f, start, x) result(res)
@@ -1472,7 +1472,7 @@ pure recursive integer(i8) function foldt_i8(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_i8
+end function foldt_i8
 
 
 pure recursive real(r4) function foldt_r4(f, start, x) result(res)
@@ -1491,7 +1491,7 @@ pure recursive real(r4) function foldt_r4(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_r4
+end function foldt_r4
 
 
 pure recursive real(r8) function foldt_r8(f, start, x) result(res)
@@ -1510,7 +1510,7 @@ pure recursive real(r8) function foldt_r8(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_r8
+end function foldt_r8
 
 
 pure recursive real(r16) function foldt_r16(f, start, x) result(res)
@@ -1529,7 +1529,7 @@ pure recursive real(r16) function foldt_r16(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_r16
+end function foldt_r16
 
 
 pure recursive complex(r4) function foldt_c4(f, start, x) result(res)
@@ -1548,7 +1548,7 @@ pure recursive complex(r4) function foldt_c4(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_c4
+end function foldt_c4
 
 
 pure recursive complex(r8) function foldt_c8(f, start, x) result(res)
@@ -1567,7 +1567,7 @@ pure recursive complex(r8) function foldt_c8(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_c8
+end function foldt_c8
 
 
 pure recursive complex(r16) function foldt_c16(f, start, x) result(res)
@@ -1586,7 +1586,7 @@ pure recursive complex(r16) function foldt_c16(f, start, x) result(res)
   else
     res = foldt(f, foldt(f, start, split(x, 1)), split(x, 2))
   endif
-endfunction foldt_c16
+end function foldt_c16
 
 
 pure integer(i1) function head_i1(x) result(head)
@@ -1595,7 +1595,7 @@ pure integer(i1) function head_i1(x) result(head)
   !! Overloaded by generic procedure `head`.
   integer(i1), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_i1
+end function head_i1
 
 
 pure integer(i2) function head_i2(x) result(head)
@@ -1604,7 +1604,7 @@ pure integer(i2) function head_i2(x) result(head)
   !! Overloaded by generic procedure `head`.
   integer(i2), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_i2
+end function head_i2
 
 
 pure integer(i4) function head_i4(x) result(head)
@@ -1613,7 +1613,7 @@ pure integer(i4) function head_i4(x) result(head)
   !! Overloaded by generic procedure `head`.
   integer(i4), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_i4
+end function head_i4
 
 
 pure integer(i8) function head_i8(x) result(head)
@@ -1622,7 +1622,7 @@ pure integer(i8) function head_i8(x) result(head)
   !! Overloaded by generic procedure `head`.
   integer(i8), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_i8
+end function head_i8
 
 
 pure real(r4) function head_r4(x) result(head)
@@ -1631,7 +1631,7 @@ pure real(r4) function head_r4(x) result(head)
   !! Overloaded by generic procedure `head`.
   real(r4), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_r4
+end function head_r4
 
 
 pure real(r8) function head_r8(x) result(head)
@@ -1640,7 +1640,7 @@ pure real(r8) function head_r8(x) result(head)
   !! Overloaded by generic procedure `head`.
   real(r8), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_r8
+end function head_r8
 
 
 pure real(r16) function head_r16(x) result(head)
@@ -1649,7 +1649,7 @@ pure real(r16) function head_r16(x) result(head)
   !! Overloaded by generic procedure `head`.
   real(r16), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_r16
+end function head_r16
 
 
 pure complex(r4) function head_c4(x) result(head)
@@ -1658,7 +1658,7 @@ pure complex(r4) function head_c4(x) result(head)
   !! Overloaded by generic procedure `head`.
   complex(r4), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_c4
+end function head_c4
 
 
 pure complex(r8) function head_c8(x) result(head)
@@ -1667,7 +1667,7 @@ pure complex(r8) function head_c8(x) result(head)
   !! Overloaded by generic procedure `head`.
   complex(r8), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_c8
+end function head_c8
 
 
 pure complex(r16) function head_c16(x) result(head)
@@ -1676,7 +1676,7 @@ pure complex(r16) function head_c16(x) result(head)
   !! Overloaded by generic procedure `head`.
   complex(r16), dimension(:), intent(in) :: x !! Input array
   head = x(1)
-endfunction head_c16
+end function head_c16
 
 
 pure character(len=1) function head_char(x) result(head)
@@ -1685,7 +1685,7 @@ pure character(len=1) function head_char(x) result(head)
   !! Overloaded by generic procedure `head`.
   character(len=*), intent(in) :: x !! Input array
   head = x(1:1)
-endfunction head_char
+end function head_char
 
 
 pure function init_i1(x) result(init)
@@ -1695,7 +1695,7 @@ pure function init_i1(x) result(init)
   integer(i1), dimension(:), intent(in) :: x !! Input array
   integer(i1), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_i1
+end function init_i1
 
 
 pure function init_i2(x) result(init)
@@ -1705,7 +1705,7 @@ pure function init_i2(x) result(init)
   integer(i2), dimension(:), intent(in) :: x !! Input array
   integer(i2), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_i2
+end function init_i2
 
 
 pure function init_i4(x) result(init)
@@ -1715,7 +1715,7 @@ pure function init_i4(x) result(init)
   integer(i4), dimension(:), intent(in) :: x !! Input array
   integer(i4), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_i4
+end function init_i4
 
 
 pure function init_i8(x) result(init)
@@ -1725,7 +1725,7 @@ pure function init_i8(x) result(init)
   integer(i8), dimension(:), intent(in) :: x !! Input array
   integer(i8), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_i8
+end function init_i8
 
 
 pure function init_r4(x) result(init)
@@ -1735,7 +1735,7 @@ pure function init_r4(x) result(init)
   real(r4), dimension(:), intent(in) :: x !! Input array
   real(r4), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_r4
+end function init_r4
 
 
 pure function init_r8(x) result(init)
@@ -1745,7 +1745,7 @@ pure function init_r8(x) result(init)
   real(r8), dimension(:), intent(in) :: x !! Input array
   real(r8), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_r8
+end function init_r8
 
 
 pure function init_r16(x) result(init)
@@ -1755,7 +1755,7 @@ pure function init_r16(x) result(init)
   real(r16), dimension(:), intent(in) :: x !! Input array
   real(r16), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_r16
+end function init_r16
 
 
 pure function init_c4(x) result(init)
@@ -1765,7 +1765,7 @@ pure function init_c4(x) result(init)
   complex(r4), dimension(:), intent(in) :: x !! Input array
   complex(r4), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_c4
+end function init_c4
 
 
 pure function init_c8(x) result(init)
@@ -1775,7 +1775,7 @@ pure function init_c8(x) result(init)
   complex(r8), dimension(:), intent(in) :: x !! Input array
   complex(r8), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_c8
+end function init_c8
 
 
 pure function init_c16(x) result(init)
@@ -1785,7 +1785,7 @@ pure function init_c16(x) result(init)
   complex(r16), dimension(:), intent(in) :: x !! Input array
   complex(r16), dimension(size(x)-1) :: init
   init = x(:size(x)-1)
-endfunction init_c16
+end function init_c16
 
 
 pure function init_char(x) result(init)
@@ -1795,7 +1795,7 @@ pure function init_char(x) result(init)
   character(len=*), intent(in) :: x !! Input array
   character(len=:), allocatable :: init
   init = x(1:len(x)-1)
-endfunction init_char
+end function init_char
 
 
 pure function insert_i1(elem, ind, x) result(insert)
@@ -1807,7 +1807,7 @@ pure function insert_i1(elem, ind, x) result(insert)
   integer(i1), dimension(:), intent(in) :: x !! Input array
   integer(i1), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_i1
+end function insert_i1
 
 
 pure function insert_i2(elem, ind, x) result(insert)
@@ -1819,7 +1819,7 @@ pure function insert_i2(elem, ind, x) result(insert)
   integer(i2), dimension(:), intent(in) :: x !! Input array
   integer(i2), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_i2
+end function insert_i2
 
 
 pure function insert_i4(elem, ind, x) result(insert)
@@ -1831,7 +1831,7 @@ pure function insert_i4(elem, ind, x) result(insert)
   integer(i4), dimension(:), intent(in) :: x !! Input array
   integer(i4), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_i4
+end function insert_i4
 
 
 pure function insert_i8(elem, ind, x) result(insert)
@@ -1843,7 +1843,7 @@ pure function insert_i8(elem, ind, x) result(insert)
   integer(i8), dimension(:), intent(in) :: x !! Input array
   integer(i8), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_i8
+end function insert_i8
 
 
 pure function insert_r4(elem, ind, x) result(insert)
@@ -1855,7 +1855,7 @@ pure function insert_r4(elem, ind, x) result(insert)
   real(r4), dimension(:), intent(in) :: x !! Input array
   real(r4), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_r4
+end function insert_r4
 
 
 pure function insert_r8(elem, ind, x) result(insert)
@@ -1867,7 +1867,7 @@ pure function insert_r8(elem, ind, x) result(insert)
   real(r8), dimension(:), intent(in) :: x !! Input array
   real(r8), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_r8
+end function insert_r8
 
 
 pure function insert_r16(elem, ind, x) result(insert)
@@ -1879,7 +1879,7 @@ pure function insert_r16(elem, ind, x) result(insert)
   real(r16), dimension(:), intent(in) :: x !! Input array
   real(r16), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_r16
+end function insert_r16
 
 
 pure function insert_c4(elem, ind, x) result(insert)
@@ -1891,7 +1891,7 @@ pure function insert_c4(elem, ind, x) result(insert)
   complex(r4), dimension(:), intent(in) :: x !! Input array
   complex(r4), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_c4
+end function insert_c4
 
 
 pure function insert_c8(elem, ind, x) result(insert)
@@ -1903,7 +1903,7 @@ pure function insert_c8(elem, ind, x) result(insert)
   complex(r8), dimension(:), intent(in) :: x !! Input array
   complex(r8), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_c8
+end function insert_c8
 
 
 pure function insert_c16(elem, ind, x) result(insert)
@@ -1915,7 +1915,7 @@ pure function insert_c16(elem, ind, x) result(insert)
   complex(r16), dimension(:), intent(in) :: x !! Input array
   complex(r16), dimension(size(x)+1) :: insert
   insert = [x(:limit(ind, 1, size(x)+1)-1), elem, x(limit(ind, 1, size(x)+1):)]
-endfunction insert_c16
+end function insert_c16
 
 
 pure function intersection_i1(x, y) result(res)
@@ -1939,7 +1939,7 @@ pure function intersection_i1(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_i1
+end function intersection_i1
 
 
 pure function intersection_i2(x, y) result(res)
@@ -1963,7 +1963,7 @@ pure function intersection_i2(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_i2
+end function intersection_i2
 
 
 pure function intersection_i4(x, y) result(res)
@@ -1987,7 +1987,7 @@ pure function intersection_i4(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_i4
+end function intersection_i4
 
 
 pure function intersection_i8(x, y) result(res)
@@ -2011,7 +2011,7 @@ pure function intersection_i8(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_i8
+end function intersection_i8
 
 
 pure function intersection_r4(x, y) result(res)
@@ -2035,7 +2035,7 @@ pure function intersection_r4(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_r4
+end function intersection_r4
 
 
 pure function intersection_r8(x, y) result(res)
@@ -2059,7 +2059,7 @@ pure function intersection_r8(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_r8
+end function intersection_r8
 
 
 pure function intersection_r16(x, y) result(res)
@@ -2083,7 +2083,7 @@ pure function intersection_r16(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_r16
+end function intersection_r16
 
 
 pure function intersection_c4(x, y) result(res)
@@ -2107,7 +2107,7 @@ pure function intersection_c4(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_c4
+end function intersection_c4
 
 
 pure function intersection_c8(x, y) result(res)
@@ -2131,7 +2131,7 @@ pure function intersection_c8(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_c8
+end function intersection_c8
 
 
 pure function intersection_c16(x, y) result(res)
@@ -2155,7 +2155,7 @@ pure function intersection_c16(x, y) result(res)
       if(any(b == a(n)))res = [res, a(n)]
     enddo
   endif
-endfunction intersection_c16
+end function intersection_c16
 
 
 pure integer(i1) function iterfold_i1(f, start, x) result(iterfold)
@@ -2171,7 +2171,7 @@ pure integer(i1) function iterfold_i1(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_i1
+end function iterfold_i1
 
 
 pure integer(i2) function iterfold_i2(f, start, x) result(iterfold)
@@ -2187,7 +2187,7 @@ pure integer(i2) function iterfold_i2(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_i2
+end function iterfold_i2
 
 
 pure integer(i4) function iterfold_i4(f, start, x) result(iterfold)
@@ -2203,7 +2203,7 @@ pure integer(i4) function iterfold_i4(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_i4
+end function iterfold_i4
 
 
 pure integer(i8) function iterfold_i8(f, start, x) result(iterfold)
@@ -2219,7 +2219,7 @@ pure integer(i8) function iterfold_i8(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_i8
+end function iterfold_i8
 
 
 pure real(r4) function iterfold_r4(f, start, x) result(iterfold)
@@ -2235,7 +2235,7 @@ pure real(r4) function iterfold_r4(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_r4
+end function iterfold_r4
 
 
 pure real(r8) function iterfold_r8(f, start, x) result(iterfold)
@@ -2251,7 +2251,7 @@ pure real(r8) function iterfold_r8(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_r8
+end function iterfold_r8
 
 
 pure real(r16) function iterfold_r16(f, start, x) result(iterfold)
@@ -2267,7 +2267,7 @@ pure real(r16) function iterfold_r16(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_r16
+end function iterfold_r16
 
 
 pure complex(r4) function iterfold_c4(f, start, x) result(iterfold)
@@ -2283,7 +2283,7 @@ pure complex(r4) function iterfold_c4(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_c4
+end function iterfold_c4
 
 
 pure complex(r8) function iterfold_c8(f, start, x) result(iterfold)
@@ -2299,7 +2299,7 @@ pure complex(r8) function iterfold_c8(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_c8
+end function iterfold_c8
 
 
 pure complex(r16) function iterfold_c16(f, start, x) result(iterfold)
@@ -2315,7 +2315,7 @@ pure complex(r16) function iterfold_c16(f, start, x) result(iterfold)
   do i = 1, size(x)
     iterfold = f(iterfold, x(i))
   enddo
-endfunction iterfold_c16
+end function iterfold_c16
 
 
 pure integer(i1) function last_i1(x) result(last)
@@ -2324,7 +2324,7 @@ pure integer(i1) function last_i1(x) result(last)
   !! Overloaded by generic procedure `last`.
   integer(i1), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_i1
+end function last_i1
 
 
 pure integer(i2) function last_i2(x) result(last)
@@ -2333,7 +2333,7 @@ pure integer(i2) function last_i2(x) result(last)
   !! Overloaded by generic procedure `last`.
   integer(i2), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_i2
+end function last_i2
 
 
 pure integer(i4) function last_i4(x) result(last)
@@ -2342,7 +2342,7 @@ pure integer(i4) function last_i4(x) result(last)
   !! Overloaded by generic procedure `last`.
   integer(i4), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_i4
+end function last_i4
 
 
 pure integer(i8) function last_i8(x) result(last)
@@ -2351,7 +2351,7 @@ pure integer(i8) function last_i8(x) result(last)
   !! Overloaded by generic procedure `last`.
   integer(i8), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_i8
+end function last_i8
 
 
 pure real(r4) function last_r4(x) result(last)
@@ -2360,7 +2360,7 @@ pure real(r4) function last_r4(x) result(last)
   !! Overloaded by generic procedure `last`.
   real(r4), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_r4
+end function last_r4
 
 
 pure real(r8) function last_r8(x) result(last)
@@ -2369,7 +2369,7 @@ pure real(r8) function last_r8(x) result(last)
   !! Overloaded by generic procedure `last`.
   real(r8), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_r8
+end function last_r8
 
 
 pure real(r16) function last_r16(x) result(last)
@@ -2378,7 +2378,7 @@ pure real(r16) function last_r16(x) result(last)
   !! Overloaded by generic procedure `last`.
   real(r16), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_r16
+end function last_r16
 
 
 pure complex(r4) function last_c4(x) result(last)
@@ -2387,7 +2387,7 @@ pure complex(r4) function last_c4(x) result(last)
   !! Overloaded by generic procedure `last`.
   complex(r4), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_c4
+end function last_c4
 
 
 pure complex(r8) function last_c8(x) result(last)
@@ -2396,7 +2396,7 @@ pure complex(r8) function last_c8(x) result(last)
   !! Overloaded by generic procedure `last`.
   complex(r8), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_c8
+end function last_c8
 
 
 pure complex(r16) function last_c16(x) result(last)
@@ -2405,7 +2405,7 @@ pure complex(r16) function last_c16(x) result(last)
   !! Overloaded by generic procedure `last`.
   complex(r16), dimension(:), intent(in) :: x !! Input array
   last = x(size(x))
-endfunction last_c16
+end function last_c16
 
 
 pure elemental integer(i1) function limit_i1(x, a, b) result(limit)
@@ -2417,7 +2417,7 @@ pure elemental integer(i1) function limit_i1(x, a, b) result(limit)
   integer(i1), intent(in) :: a !! First limit
   integer(i1), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_i1
+end function limit_i1
 
 
 pure elemental integer(i2) function limit_i2(x, a, b) result(limit)
@@ -2429,7 +2429,7 @@ pure elemental integer(i2) function limit_i2(x, a, b) result(limit)
   integer(i2), intent(in) :: a !! First limit
   integer(i2), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_i2
+end function limit_i2
 
 
 pure elemental integer(i4) function limit_i4(x, a, b) result(limit)
@@ -2441,7 +2441,7 @@ pure elemental integer(i4) function limit_i4(x, a, b) result(limit)
   integer(i4), intent(in) :: a !! First limit
   integer(i4), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_i4
+end function limit_i4
 
 
 pure elemental integer(i8) function limit_i8(x, a, b) result(limit)
@@ -2453,7 +2453,7 @@ pure elemental integer(i8) function limit_i8(x, a, b) result(limit)
   integer(i8), intent(in) :: a !! First limit
   integer(i8), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_i8
+end function limit_i8
 
 
 pure elemental real(r4) function limit_r4(x, a, b) result(limit)
@@ -2465,7 +2465,7 @@ pure elemental real(r4) function limit_r4(x, a, b) result(limit)
   real(r4), intent(in) :: a !! First limit
   real(r4), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_r4
+end function limit_r4
 
 
 pure elemental real(r8) function limit_r8(x, a, b) result(limit)
@@ -2477,7 +2477,7 @@ pure elemental real(r8) function limit_r8(x, a, b) result(limit)
   real(r8), intent(in) :: a !! First limit
   real(r8), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_r8
+end function limit_r8
 
 
 pure elemental real(r16) function limit_r16(x, a, b) result(limit)
@@ -2489,7 +2489,7 @@ pure elemental real(r16) function limit_r16(x, a, b) result(limit)
   real(r16), intent(in) :: a !! First limit
   real(r16), intent(in) :: b !! Second limit
   limit = min(max(x, min(a, b)), max(a, b))
-endfunction limit_r16
+end function limit_r16
 
 
 pure elemental complex(r4) function limit_c4(x, a, b) result(limit)
@@ -2503,7 +2503,7 @@ pure elemental complex(r4) function limit_c4(x, a, b) result(limit)
   complex(r4), intent(in) :: b !! Second limit
   limit = cmplx(min(max(real(x), min(real(a), real(b))), max(real(a), real(b))), &
     min(max(aimag(x), min(aimag(a), aimag(b))), max(aimag(a), aimag(b))))
-endfunction limit_c4
+end function limit_c4
 
 
 pure elemental complex(r8) function limit_c8(x, a, b) result(limit)
@@ -2517,7 +2517,7 @@ pure elemental complex(r8) function limit_c8(x, a, b) result(limit)
   complex(r8), intent(in) :: b !! Second limit
   limit = cmplx(min(max(real(x), min(real(a), real(b))), max(real(a), real(b))), &
     min(max(aimag(x), min(aimag(a), aimag(b))), max(aimag(a), aimag(b))))
-endfunction limit_c8
+end function limit_c8
 
 
 pure elemental complex(r16) function limit_c16(x, a, b) result(limit)
@@ -2531,7 +2531,7 @@ pure elemental complex(r16) function limit_c16(x, a, b) result(limit)
   complex(r16), intent(in) :: b !! Second limit
   limit = cmplx(min(max(real(x), min(real(a), real(b))), max(real(a), real(b))), &
     min(max(aimag(x), min(aimag(a), aimag(b))), max(aimag(a), aimag(b))))
-endfunction limit_c16
+end function limit_c16
 
 
 pure function map_i1(f, x) result(map)
@@ -2545,7 +2545,7 @@ pure function map_i1(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_i1
+end function map_i1
 
 
 pure function map_i2(f, x) result(map)
@@ -2559,7 +2559,7 @@ pure function map_i2(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_i2
+end function map_i2
 
 
 pure function map_i4(f, x) result(map)
@@ -2573,7 +2573,7 @@ pure function map_i4(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_i4
+end function map_i4
 
 
 pure function map_i8(f, x) result(map)
@@ -2587,7 +2587,7 @@ pure function map_i8(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_i8
+end function map_i8
 
 
 pure function map_r4(f, x) result(map)
@@ -2601,7 +2601,7 @@ pure function map_r4(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_r4
+end function map_r4
 
 
 pure function map_r8(f, x) result(map)
@@ -2615,7 +2615,7 @@ pure function map_r8(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_r8
+end function map_r8
 
 
 pure function map_r16(f, x) result(map)
@@ -2629,7 +2629,7 @@ pure function map_r16(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_r16
+end function map_r16
 
 
 pure function map_c4(f, x) result(map)
@@ -2643,7 +2643,7 @@ pure function map_c4(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_c4
+end function map_c4
 
 
 pure function map_c8(f, x) result(map)
@@ -2657,7 +2657,7 @@ pure function map_c8(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_c8
+end function map_c8
 
 
 pure function map_c16(f, x) result(map)
@@ -2671,7 +2671,7 @@ pure function map_c16(f, x) result(map)
   do concurrent(i = 1:size(x))
     map(i) = f(x(i))
   enddo
-endfunction map_c16
+end function map_c16
 
 
 pure function reverse_i1(x) result(reverse)
@@ -2681,7 +2681,7 @@ pure function reverse_i1(x) result(reverse)
   integer(i1), dimension(:), intent(in) :: x !! Input array
   integer(i1), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_i1
+end function reverse_i1
 
 
 pure function reverse_i2(x) result(reverse)
@@ -2691,7 +2691,7 @@ pure function reverse_i2(x) result(reverse)
   integer(i2), dimension(:), intent(in) :: x !! Input array
   integer(i2), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_i2
+end function reverse_i2
 
 
 pure function reverse_i4(x) result(reverse)
@@ -2701,7 +2701,7 @@ pure function reverse_i4(x) result(reverse)
   integer(i4), dimension(:), intent(in) :: x !! Input array
   integer(i4), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_i4
+end function reverse_i4
 
 
 pure function reverse_i8(x) result(reverse)
@@ -2711,7 +2711,7 @@ pure function reverse_i8(x) result(reverse)
   integer(i8), dimension(:), intent(in) :: x !! Input array
   integer(i8), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_i8
+end function reverse_i8
 
 
 pure function reverse_r4(x) result(reverse)
@@ -2721,7 +2721,7 @@ pure function reverse_r4(x) result(reverse)
   real(r4), dimension(:), intent(in) :: x !! Input array
   real(r4), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_r4
+end function reverse_r4
 
 
 pure function reverse_r8(x) result(reverse)
@@ -2731,7 +2731,7 @@ pure function reverse_r8(x) result(reverse)
   real(r8), dimension(:), intent(in) :: x !! Input array
   real(r8), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_r8
+end function reverse_r8
 
 
 pure function reverse_r16(x) result(reverse)
@@ -2741,7 +2741,7 @@ pure function reverse_r16(x) result(reverse)
   real(r16), dimension(:), intent(in) :: x !! Input array
   real(r16), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_r16
+end function reverse_r16
 
 
 pure function reverse_c4(x) result(reverse)
@@ -2751,7 +2751,7 @@ pure function reverse_c4(x) result(reverse)
   complex(r4), dimension(:), intent(in) :: x !! Input array
   complex(r4), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_c4
+end function reverse_c4
 
 
 pure function reverse_c8(x) result(reverse)
@@ -2761,7 +2761,7 @@ pure function reverse_c8(x) result(reverse)
   complex(r8), dimension(:), intent(in) :: x !! Input array
   complex(r8), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_c8
+end function reverse_c8
 
 
 pure function reverse_c16(x) result(reverse)
@@ -2771,7 +2771,7 @@ pure function reverse_c16(x) result(reverse)
   complex(r16), dimension(:), intent(in) :: x !! Input array
   complex(r16), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
-endfunction reverse_c16
+end function reverse_c16
 
 
 pure recursive function set_i1(x) result(res)
@@ -2785,7 +2785,7 @@ pure recursive function set_i1(x) result(res)
   else
     res = x
   endif
-endfunction set_i1
+end function set_i1
 
 
 pure recursive function set_i2(x) result(res)
@@ -2799,7 +2799,7 @@ pure recursive function set_i2(x) result(res)
   else
     res = x
   endif
-endfunction set_i2
+end function set_i2
 
 pure recursive function set_i4(x) result(res)
   !! Returns a set given array `x`.
@@ -2812,7 +2812,7 @@ pure recursive function set_i4(x) result(res)
   else
     res = x
   endif
-endfunction set_i4
+end function set_i4
 
 
 pure recursive function set_i8(x) result(res)
@@ -2826,7 +2826,7 @@ pure recursive function set_i8(x) result(res)
   else
     res = x
   endif
-endfunction set_i8
+end function set_i8
 
 
 pure recursive function set_r4(x) result(res)
@@ -2840,7 +2840,7 @@ pure recursive function set_r4(x) result(res)
   else
     res = x
   endif
-endfunction set_r4
+end function set_r4
 
 
 pure recursive function set_r8(x) result(res)
@@ -2854,7 +2854,7 @@ pure recursive function set_r8(x) result(res)
   else
     res = x
   endif
-endfunction set_r8
+end function set_r8
 
 
 pure recursive function set_r16(x) result(res)
@@ -2868,7 +2868,7 @@ pure recursive function set_r16(x) result(res)
   else
     res = x
   endif
-endfunction set_r16
+end function set_r16
 
 
 pure recursive function set_c4(x) result(res)
@@ -2882,7 +2882,7 @@ pure recursive function set_c4(x) result(res)
   else
     res = x
   endif
-endfunction set_c4
+end function set_c4
 
 
 pure recursive function set_c8(x) result(res)
@@ -2896,7 +2896,7 @@ pure recursive function set_c8(x) result(res)
   else
     res = x
   endif
-endfunction set_c8
+end function set_c8
 
 
 pure recursive function set_c16(x) result(res)
@@ -2910,7 +2910,7 @@ pure recursive function set_c16(x) result(res)
   else
     res = x
   endif
-endfunction set_c16
+end function set_c16
 
 
 pure recursive function sort_i1(x) result(res)
@@ -2929,7 +2929,7 @@ pure recursive function sort_i1(x) result(res)
   else
     res = x
   endif
-endfunction sort_i1
+end function sort_i1
 
 
 pure recursive function sort_i2(x) result(res)
@@ -2949,7 +2949,7 @@ pure recursive function sort_i2(x) result(res)
   else
     res = x
   endif
-endfunction sort_i2
+end function sort_i2
 
 
 pure recursive function sort_i4(x) result(res)
@@ -2968,7 +2968,7 @@ pure recursive function sort_i4(x) result(res)
   else
     res = x
   endif
-endfunction sort_i4
+end function sort_i4
 
 
 pure recursive function sort_i8(x) result(res)
@@ -2988,7 +2988,7 @@ pure recursive function sort_i8(x) result(res)
   else
     res = x
   endif
-endfunction sort_i8
+end function sort_i8
 
 
 pure recursive function sort_r4(x) result(res)
@@ -3007,7 +3007,7 @@ pure recursive function sort_r4(x) result(res)
   else
     res = x
   endif
-endfunction sort_r4
+end function sort_r4
 
 
 pure recursive function sort_r8(x) result(res)
@@ -3026,7 +3026,7 @@ pure recursive function sort_r8(x) result(res)
   else
     res = x
   endif
-endfunction sort_r8
+end function sort_r8
 
 
 pure recursive function sort_r16(x) result(res)
@@ -3045,7 +3045,7 @@ pure recursive function sort_r16(x) result(res)
   else
     res = x
   endif
-endfunction sort_r16
+end function sort_r16
 
 
 pure recursive function sort_c4(x) result(res)
@@ -3064,7 +3064,7 @@ pure recursive function sort_c4(x) result(res)
   else
     res = x
   endif
-endfunction sort_c4
+end function sort_c4
 
 
 pure recursive function sort_c8(x) result(res)
@@ -3083,7 +3083,7 @@ pure recursive function sort_c8(x) result(res)
   else
     res = x
   endif
-endfunction sort_c8
+end function sort_c8
 
 
 pure recursive function sort_c16(x) result(res)
@@ -3102,7 +3102,7 @@ pure recursive function sort_c16(x) result(res)
   else
     res = x
   endif
-endfunction sort_c16
+end function sort_c16
 
 
 pure function split_i1(x, section) result(split)
@@ -3120,7 +3120,7 @@ pure function split_i1(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_i1
+end function split_i1
 
 
 pure function split_i2(x, section) result(split)
@@ -3138,7 +3138,7 @@ pure function split_i2(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_i2
+end function split_i2
 
 
 pure function split_i4(x, section) result(split)
@@ -3156,7 +3156,7 @@ pure function split_i4(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_i4
+end function split_i4
 
 
 pure function split_i8(x, section) result(split)
@@ -3174,7 +3174,7 @@ pure function split_i8(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_i8
+end function split_i8
 
 
 pure function split_r4(x, section) result(split)
@@ -3192,7 +3192,7 @@ pure function split_r4(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_r4
+end function split_r4
 
 
 pure function split_r8(x, section) result(split)
@@ -3210,7 +3210,7 @@ pure function split_r8(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_r8
+end function split_r8
 
 
 pure function split_r16(x, section) result(split)
@@ -3228,7 +3228,7 @@ pure function split_r16(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_r16
+end function split_r16
 
 
 pure function split_c4(x, section) result(split)
@@ -3246,7 +3246,7 @@ pure function split_c4(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_c4
+end function split_c4
 
 
 pure function split_c8(x, section) result(split)
@@ -3264,7 +3264,7 @@ pure function split_c8(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_c8
+end function split_c8
 
 
 pure function split_c16(x, section) result(split)
@@ -3282,7 +3282,7 @@ pure function split_c16(x, section) result(split)
   elseif(section == 2)then
     split = x(size(x)/2+1:)
   endif
-endfunction split_c16
+end function split_c16
 
 
 pure function strarr(string) result(array)
@@ -3294,7 +3294,7 @@ pure function strarr(string) result(array)
   do concurrent(n = 1:len(string))
     array(n) = string(n:n)
   enddo
-endfunction strarr
+end function strarr
 
 
 pure function subscript_i1(x, ind) result(subscript)
@@ -3311,7 +3311,7 @@ pure function subscript_i1(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_i1
+end function subscript_i1
 
 
 pure function subscript_i2(x, ind) result(subscript)
@@ -3328,7 +3328,7 @@ pure function subscript_i2(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_i2
+end function subscript_i2
 
 
 pure function subscript_i4(x, ind) result(subscript)
@@ -3345,7 +3345,7 @@ pure function subscript_i4(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_i4
+end function subscript_i4
 
 
 pure function subscript_i8(x, ind) result(subscript)
@@ -3362,7 +3362,7 @@ pure function subscript_i8(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_i8
+end function subscript_i8
 
 
 pure function subscript_r4(x, ind) result(subscript)
@@ -3379,7 +3379,7 @@ pure function subscript_r4(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_r4
+end function subscript_r4
 
 
 pure function subscript_r8(x, ind) result(subscript)
@@ -3396,7 +3396,7 @@ pure function subscript_r8(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_r8
+end function subscript_r8
 
 
 pure function subscript_r16(x, ind) result(subscript)
@@ -3413,7 +3413,7 @@ pure function subscript_r16(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_r16
+end function subscript_r16
 
 
 pure function subscript_c4(x, ind) result(subscript)
@@ -3430,7 +3430,7 @@ pure function subscript_c4(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_c4
+end function subscript_c4
 
 
 pure function subscript_c8(x, ind) result(subscript)
@@ -3447,7 +3447,7 @@ pure function subscript_c8(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_c8
+end function subscript_c8
 
 
 pure function subscript_c16(x, ind) result(subscript)
@@ -3464,7 +3464,7 @@ pure function subscript_c16(x, ind) result(subscript)
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
   enddo
-endfunction subscript_c16
+end function subscript_c16
 
 
 pure function tail_i1(x) result(tail)
@@ -3474,7 +3474,7 @@ pure function tail_i1(x) result(tail)
   integer(i1), dimension(:), intent(in) :: x !! Input array
   integer(i1), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_i1
+end function tail_i1
 
 
 pure function tail_i2(x) result(tail)
@@ -3484,7 +3484,7 @@ pure function tail_i2(x) result(tail)
   integer(i2), dimension(:), intent(in) :: x !! Input array
   integer(i2), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_i2
+end function tail_i2
 
 
 pure function tail_i4(x) result(tail)
@@ -3494,7 +3494,7 @@ pure function tail_i4(x) result(tail)
   integer(i4), dimension(:), intent(in) :: x !! Input array
   integer(i4), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_i4
+end function tail_i4
 
 
 pure function tail_i8(x) result(tail)
@@ -3504,7 +3504,7 @@ pure function tail_i8(x) result(tail)
   integer(i8), dimension(:), intent(in) :: x !! Input array
   integer(i8), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_i8
+end function tail_i8
 
 
 pure function tail_r4(x) result(tail)
@@ -3514,7 +3514,7 @@ pure function tail_r4(x) result(tail)
   real(r4), dimension(:), intent(in) :: x !! Input array
   real(r4), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_r4
+end function tail_r4
 
 
 pure function tail_r8(x) result(tail)
@@ -3524,7 +3524,7 @@ pure function tail_r8(x) result(tail)
   real(r8), dimension(:), intent(in) :: x !! Input array
   real(r8), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_r8
+end function tail_r8
 
 
 pure function tail_r16(x) result(tail)
@@ -3534,7 +3534,7 @@ pure function tail_r16(x) result(tail)
   real(r16), dimension(:), intent(in) :: x !! Input array
   real(r16), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_r16
+end function tail_r16
 
 
 pure function tail_c4(x) result(tail)
@@ -3544,7 +3544,7 @@ pure function tail_c4(x) result(tail)
   complex(r4), dimension(:), intent(in) :: x !! Input array
   complex(r4), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_c4
+end function tail_c4
 
 
 pure function tail_c8(x) result(tail)
@@ -3554,7 +3554,7 @@ pure function tail_c8(x) result(tail)
   complex(r8), dimension(:), intent(in) :: x !! Input array
   complex(r8), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_c8
+end function tail_c8
 
 
 pure function tail_c16(x) result(tail)
@@ -3564,7 +3564,7 @@ pure function tail_c16(x) result(tail)
   complex(r16), dimension(:), intent(in) :: x !! Input array
   complex(r16), dimension(size(x)-1) :: tail
   tail = x(2:)
-endfunction tail_c16
+end function tail_c16
 
 
 pure recursive function unfold_i1(f, x, len) result(res)
@@ -3581,7 +3581,7 @@ pure recursive function unfold_i1(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_i1
+end function unfold_i1
 
 
 pure recursive function unfold_i2(f, x, len) result(res)
@@ -3598,7 +3598,7 @@ pure recursive function unfold_i2(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_i2
+end function unfold_i2
 
 
 pure recursive function unfold_i4(f, x, len) result(res)
@@ -3615,7 +3615,7 @@ pure recursive function unfold_i4(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_i4
+end function unfold_i4
 
 
 pure recursive function unfold_i8(f, x, len) result(res)
@@ -3632,7 +3632,7 @@ pure recursive function unfold_i8(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_i8
+end function unfold_i8
 
 
 pure recursive function unfold_r4(f, x, len) result(res)
@@ -3649,7 +3649,7 @@ pure recursive function unfold_r4(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_r4
+end function unfold_r4
 
 
 pure recursive function unfold_r8(f, x, len) result(res)
@@ -3666,7 +3666,7 @@ pure recursive function unfold_r8(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_r8
+end function unfold_r8
 
 
 pure recursive function unfold_r16(f, x, len) result(res)
@@ -3683,7 +3683,7 @@ pure recursive function unfold_r16(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_r16
+end function unfold_r16
 
 
 pure recursive function unfold_c4(f, x, len) result(res)
@@ -3700,7 +3700,7 @@ pure recursive function unfold_c4(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_c4
+end function unfold_c4
 
 
 pure recursive function unfold_c8(f, x, len) result(res)
@@ -3717,7 +3717,7 @@ pure recursive function unfold_c8(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_c8
+end function unfold_c8
 
 
 pure recursive function unfold_c16(f, x, len) result(res)
@@ -3734,7 +3734,7 @@ pure recursive function unfold_c16(f, x, len) result(res)
   else
     res = unfold(f, [x, f(last(x))], len)
   endif
-endfunction unfold_c16
+end function unfold_c16
 
 
 pure function union_i1(x, y) result(union)
@@ -3745,7 +3745,7 @@ pure function union_i1(x, y) result(union)
   integer(i1), dimension(:), intent(in) :: y !! Second input array
   integer(i1), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_i1
+end function union_i1
 
 
 pure function union_i2(x, y) result(union)
@@ -3756,7 +3756,7 @@ pure function union_i2(x, y) result(union)
   integer(i2), dimension(:), intent(in) :: y !! Second input array
   integer(i2), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_i2
+end function union_i2
 
 
 pure function union_i4(x, y) result(union)
@@ -3767,7 +3767,7 @@ pure function union_i4(x, y) result(union)
   integer(i4), dimension(:), intent(in) :: y !! Second input array
   integer(i4), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_i4
+end function union_i4
 
 
 pure function union_i8(x, y) result(union)
@@ -3778,7 +3778,7 @@ pure function union_i8(x, y) result(union)
   integer(i8), dimension(:), intent(in) :: y !! Second input array
   integer(i8), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_i8
+end function union_i8
 
 
 pure function union_r4(x, y) result(union)
@@ -3789,7 +3789,7 @@ pure function union_r4(x, y) result(union)
   real(r4), dimension(:), intent(in) :: y !! Second input array
   real(r4), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_r4
+end function union_r4
 
 
 pure function union_r8(x, y) result(union)
@@ -3800,7 +3800,7 @@ pure function union_r8(x, y) result(union)
   real(r8), dimension(:), intent(in) :: y !! Second input array
   real(r8), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_r8
+end function union_r8
 
 
 pure function union_r16(x, y) result(union)
@@ -3811,7 +3811,7 @@ pure function union_r16(x, y) result(union)
   real(r16), dimension(:), intent(in) :: y !! Second input array
   real(r16), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_r16
+end function union_r16
 
 
 pure function union_c4(x, y) result(union)
@@ -3822,7 +3822,7 @@ pure function union_c4(x, y) result(union)
   complex(r4), dimension(:), intent(in) :: y !! Second input array
   complex(r4), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_c4
+end function union_c4
 
 
 pure function union_c8(x, y) result(union)
@@ -3833,7 +3833,7 @@ pure function union_c8(x, y) result(union)
   complex(r8), dimension(:), intent(in) :: y !! Second input array
   complex(r8), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_c8
+end function union_c8
 
 
 pure function union_c16(x, y) result(union)
@@ -3844,6 +3844,6 @@ pure function union_c16(x, y) result(union)
   complex(r16), dimension(:), intent(in) :: y !! Second input array
   complex(r16), dimension(:), allocatable :: union
   union = set([x, y])
-endfunction union_c16
+end function union_c16
 
-endmodule mod_functional
+end module mod_functional

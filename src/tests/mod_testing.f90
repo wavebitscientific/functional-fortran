@@ -27,7 +27,7 @@ logical function assert(condition, test_name)
     write(unit=stdout, fmt='(a)')'test '//output_test_name//': '//&
       char(27)//'[31mFAIL'//char(27)//'[0m'
   endif
-endfunction assert
+end function assert
 
 
 subroutine initialize_tests(tests, ntests)
@@ -64,4 +64,4 @@ subroutine report_tests(tests, test_failed)
   endif
 endsubroutine report_tests
 
-endmodule mod_testing
+end module mod_testing

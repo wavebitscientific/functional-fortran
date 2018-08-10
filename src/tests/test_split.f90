@@ -80,4 +80,4 @@ test_failed = .false.
 call report_tests(tests, test_failed)
 if(test_failed)stop 1
 
-endprogram test_split
+end program test_split
