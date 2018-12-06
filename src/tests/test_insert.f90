@@ -11,7 +11,7 @@ integer :: n, norder, ntests
 integer, parameter :: stdout = 6
 
 n = 1
-ntests = 12
+ntests = 13
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(insert(2_int8, 2, [1_int8, 3_int8]) == [1, 2, 3]), &
@@ -58,6 +58,10 @@ tests(n) = assert(all(insert(cmplx(2._real128, 0._real128), 2, &
                              [cmplx(1._real128, 0._real128), cmplx(3._real128, 0._real128)])&
                        == arange(cmplx(1._real128, 0._real128), cmplx(3._real128, 0._real128))), &
                   'insert,  real128')
+n = n + 1
+
+tests(n) = assert(insert('ell', 2, 'Ho') == 'Hello', &
+                  'insert character string')
 n = n + 1
 
 tests(n) = assert(all(insert(1, 1, arange(1, 0)) == [1]), &

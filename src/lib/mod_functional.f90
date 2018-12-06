@@ -102,12 +102,14 @@ interface insert
   module procedure :: insert_i1, insert_i2, insert_i4, insert_i8
   module procedure :: insert_r4, insert_r8, insert_r16
   module procedure :: insert_c4, insert_c8, insert_c16
+  module procedure :: insert_char
 end interface insert
 
 interface intersection
   module procedure :: intersection_i1, intersection_i2, intersection_i4, intersection_i8
   module procedure :: intersection_r4, intersection_r8, intersection_r16
   module procedure :: intersection_c4, intersection_c8, intersection_c16
+  module procedure :: insert_char
 end interface intersection
 
 interface operator(.intersection.)
@@ -1922,6 +1924,18 @@ pure function insert_c16(elem, ind, x) result(insert)
 end function insert_c16
 
 
+pure function insert_char(elem, ind, x) result(insert)
+  !! Inserts character string `elem` into 
+  !! index `ind` of character string `x`.
+  !! Overloaded by generic procedure `insert`.
+  character(len=*), intent(in) :: elem !! Character string to insert
+  integer(i4), intent(in) :: ind !! Index to insert element at
+  character(len=*), intent(in) :: x !! Input array
+  character(len=:), allocatable :: insert
+  insert = x(:ind-1) // elem // x(ind:)
+end function insert_char
+
+
 pure function intersection_i1(x, y) result(res)
   !! Returns a set intersection of two arrays.
   !! This specific procedure is for 1-byte integers.
@@ -3586,7 +3600,7 @@ pure function tail_char(x) result(tail)
   !! Overloaded by generic procedure `tail`.
   character(len=*), intent(in) :: x !! Input array
   character(len=:), allocatable :: tail
-  tail = x(2:len(x))
+  tail = x(2:)
 end function tail_char
 
 
