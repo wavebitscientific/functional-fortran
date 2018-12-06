@@ -11,7 +11,7 @@ integer :: n, norder, ntests
 integer, parameter :: stdout = 6
 
 n = 1
-ntests = 11
+ntests = 12
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(reverse(arange(1_int8, 3_int8)) == [3, 2, 1]), &
@@ -64,6 +64,9 @@ tests(n) = assert(all(reverse(arange(cmplx(1._real128, 0._real128), &
                                  cmplx(1._real128, 0._real128), &
                                  cmplx(-1._real128, 0._real128))), & 
                   'reverse,  complex real128')
+n = n + 1
+
+tests(n) = assert(reverse('Hello') == 'olleH', 'reverse character string')
 n = n + 1
 
 tests(n) = assert(all(reverse([1, 2, 3]) == .reverse.[1, 2, 3]), &

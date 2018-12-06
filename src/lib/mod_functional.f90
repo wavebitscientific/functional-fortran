@@ -154,12 +154,14 @@ interface reverse
   module procedure :: reverse_i1, reverse_i2, reverse_i4, reverse_i8
   module procedure :: reverse_r4, reverse_r8, reverse_r16
   module procedure :: reverse_c4, reverse_c8, reverse_c16
+  module procedure :: reverse_char
 end interface reverse
 
 interface operator(.reverse.)
   module procedure :: reverse_i1, reverse_i2, reverse_i4, reverse_i8
   module procedure :: reverse_r4, reverse_r8, reverse_r16
   module procedure :: reverse_c4, reverse_c8, reverse_c16
+  module procedure :: reverse_char
 end interface
 
 interface set
@@ -2799,6 +2801,15 @@ pure function reverse_c16(x) result(reverse)
   complex(r16), dimension(size(x)) :: reverse
   reverse = x(size(x):1:-1)
 end function reverse_c16
+
+
+pure function reverse_char(x) result(res)
+  !! Returns the character string `x` in reverse order.
+  !! Overloaded by generic procedure `reverse`.
+  character(len=*), intent(in) :: x !! Input array
+  character(len=:), allocatable :: res
+  res = arrstr(achar(reverse(iachar(strarr(x)))))
+end function reverse_char
 
 
 pure recursive function set_i1(x) result(res)
