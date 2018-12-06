@@ -168,12 +168,14 @@ interface set
   module procedure :: set_i1, set_i2, set_i4, set_i8
   module procedure :: set_r4, set_r8, set_r16
   module procedure :: set_c4, set_c8, set_c16
+  module procedure :: set_char
 end interface set
 
 interface operator(.set.)
   module procedure :: set_i1, set_i2, set_i4, set_i8
   module procedure :: set_r4, set_r8, set_r16
   module procedure :: set_c4, set_c8, set_c16
+  module procedure :: set_char
 end interface
 
 interface sort
@@ -2951,6 +2953,15 @@ pure recursive function set_c16(x) result(res)
     res = x
   endif
 end function set_c16
+
+
+pure recursive function set_char(x) result(res)
+  !! Returns a set given character string `x`.
+  !! Overloaded by generic procedure `set`.
+  character(len=*), intent(in) :: x !! Input character string
+  character(len=:), allocatable :: res
+  res = arrstr(achar(set(iachar(strarr(x)))))
+end function set_char
 
 
 pure recursive function sort_i1(x) result(res)
