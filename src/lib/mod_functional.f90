@@ -228,12 +228,14 @@ interface union
   module procedure :: union_i1, union_i2, union_i4, union_i8
   module procedure :: union_r4, union_r8, union_r16
   module procedure :: union_c4, union_c8, union_c16
+  module procedure :: union_char
 end interface union
 
 interface operator(.union.)
   module procedure :: union_i1, union_i2, union_i4, union_i8
   module procedure :: union_r4, union_r8, union_r16
   module procedure :: union_c4, union_c8, union_c16
+  module procedure :: union_char
 end interface
 
 interface operator(<)
@@ -253,11 +255,13 @@ pure elemental logical function ge_c4(lhs, rhs) result(res)
   res = abs(lhs) >= abs(rhs)
 end function ge_c4
 
+
 pure elemental logical function ge_c8(lhs, rhs) result(res)
   !! Private `>=` implementation for 8-byte complex numbers.
   complex(r8), intent(in) :: lhs, rhs
   res = abs(lhs) >= abs(rhs)
 end function ge_c8
+
 
 pure elemental logical function ge_c16(lhs, rhs) result(res)
   !! Private `>=` implementation for 16-byte complex numbers.
@@ -265,17 +269,20 @@ pure elemental logical function ge_c16(lhs, rhs) result(res)
   res = abs(lhs) >= abs(rhs)
 end function ge_c16
 
+
 pure elemental logical function lt_c4(lhs, rhs) result(res)
   !! Private `<` implementation for 4-byte complex numbers.
   complex(r4), intent(in) :: lhs, rhs
   res = abs(lhs) < abs(rhs)
 end function lt_c4
 
+
 pure elemental logical function lt_c8(lhs, rhs) result(res)
   !! Private `<` implementation for 8-byte complex numbers.
   complex(r8), intent(in) :: lhs, rhs
   res = abs(lhs) < abs(rhs)
 end function lt_c8
+
 
 pure elemental logical function lt_c16(lhs, rhs) result(res)
   !! Private `<` implementation for 16-byte complex numbers.
@@ -3916,5 +3923,16 @@ pure function union_c16(x, y) result(union)
   complex(r16), dimension(:), allocatable :: union
   union = set([x, y])
 end function union_c16
+
+
+pure function union_char(x, y) result(union)
+  !! Returns a union of two character strings.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `union`.
+  character(len=*), intent(in) :: x !! First input array
+  character(len=*), intent(in) :: y !! Second input array
+  character(len=:), allocatable :: union
+  union = set(x // y)
+end function union_char
 
 end module mod_functional

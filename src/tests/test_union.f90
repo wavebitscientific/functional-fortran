@@ -11,7 +11,7 @@ integer :: n, norder, ntests
 integer, parameter :: stdout = 6
 
 n = 1
-ntests = 14
+ntests = 15
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(union([1_int8, 2_int8], [2_int8, 3_int8]) == [1, 2, 3]), &
@@ -64,6 +64,10 @@ tests(n) = assert(all(union([cmplx(1._real128, 0._real128), cmplx(2._real128, 0.
                           cmplx(2._real128, 0._real128), &
                           cmplx(3._real128, 0._real128)]), &
                   'union,  complex real128')
+n = n + 1
+
+tests(n) = assert(union('Hello', 'world') == 'Helowrd', &
+                  'union, character string')
 n = n + 1
 
 tests(n) = assert(all(union(arange(1, 0), arange(1, 0)) == arange(1, 0)), &
