@@ -71,6 +71,10 @@ All of the above functions are compatible with the standard Fortran 2008 kinds:
 `int8`, `int16`, `int32`, `int64`, `real32`, `real64`, `real128`,
 `complex(real32)`, `complex(real64)`, and `complex(real128)`.
 
+Currently, these functions are compatible with character strings:
+`empty`, `head`, `init`, `insert`, `last`, `reverse`, `set`,
+`sort`, `tail`, and `union`.
+
 Functions that operate on one or two arguments are also available as 
 unary or binary operators, respectively. These are:
 `.complement.`, `.head.`, `.init.`, `.intersection.`, `.last.`, 
