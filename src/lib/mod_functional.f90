@@ -180,12 +180,14 @@ interface sort
   module procedure :: sort_i1, sort_i2, sort_i4, sort_i8
   module procedure :: sort_r4, sort_r8, sort_r16
   module procedure :: sort_c4, sort_c8, sort_c16
+  module procedure :: sort_char
 end interface sort
 
 interface operator(.sort.)
   module procedure :: sort_i1, sort_i2, sort_i4, sort_i8
   module procedure :: sort_r4, sort_r8, sort_r16
   module procedure :: sort_c4, sort_c8, sort_c16
+  module procedure :: sort_char
 end interface
 
 interface split
@@ -1801,8 +1803,8 @@ pure function init_char(x) result(init)
   !! This specific procedure is for character string.
   !! Overloaded by generic procedure `init`.
   character(len=*), intent(in) :: x !! Input array
-  character(len=:), allocatable :: init
-  init = x(1:len(x)-1)
+  character(len=len(x)-1) :: init
+  init = x(:len(x)-1)
 end function init_char
 
 
@@ -1933,7 +1935,7 @@ pure function insert_char(elem, ind, x) result(insert)
   character(len=*), intent(in) :: elem !! Character string to insert
   integer(i4), intent(in) :: ind !! Index to insert element at
   character(len=*), intent(in) :: x !! Input array
-  character(len=:), allocatable :: insert
+  character(len=len(elem)+len(x)) :: insert
   insert = x(:ind-1) // elem // x(ind:)
 end function insert_char
 
@@ -2807,7 +2809,7 @@ pure function reverse_char(x) result(res)
   !! Returns the character string `x` in reverse order.
   !! Overloaded by generic procedure `reverse`.
   character(len=*), intent(in) :: x !! Input array
-  character(len=:), allocatable :: res
+  character(len=len(x)) :: res
   res = arrstr(achar(reverse(iachar(strarr(x)))))
 end function reverse_char
 
@@ -3141,6 +3143,16 @@ pure recursive function sort_c16(x) result(res)
     res = x
   endif
 end function sort_c16
+
+
+pure function sort_char(x) result(res)
+  !! Recursive quicksort using binary tree pivot.
+  !! This specific procedure is for character strings.
+  !! Overloaded by generic procedure `sort`.
+  character(len=*), intent(in) :: x !! Input array
+  character(len=len(x)) :: res
+  res = arrstr(achar(sort(iachar(strarr(x)))))
+end function sort_char
 
 
 pure function split_i1(x, section) result(split)
@@ -3610,7 +3622,7 @@ pure function tail_char(x) result(tail)
   !! This specific procedure is for character strings.
   !! Overloaded by generic procedure `tail`.
   character(len=*), intent(in) :: x !! Input array
-  character(len=:), allocatable :: tail
+  character(len=len(x)-1) :: tail
   tail = x(2:)
 end function tail_char
 

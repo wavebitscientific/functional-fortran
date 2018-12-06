@@ -12,7 +12,7 @@ integer, parameter :: stdout = 6
 real(real32), dimension(1000) :: x
 
 n = 1
-ntests = 12
+ntests = 13
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(sort([3_int8, 2_int8, 1_int8]) == [1, 2, 3]), &
@@ -65,6 +65,9 @@ tests(n) = assert(all(sort(arange(cmplx(3._real128, 0._real128), &
                         == arange(cmplx(1._real128, 0._real128), &
                                   cmplx(3._real128, 0._real128))), &
                   'sort,  complex real128')
+n = n + 1
+
+tests(n) = assert(sort('Sorted') == 'Sdeort', 'sort, character string')
 n = n + 1
 
 call random_number(x)
