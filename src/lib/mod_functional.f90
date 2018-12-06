@@ -126,12 +126,14 @@ interface last
   module procedure :: last_i1, last_i2, last_i4, last_i8
   module procedure :: last_r4, last_r8, last_r16
   module procedure :: last_c4, last_c8, last_c16
+  module procedure :: last_char
 end interface last
 
 interface operator(.last.)
   module procedure :: last_i1, last_i2, last_i4, last_i8
   module procedure :: last_r4, last_r8, last_r16
   module procedure :: last_c4, last_c8, last_c16
+  module procedure :: last_char
 end interface
 
 interface limit
@@ -198,12 +200,14 @@ interface tail
   module procedure :: tail_i1, tail_i2, tail_i4, tail_i8
   module procedure :: tail_r4, tail_r8, tail_r16
   module procedure :: tail_c4, tail_c8, tail_c16
+  module procedure :: tail_char
 end interface tail
 
 interface operator(.tail.)
   module procedure :: tail_i1, tail_i2, tail_i4, tail_i8
   module procedure :: tail_r4, tail_r8, tail_r16
   module procedure :: tail_c4, tail_c8, tail_c16
+  module procedure :: tail_char
 end interface
 
 interface unfold
@@ -2408,6 +2412,15 @@ pure complex(r16) function last_c16(x) result(last)
 end function last_c16
 
 
+pure character(len=1) function last_char(x) result(last)
+  !! Returns the last element of array `x`.
+  !! This specific procedure is for 16-byte complex reals.
+  !! Overloaded by generic procedure `last`.
+  character(len=*), intent(in) :: x !! Input array
+  last = x(len(x):len(x))
+end function last_char
+
+
 pure elemental integer(i1) function limit_i1(x, a, b) result(limit)
   !! Returns `x` if `min(a, b) <= x .and. x <= max(a, b)`,
   !! `min(a, b) if `x < min(a, b)` and `max(a, b) if `x < max(a, b)`.
@@ -3565,6 +3578,16 @@ pure function tail_c16(x) result(tail)
   complex(r16), dimension(size(x)-1) :: tail
   tail = x(2:)
 end function tail_c16
+
+
+pure function tail_char(x) result(tail)
+  !! Returns all elements of `x` but the first.
+  !! This specific procedure is for character strings.
+  !! Overloaded by generic procedure `tail`.
+  character(len=*), intent(in) :: x !! Input array
+  character(len=:), allocatable :: tail
+  tail = x(2:len(x))
+end function tail_char
 
 
 pure recursive function unfold_i1(f, x, len) result(res)

@@ -22,40 +22,40 @@ n = 1
 ntests = 12
 call initialize_tests(tests, ntests)
 
-tests(n) = assert(head([1_int8, 2_int8]) == 1_int8, 'head,  int8')
+tests(n) = assert(head([1_int8, 2_int8]) == 1_int8, 'head, int8')
 n = n + 1
 
-tests(n) = assert(head([1_int16, 2_int16]) == 1_int16, 'head,  int16')
+tests(n) = assert(head([1_int16, 2_int16]) == 1_int16, 'head, int16')
 n = n + 1
 
-tests(n) = assert(head([1_int32, 2_int32]) == 1_int32, 'head,  int32')
+tests(n) = assert(head([1_int32, 2_int32]) == 1_int32, 'head, int32')
 n = n + 1
 
-tests(n) = assert(head([1_int64, 2_int64]) == 1_int64, 'head,  int64')
+tests(n) = assert(head([1_int64, 2_int64]) == 1_int64, 'head, int64')
 n = n + 1
 
-tests(n) = assert(head([1._real32, 2._real32]) == 1._real32, 'head,  real32')
+tests(n) = assert(head([1._real32, 2._real32]) == 1._real32, 'head, real32')
 n = n + 1
 
-tests(n) = assert(head([1._real64, 2._real64]) == 1._real64, 'head,  real64')
+tests(n) = assert(head([1._real64, 2._real64]) == 1._real64, 'head, real64')
 n = n + 1
 
-tests(n) = assert(head([1._real128, 2._real128]) == 1._real128, 'head,  real128')
+tests(n) = assert(head([1._real128, 2._real128]) == 1._real128, 'head, real128')
 n = n + 1
 
-tests(n) = assert(head(c_r4) == c_r4(1), 'head,  complex real32')
+tests(n) = assert(head(c_r4) == c_r4(1), 'head, complex real32')
 n = n + 1
 
-tests(n) = assert(head(c_r8) == c_r8(1), 'head,  complex real64')
+tests(n) = assert(head(c_r8) == c_r8(1), 'head, complex real64')
 n = n + 1
 
-tests(n) = assert(head(c_r16) == c_r16(1), 'head,  complex real128')
+tests(n) = assert(head(c_r16) == c_r16(1), 'head, complex real128')
 n = n + 1
 
-tests(n) = assert(head('Hello') == 'H',  'head,  character string')
+tests(n) = assert(head('Hello') == 'H', 'head, character string')
 n = n + 1
 
-tests(n) = assert(head([1, 2]) == .head.[1, 2], 'head operator,  .head.x')
+tests(n) = assert(head([1, 2]) == .head.[1, 2], 'head operator, .head.x')
 n = n + 1
 
 test_failed = .false.
