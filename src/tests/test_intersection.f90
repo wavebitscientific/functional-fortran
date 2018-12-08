@@ -11,7 +11,7 @@ integer :: n, norder, ntests
 integer, parameter :: stdout = 6
 
 n = 1
-ntests = 11
+ntests = 12
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(intersection([1_int8, 2_int8], [2_int8, 3_int8]) == [2]), &
@@ -59,6 +59,12 @@ tests(n) = assert(all(intersection([cmplx(1._real128, 0._real128), cmplx(2._real
                        == [cmplx(2._real128, 0._real128)]), &
                   'intersection,  complex real128')
 n = n + 1
+
+tests(n) = assert(intersection('Hello', 'world') == 'lo', &
+                  'intersection, character string')
+n = n + 1
+
+test_failed = .false.
 
 tests(n) = assert(all(intersection([1, 2], [2, 3]) == ([1, 2].intersection.[2, 3])), &
                   'intersection operator,  x.intersection.y')

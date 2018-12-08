@@ -111,13 +111,14 @@ interface intersection
   module procedure :: intersection_i1, intersection_i2, intersection_i4, intersection_i8
   module procedure :: intersection_r4, intersection_r8, intersection_r16
   module procedure :: intersection_c4, intersection_c8, intersection_c16
-  module procedure :: insert_char
+  module procedure :: intersection_char
 end interface intersection
 
 interface operator(.intersection.)
   module procedure :: intersection_i1, intersection_i2, intersection_i4, intersection_i8
   module procedure :: intersection_r4, intersection_r8, intersection_r16
   module procedure :: intersection_c4, intersection_c8, intersection_c16
+  module procedure :: intersection_char
 end interface
 
 interface iterfold
@@ -2206,6 +2207,29 @@ pure function intersection_c16(x, y) result(res)
     enddo
   endif
 end function intersection_c16
+
+
+pure function intersection_char(x, y) result(res)
+  !! Returns a set intersection of two character strings.
+  !! Overloaded by generic procedure `intersection`.
+  character(len=*), intent(in) :: x !! First input array
+  character(len=*), intent(in) :: y !! Second input array
+  character(len=:), allocatable :: res
+  character(len=:), allocatable :: a, b
+  integer(i4) :: n
+  a = set(x)
+  b = set(y)
+  res = ''
+  if (len(a) > len(b)) then
+    do concurrent (n = 1:len(b))
+      if (scan(b(n:n), a) > 0) res = res // b(n:n)
+    end do
+  else
+    do concurrent (n = 1:len(a))
+      if (scan(a(n:n), b) > 0) res = res // a(n:n)
+    end do
+  end if
+end function intersection_char
 
 
 pure integer(i1) function iterfold_i1(f, start, x) result(iterfold)
