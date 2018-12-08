@@ -31,12 +31,14 @@ interface complement
   module procedure :: complement_i1, complement_i2, complement_i4, complement_i8
   module procedure :: complement_r4, complement_r8, complement_r16
   module procedure :: complement_c4, complement_c8, complement_c16
+  module procedure :: complement_char
 end interface complement
 
 interface operator(.complement.)
   module procedure :: complement_i1, complement_i2, complement_i4, complement_i8
   module procedure :: complement_r4, complement_r8, complement_r16
   module procedure :: complement_c4, complement_c8, complement_c16
+  module procedure :: complement_char
 end interface
 
 interface empty
@@ -755,6 +757,23 @@ pure function complement_c16(x, y) result(complement)
     if(.not. any(b == a(n)))complement = [complement, a(n)]
   enddo
 end function complement_c16
+
+
+pure function complement_char(x, y) result(complement)
+  !! Returns a set complement of two character strings.
+  !! Overloaded by generic procedure `complement`.
+  character(len=*), intent(in) :: x !! First input array
+  character(len=*), intent(in) :: y !! Second input array
+  character(len=:), allocatable :: complement
+  character(len=:), allocatable :: a, b
+  integer(i4) :: n
+  a = set(x)
+  b = set(y)
+  complement = ''
+  do concurrent (n = 1:len(a))
+    if (scan(a(n:n), b) == 0) complement = complement // a(n:n)
+  enddo
+end function complement_char
 
 
 pure function empty_i1(a) result(empty)
