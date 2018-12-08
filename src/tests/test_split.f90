@@ -11,63 +11,75 @@ integer :: n, norder, ntests
 integer, parameter :: stdout = 6
 
 n = 1
-ntests = 16
+ntests = 19
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(split(arange(1_int8, 10_int8), 1) == arange(1, 5)), &
-                  'split(x, 1),  int8')
+                  'split(x, 1), int8')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int8, 10_int8), 2) == arange(6, 10)), &
-                  'split(x, 2),  int8')
+                  'split(x, 2), int8')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int16, 10_int16), 1) == arange(1, 5)), &
-                  'split(x, 1),  int16')
+                  'split(x, 1), int16')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int16, 10_int16), 2) == arange(6, 10)), &
-                  'split(x, 2),  int16')
+                  'split(x, 2), int16')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int32, 10_int32), 1) == arange(1, 5)), &
-                  'split(x, 1),  int32')
+                  'split(x, 1), int32')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int32, 10_int32), 2) == arange(6, 10)), &
-                  'split(x, 2),  int32')
+                  'split(x, 2), int32')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int64, 10_int64), 1) == arange(1, 5)), &
-                  'split(x, 1),  int64')
+                  'split(x, 1), int64')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1_int64, 10_int64), 2) == arange(6, 10)), &
-                  'split(x, 2),  int64')
+                  'split(x, 2), int64')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1._real32, 10._real32), 1) == arange(1, 5)), &
-                  'split(x, 1),  real32')
+                  'split(x, 1), real32')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1._real32, 10._real32), 2) == arange(6, 10)), &
-                  'split(x, 2),  real32')
+                  'split(x, 2), real32')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1._real64, 10._real64), 1) == arange(1, 5)), &
-                  'split(x, 1),  real64')
+                  'split(x, 1), real64')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1._real64, 10._real64), 2) == arange(6, 10)), &
-                  'split(x, 2),  real64')
+                  'split(x, 2), real64')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1._real128, 10._real128), 1) == arange(1, 5)), &
-                  'split(x, 1),  real128')
+                  'split(x, 1), real128')
 n = n + 1
 
 tests(n) = assert(all(split(arange(1._real128, 10._real128), 2) == arange(6, 10)), &
-                  'split(x, 2),  real128')
+                  'split(x, 2), real128')
+n = n + 1
+
+tests(n) = assert(split('Hello world', 1) == 'Hello', &
+                  'split("Hello world", 1)')
+n = n + 1
+
+tests(n) = assert(split('Hello world', 2) == ' world', &
+                  'split("Hello world", 2)')
+n = n + 1
+
+tests(n) = assert(split('Hello world', 3) == '', &
+                  'split("Hello world", 3)')
 n = n + 1
 
 tests(n) = assert(all(split([1], 1) == arange(1, 0)), 'split([1], 1) returns an empty array')

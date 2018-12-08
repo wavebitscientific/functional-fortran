@@ -199,6 +199,7 @@ interface split
   module procedure :: split_i1, split_i2, split_i4, split_i8
   module procedure :: split_r4, split_r8, split_r16
   module procedure :: split_c4, split_c8, split_c16
+  module procedure :: split_char
 end interface split
 
 interface subscript
@@ -3394,6 +3395,25 @@ pure function split_c16(x, section) result(split)
     split = x(size(x)/2+1:)
   endif
 end function split_c16
+
+
+pure function split_char(x, section) result(split)
+  !! Returns the first half of the character string `x` 
+  !! if `section == 1`, the second half of  `x` if `section == 2`,
+  !! and an empty string otherwise. If `size(x) == 1`,  `split(x, 1)`
+  !! returns and empty array,  and `split(x, 2)` returns `x(1)`.
+  !! Overloaded by generic procedure `split`.
+  character(len=*), intent(in) :: x !! Input array
+  integer(i4), intent(in) :: section !! Array section to return
+  character(len=:), allocatable :: split
+  if (section == 1) then
+    split = x(1:len(x) / 2)
+  else if (section == 2) then
+    split = x(len(x) / 2 + 1:)
+  else
+    split = ''
+  end if
+end function split_char
 
 
 pure function strarr(string) result(array)
