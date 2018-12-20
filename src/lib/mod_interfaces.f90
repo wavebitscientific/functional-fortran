@@ -1,9 +1,3 @@
-! functional-fortran - Functional programming for modern Fortran
-! Copyright (c) 2016-2017,  Wavebit Scientific LLC
-! All rights reserved.
-!
-! Licensed under the BSD-3 clause license. See LICENSE for details.
-
 module mod_interfaces
 use iso_fortran_env, only:i1 => int8, i2 => int16, i4 => int32, i8 => int64, &
                          r4 => real32, r8 => real64, r16 => real128
