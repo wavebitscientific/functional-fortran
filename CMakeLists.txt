@@ -1,7 +1,6 @@
 # cmake version, project name, language
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-project(functional-fortran)
-enable_language(Fortran)
+project(functional-fortran Fortran)
 
 # set output paths for modules, archives, and executables
 set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/include)
@@ -40,7 +39,7 @@ add_library(testing src/tests/mod_testing.f90)
 
 # tests
 enable_testing()
-foreach(execid arange complement empty filter foldl foldr foldt head init insert intersection iterfold last limit map reverse set sort split subscript tail unfold union)
+foreach(execid arange arrstr complement empty filter foldl foldr foldt head init insert intersection iterfold last limit map reverse set sort split strarr subscript tail unfold union)
   add_executable(test_${execid} src/tests/test_${execid}.f90)
   target_link_libraries(test_${execid} functional testing)
   add_test(test_${execid} bin/test_${execid})
