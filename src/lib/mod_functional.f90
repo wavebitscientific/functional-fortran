@@ -2578,9 +2578,7 @@ pure function map_i1(f, x) result(map)
   integer(i1), dimension(:), intent(in) :: x !! Input array
   integer(i1), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_i1
 
 
@@ -2592,9 +2590,7 @@ pure function map_i2(f, x) result(map)
   integer(i2), dimension(:), intent(in) :: x !! Input array
   integer(i2), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_i2
 
 
@@ -2606,9 +2602,7 @@ pure function map_i4(f, x) result(map)
   integer(i4), dimension(:), intent(in) :: x !! Input array
   integer(i4), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_i4
 
 
@@ -2620,9 +2614,7 @@ pure function map_i8(f, x) result(map)
   integer(i8), dimension(:), intent(in) :: x
   integer(i8), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_i8
 
 
@@ -2634,9 +2626,7 @@ pure function map_r4(f, x) result(map)
   real(r4), dimension(:), intent(in) :: x !! Input array
   real(r4), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_r4
 
 
@@ -2648,9 +2638,7 @@ pure function map_r8(f, x) result(map)
   real(r8), dimension(:), intent(in) :: x !! Input array
   real(r8), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_r8
 
 
@@ -2662,9 +2650,7 @@ pure function map_r16(f, x) result(map)
   real(r16), dimension(:), intent(in) :: x !! Input array
   real(r16), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_r16
 
 
@@ -2676,9 +2662,7 @@ pure function map_c4(f, x) result(map)
   complex(r4), dimension(:), intent(in) :: x !! Input array
   complex(r4), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_c4
 
 
@@ -2690,9 +2674,7 @@ pure function map_c8(f, x) result(map)
   complex(r8), dimension(:), intent(in) :: x !! Input array
   complex(r8), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_c8
 
 
@@ -2704,9 +2686,7 @@ pure function map_c16(f, x) result(map)
   complex(r16), dimension(:), intent(in) :: x !! Input array
   complex(r16), dimension(size(x)) :: map
   integer(i4) :: i
-  do concurrent(i = 1:size(x))
-    map(i) = f(x(i))
-  enddo
+  map = [(f(x(i)), i = 1, size(x))]
 end function map_c16
 
 
