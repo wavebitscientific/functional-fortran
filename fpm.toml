@@ -1,0 +1,6 @@
+name = "functional-fortran"
+version = "0.5.0"
+license = "BSD-3-Clause"
+
+[library]
+source-dir = "src/lib"
