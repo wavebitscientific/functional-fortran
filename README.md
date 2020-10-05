@@ -29,6 +29,14 @@ Start using functional-fortran in your code by including the module:
 use mod_functional
 ```
 
+This project also supports the Fortran Package Manager ([fpm](https://github.com/fortran-lang/fpm)).
+Just add functional-fortran to your `fpm.toml`:
+```toml
+[dependencies]
+[dependencies.functional]
+git = "https://github.com/wavebitscientific/functional-fortran"
+```
+
 ## Why functional-fortran?
 
 While not designed as a purely functional programming language,
