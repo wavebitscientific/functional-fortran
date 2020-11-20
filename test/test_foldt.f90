@@ -68,10 +68,10 @@ end function sum_c16
  
 end module mod_fold_functions
 
-program test_foldr
+program test_foldt
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
-use mod_testing, only:assert, initialize_tests, report_tests
-use mod_functional
+use testing, only:assert, initialize_tests, report_tests
+use functional
 use mod_fold_functions
 
 implicit none
@@ -91,32 +91,32 @@ n = 1
 ntests = 10
 call initialize_tests(tests, ntests)
 
-tests(n) = assert(foldr(sum_i1, 0_int8, [1_int8, 2_int8, 3_int8, 4_int8, 5_int8]) == 15, &
-                        'foldr,  int8')
+tests(n) = assert(foldt(sum_i1, 0_int8, [1_int8, 2_int8, 3_int8, 4_int8, 5_int8]) == 15, &
+                        'foldt,  int8')
 n = n + 1
 
-tests(n) = assert(foldr(sum_i2, 0_int16, [1_int16, 2_int16, 3_int16, 4_int16, 5_int16]) == 15, &
-                        'foldr,  int16')
+tests(n) = assert(foldt(sum_i2, 0_int16, [1_int16, 2_int16, 3_int16, 4_int16, 5_int16]) == 15, &
+                        'foldt,  int16')
 n = n + 1
 
-tests(n) = assert(foldr(sum_i4, 0_int32, [1_int32, 2_int32, 3_int32, 4_int32, 5_int32]) == 15, &
-                        'foldr,  int32')
+tests(n) = assert(foldt(sum_i4, 0_int32, [1_int32, 2_int32, 3_int32, 4_int32, 5_int32]) == 15, &
+                        'foldt,  int32')
 n = n + 1
 
-tests(n) = assert(foldr(sum_i8, 0_int64, [1_int64, 2_int64, 3_int64, 4_int64, 5_int64]) == 15, &
-                        'foldr,  int64')
+tests(n) = assert(foldt(sum_i8, 0_int64, [1_int64, 2_int64, 3_int64, 4_int64, 5_int64]) == 15, &
+                        'foldt,  int64')
 n = n + 1
 
-tests(n) = assert(foldr(sum_r4, 0._real32, [1._real32, 2._real32, 3._real32, 4._real32, 5._real32]) == 15, &
-                        'foldr,  real32')
+tests(n) = assert(foldt(sum_r4, 0._real32, [1._real32, 2._real32, 3._real32, 4._real32, 5._real32]) == 15, &
+                        'foldt,  real32')
 n = n + 1
 
-tests(n) = assert(foldr(sum_r8, 0._real64, [1._real64, 2._real64, 3._real64, 4._real64, 5._real64]) == 15, &
-                        'foldr,  real64')
+tests(n) = assert(foldt(sum_r8, 0._real64, [1._real64, 2._real64, 3._real64, 4._real64, 5._real64]) == 15, &
+                        'foldt,  real64')
 n = n + 1
 
-tests(n) = assert(foldr(sum_r16, 0._real128, [1._real128, 2._real128, 3._real128, 4._real128, 5._real128]) == 15, &
-                        'foldr,  real128')
+tests(n) = assert(foldt(sum_r16, 0._real128, [1._real128, 2._real128, 3._real128, 4._real128, 5._real128]) == 15, &
+                        'foldt,  real128')
 n = n + 1
 
 c4 = arange(cmplx(1, 0), cmplx(5, 0))
@@ -126,20 +126,20 @@ c16 = c4
 c8_start = cmplx(0, 0)
 c16_start = c8_start
 
-tests(n) = assert(foldr(sum_c4, cmplx(0., 0.), c4) == cmplx(15, 0), &
-                  'foldr,  complex real32')
+tests(n) = assert(foldt(sum_c4, cmplx(0., 0.), c4) == cmplx(15, 0), &
+                  'foldt,  complex real32')
 n = n + 1
 
-tests(n) = assert(foldr(sum_c8, c8_start, c8) == cmplx(15._real64, 0._real64), &
-                  'foldr,  complex real64')
+tests(n) = assert(foldt(sum_c8, c8_start, c8) == cmplx(15._real64, 0._real64), &
+                  'foldt,  complex real64')
 n = n + 1
 
-tests(n) = assert(foldr(sum_c16, c16_start, c16) == cmplx(15._real128, 0._real128), &
-                  'foldr,  complex real128')
+tests(n) = assert(foldt(sum_c16, c16_start, c16) == cmplx(15._real128, 0._real128), &
+                  'foldt,  complex real128')
 n = n + 1
 
 test_failed = .false.
 call report_tests(tests, test_failed)
 if(test_failed)stop 1
 
-end program test_foldr
+end program test_foldt

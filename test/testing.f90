@@ -1,4 +1,4 @@
-module mod_testing
+module testing
 
   ! Simple unit testing module.
 
@@ -60,4 +60,4 @@ contains
     end if
   end subroutine report_tests
 
-end module mod_testing
+end module testing

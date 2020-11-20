@@ -1,4 +1,4 @@
-module mod_fold_functions
+module mod_iterfold_functions
 
 implicit none
 
@@ -66,13 +66,13 @@ pure complex(real128) function sum_c16(x, y) result(res)
   res = x + y
 end function sum_c16
  
-end module mod_fold_functions
+end module mod_iterfold_functions
 
-program test_foldl
+program test_iterfold
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
-use mod_testing, only:assert, initialize_tests, report_tests
-use mod_functional
-use mod_fold_functions
+use testing, only:assert, initialize_tests, report_tests
+use functional
+use mod_iterfold_functions
 
 implicit none
 
@@ -91,32 +91,32 @@ n = 1
 ntests = 10
 call initialize_tests(tests, ntests)
 
-tests(n) = assert(foldl(sum_i1, 0_int8, [1_int8, 2_int8, 3_int8, 4_int8, 5_int8]) == 15, &
-                        'foldl,  int8')
+tests(n) = assert(iterfold(sum_i1, 0_int8, [1_int8, 2_int8, 3_int8, 4_int8, 5_int8]) == 15, &
+                        'iterfold,  int8')
 n = n + 1
 
-tests(n) = assert(foldl(sum_i2, 0_int16, [1_int16, 2_int16, 3_int16, 4_int16, 5_int16]) == 15, &
-                        'foldl,  int16')
+tests(n) = assert(iterfold(sum_i2, 0_int16, [1_int16, 2_int16, 3_int16, 4_int16, 5_int16]) == 15, &
+                        'iterfold,  int16')
 n = n + 1
 
-tests(n) = assert(foldl(sum_i4, 0_int32, [1_int32, 2_int32, 3_int32, 4_int32, 5_int32]) == 15, &
-                        'foldl,  int32')
+tests(n) = assert(iterfold(sum_i4, 0_int32, [1_int32, 2_int32, 3_int32, 4_int32, 5_int32]) == 15, &
+                        'iterfold,  int32')
 n = n + 1
 
-tests(n) = assert(foldl(sum_i8, 0_int64, [1_int64, 2_int64, 3_int64, 4_int64, 5_int64]) == 15, &
-                        'foldl,  int64')
+tests(n) = assert(iterfold(sum_i8, 0_int64, [1_int64, 2_int64, 3_int64, 4_int64, 5_int64]) == 15, &
+                        'iterfold,  int64')
 n = n + 1
 
-tests(n) = assert(foldl(sum_r4, 0._real32, [1._real32, 2._real32, 3._real32, 4._real32, 5._real32]) == 15, &
-                        'foldl,  real32')
+tests(n) = assert(iterfold(sum_r4, 0._real32, [1._real32, 2._real32, 3._real32, 4._real32, 5._real32]) == 15, &
+                        'iterfold,  real32')
 n = n + 1
 
-tests(n) = assert(foldl(sum_r8, 0._real64, [1._real64, 2._real64, 3._real64, 4._real64, 5._real64]) == 15, &
-                        'foldl,  real64')
+tests(n) = assert(iterfold(sum_r8, 0._real64, [1._real64, 2._real64, 3._real64, 4._real64, 5._real64]) == 15, &
+                        'iterfold,  real64')
 n = n + 1
 
-tests(n) = assert(foldl(sum_r16, 0._real128, [1._real128, 2._real128, 3._real128, 4._real128, 5._real128]) == 15, &
-                        'foldl,  real128')
+tests(n) = assert(iterfold(sum_r16, 0._real128, [1._real128, 2._real128, 3._real128, 4._real128, 5._real128]) == 15, &
+                        'iterfold,  real128')
 n = n + 1
 
 c4 = arange(cmplx(1, 0), cmplx(5, 0))
@@ -126,20 +126,20 @@ c16 = c4
 c8_start = cmplx(0, 0)
 c16_start = c8_start
 
-tests(n) = assert(foldl(sum_c4, cmplx(0., 0.), c4) == cmplx(15, 0), &
-                  'foldl,  complex real32')
+tests(n) = assert(iterfold(sum_c4, cmplx(0., 0.), c4) == cmplx(15, 0), &
+                  'iterfold,  complex real32')
 n = n + 1
 
-tests(n) = assert(foldl(sum_c8, c8_start, c8) == cmplx(15._real64, 0._real64), &
-                  'foldl,  complex real64')
+tests(n) = assert(iterfold(sum_c8, c8_start, c8) == cmplx(15._real64, 0._real64), &
+                  'iterfold,  complex real64')
 n = n + 1
 
-tests(n) = assert(foldl(sum_c16, c16_start, c16) == cmplx(15._real128, 0._real128), &
-                  'foldl,  complex real128')
+tests(n) = assert(iterfold(sum_c16, c16_start, c16) == cmplx(15._real128, 0._real128), &
+                  'iterfold,  complex real128')
 n = n + 1
 
 test_failed = .false.
 call report_tests(tests, test_failed)
 if(test_failed)stop 1
 
-end program test_foldl
+end program test_iterfold
