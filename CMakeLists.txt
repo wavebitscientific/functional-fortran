@@ -35,7 +35,7 @@ endif()
 
 # library to archive (libfunctional.a)
 add_library(functional src/functional.f90)
-add_library(testing test/mod_testing.f90)
+add_library(testing test/testing.f90)
 
 # tests
 enable_testing()
