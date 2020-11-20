@@ -71,7 +71,7 @@ end module mod_fold_functions
 program test_foldr
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
 use mod_testing, only:assert, initialize_tests, report_tests
-use mod_functional
+use functional
 use mod_fold_functions
 
 implicit none

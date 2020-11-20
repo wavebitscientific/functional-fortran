@@ -1,6 +1,6 @@
 program test_arrstr
 use mod_testing, only:assert, initialize_tests, report_tests
-use mod_functional, only:arrstr, empty
+use functional, only:arrstr, empty
 
 implicit none
 
