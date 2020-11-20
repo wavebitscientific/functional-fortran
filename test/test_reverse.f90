@@ -1,6 +1,6 @@
 program test_reverse
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
-use mod_testing, only:assert, initialize_tests, report_tests
+use testing, only:assert, initialize_tests, report_tests
 use functional
 
 implicit none

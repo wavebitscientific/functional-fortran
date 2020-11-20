@@ -1,5 +1,5 @@
 program test_strarr
-use mod_testing, only:assert, initialize_tests, report_tests
+use testing, only:assert, initialize_tests, report_tests
 use functional, only:arrstr, strarr, empty
 
 implicit none
