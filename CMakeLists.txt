@@ -34,13 +34,13 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES Cray)
 endif()
 
 # library to archive (libfunctional.a)
-add_library(functional src/lib/mod_functional.f90 src/lib/mod_interfaces.f90)
-add_library(testing src/tests/mod_testing.f90)
+add_library(functional src/functional.f90)
+add_library(testing test/mod_testing.f90)
 
 # tests
 enable_testing()
 foreach(execid arange arrstr complement empty filter foldl foldr foldt head init insert intersection iterfold last limit map reverse set sort split strarr subscript tail unfold union)
-  add_executable(test_${execid} src/tests/test_${execid}.f90)
+  add_executable(test_${execid} test/test_${execid}.f90)
   target_link_libraries(test_${execid} functional testing)
   add_test(test_${execid} bin/test_${execid})
 endforeach()
