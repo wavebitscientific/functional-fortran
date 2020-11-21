@@ -7,8 +7,7 @@ implicit none
 
 logical, dimension(:), allocatable :: tests
 logical :: test_failed
-integer :: n, norder, ntests
-integer, parameter :: stdout = 6
+integer :: n, ntests
 real(real32), dimension(1000) :: x
 
 n = 1

@@ -78,8 +78,7 @@ implicit none
 
 logical, dimension(:), allocatable :: tests
 logical :: test_failed
-integer :: n, norder, ntests
-integer, parameter :: stdout = 6
+integer :: n, ntests
 
 complex(real32), dimension(:), allocatable :: c4
 complex(real64), dimension(:), allocatable :: c8
