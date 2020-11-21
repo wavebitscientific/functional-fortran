@@ -10,6 +10,7 @@ Functional programming for modern Fortran.
   - [Build with fpm](#build-with-fpm)
   - [Build with CMake](#build-with-cmake)
   - [Or just drop-in the source file](#or-just-drop-in-the-source-file)
+  - [Use it](#use-it)
 * [Why functional-fortran?](#why-functional-fortran)
 * [What's included?](#whats-included)
 * [Example usage](#example-usage)
@@ -57,8 +58,8 @@ ctest
 
 ### Or just drop-in the source file
 
-functional-fortran is a single-source library.
-Just grab the src/functional.f90 file and build it however you want.
+functional-fortran is a single-file library.
+Just grab src/functional.f90 and build it however you want.
 
 ### Use it
 
