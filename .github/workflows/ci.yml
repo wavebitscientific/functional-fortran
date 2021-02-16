@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    paths:
+      - "**.f90"
+      - ".github/workflows/ci.yml"
+      - "CMakeLists.txt"
+  pull_request:
+    paths:
+      - "**.f90"
+      - ".github/workflows/ci.yml"
+      - "CMakeLists.txt"
+
+jobs:
+  build:
+    name: Build and test on Linux
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        compiler: [gfortran-7, gfortran-8, gfortran-9]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build with CMake
+      env:
+        FC: ${{ matrix.compiler }}
+      run: cmake . && make
+
+    - name: Test
+      run: ctest
