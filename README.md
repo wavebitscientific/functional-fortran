@@ -2,7 +2,7 @@
 
 Functional programming for modern Fortran. 
 
-[![Build Status](https://travis-ci.org/wavebitscientific/functional-fortran.svg?branch=master)](https://travis-ci.org/wavebitscientific/functional-fortran)
+![Build status](https://github.com/zmoon/functional-fortran/workflows/ci/badge.svg)
 [![GitHub issues](https://img.shields.io/github/issues/wavebitscientific/functional-fortran.svg)](https://github.com/wavebitscientific/functional-fortran/issues)
 
 * [Getting started](#getting-started)
