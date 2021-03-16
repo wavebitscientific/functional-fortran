@@ -60,7 +60,7 @@ end function xpowx_c16
 end module mod_map_functions
 
 program test_map
-use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
+use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128, compiler_version, compiler_options
 use testing, only:assert, initialize_tests, report_tests
 use functional
 use mod_map_functions
@@ -74,6 +74,11 @@ integer :: n, ntests
 complex(real32), dimension(:), allocatable :: c4
 complex(real64), dimension(:), allocatable :: c8
 complex(real128), dimension(:), allocatable :: c16
+
+character(len=100) :: s_compiler_version
+logical :: compiler_has_O3
+complex(real32), dimension(:), allocatable :: c4res
+logical, dimension(:), allocatable :: c4rescheck
 
 n = 1
 ntests = 10
@@ -115,7 +120,23 @@ c16 = [cmplx(1._real128, 0._real128), &
        cmplx(2._real128, 0._real128), &
        cmplx(3._real128, 0._real128)]
 
-tests(n) = assert(all(map(xpowx_c4, c4) == c4**c4), 'map,  complex real32')
+s_compiler_version = compiler_version()  ! e.g., `GCC version {major}.{minor}.{patch}`
+if ( s_compiler_version(1:3) == 'GCC' ) then
+  compiler_has_O3 = index(compiler_options(), '-O3') /= 0
+  
+  ! Special case for gfortran-10 with -O3
+  if ( s_compiler_version(13:14) == '10' .and. compiler_has_O3 ) then
+    print *, 'using special check for gfortran-10 -O3 for complex real32'
+    ! c4rescheck = map(xpowx_c4, c4) == c4**c4  ! T T F even though `map(xpowx_c4, c4) == c4**c4` is T T T
+    c4res = map(xpowx_c4, c4)
+    c4rescheck = c4res == c4**c4  ! splitting it into two lines we are able to get T T T
+    tests(n) = assert(all(c4rescheck), 'map,  complex real32')
+  else
+    tests(n) = assert(all(map(xpowx_c4, c4) == c4**c4), 'map,  complex real32')
+  end if
+else
+  tests(n) = assert(all(map(xpowx_c4, c4) == c4**c4), 'map,  complex real32')
+end if
 n = n + 1
 
 tests(n) = assert(all(map(xpowx_c8, c8) == c8**c8), 'map,  complex real64')
