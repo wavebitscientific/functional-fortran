@@ -184,35 +184,35 @@ see the implementation of set `intersection` in this library.
 `head` returns the first element of the array:
 
 ```fortran
-print *, head([1,2,3])
+print *, head([1, 2, 3])
            1
 ```
 
 `tail` returns everything but the first element of the array:
 
 ```fortran
-print *, tail([1,2,3])
+print *, tail([1, 2, 3])
            2           3
 ```
 
 Similarly, `last` returns the last element of the array:
 
 ```fortran
-print *, last([1,2,3])
+print *, last([1, 2, 3])
            3
 ```
 
 `init` returns everything but the last element of the array:
 
 ```fortran
-print *, init([1,2,3])
+print *, init([1, 2, 3])
            1           2
 ```
 
 Subscript an array at specific indices:
 
 ```fortran
-print *, subscript([1,2,3,4,5], [3,4])
+print *, subscript([1, 2, 3, 4, 5], [3, 4])
            3           4
 ```
 
@@ -220,7 +220,7 @@ Unlike the Fortran 2008 vector subscript, the `subscript` function is out-of-bou
 i.e. subscripting out of bounds returns an empty array:
 
 ```fortran
-print *, subscript([1,2,3], [10])
+print *, subscript([1, 2, 3], [10])
 
 ```
 
@@ -228,15 +228,15 @@ We can prepend, append, or insert an element into an array using `insert`:
 
 ```fortran
 ! insert a 5 at position 0 to prepend:
-print *, insert(5, 0, [1,2,3])
+print *, insert(5, 0, [1, 2, 3])
            5           1           2           3
 
 ! insert a 5 at position 4 to append:
-print *, insert(5, 4, [1,2,3])
+print *, insert(5, 4, [1, 2, 3])
            1           2           3           5
 
 ! insert a 2 at position 2:
-print *, insert(2, 2, [1,3,4])
+print *, insert(2, 2, [1, 3, 4])
            1           2           3           4
 ```
 
@@ -307,7 +307,7 @@ pure recursive integer function fibonacci(n) result(fib)
   end if
 end function fibonacci
 
-print *, map(fibonacci, [17,5,13,22])
+print *, map(fibonacci, [17, 5, 13, 22])
         1597           5         233       17711
 ```
 
@@ -321,13 +321,13 @@ pure logical function even(x)
   even = mod(x, 2) == 0
 endfunction even
 
-print *, filter(even,[1,2,3,4,5])
+print *, filter(even, [1, 2, 3, 4, 5])
            2           4
 ```
 Functions can be chained together into pretty one-liners:
 
 ```fortran
-print *, filter(even,map(fibonacci,arange(1,10)))
+print *, filter(even, map(fibonacci, arange(1, 10)))
            2           8          34
 ```
 
@@ -354,11 +354,11 @@ input using the above-defined functions and a start value
 
 ```fortran
 ! left-fold an array using add to compute array sum
-print *, foldl(add,0.,arange(1.,5.))
+print *, foldl(add, 0., arange(1., 5.))
    15.0000000
 
 ! left-fold an array using mult to compute array product
-print *, foldl(mult,1.,arange(1.,5.))
+print *, foldl(mult, 1., arange(1., 5.))
    120.000000    
 ```
 The above is a trivial example that re-invents Fortran intrinsics
@@ -381,7 +381,7 @@ pure real function multpt1(x)
   multpt1 = 1.1 * x
 endfunction multpt1
 
-write(*,*) unfold(multpt1,[1.],5)
+write(*,*) unfold(multpt1, [1.], 5)
    1.00000000       1.10000002       1.21000004       1.33100009       1.46410012 
 ```
 
@@ -390,7 +390,7 @@ write(*,*) unfold(multpt1,[1.],5)
 Function `set` returns all unique elements of an input array:
 
 ```fortran
-print *, set([1,1,2,2,3])
+print *, set([1, 1, 2, 2, 3])
            1           2           3
 ```
 Common functions that operate on sets, `union`, 
@@ -398,15 +398,15 @@ Common functions that operate on sets, `union`,
 
 ```fortran
 ! unique elements that are found in either array
-print *, union([1,2,2],[2,3,3,4])
+print *, union([1, 2, 2], [2, 3, 3, 4])
            1           2           3           4
 
 ! unique elements that are found in both arrays
-print *, intersection([1,2,2],[2,3,3,4])
+print *, intersection([1, 2, 2], [2, 3, 3, 4])
            2
 
 ! unique elements that are found first but not in second array
-print *, complement([1,2,2],[2,3,3,4])
+print *, complement([1, 2, 2], [2, 3, 3, 4])
            1
 ```
 
