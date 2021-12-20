@@ -129,14 +129,14 @@ unary or binary operators, respectively. These are:
 given start and end values as input arguments:
 
 ```fortran
-write(*,*) arange(1, 5)
+print *, arange(1, 5)
            1           2           3           4           5
 ```
 
 `arange` works with real numbers as well:
 
 ```fortran
-write(*,*) arange(1., 5.)
+print *, arange(1., 5.)
    1.00000000       2.00000000       3.00000000       4.00000000       5.00000000    
 ```
 
@@ -144,21 +144,21 @@ Third argument to `arange` (optional) is the increment,
 which defaults to `1` if not given:
 
 ```fortran
-write(*,*) arange(1, 15, 3)
+print *, arange(1, 15, 3)
            1           4           7          10          13
 ```
 
 Negative increments work as expected:
 
 ```fortran
-write(*,*) arange(3, 1, -1)
+print *, arange(3, 1, -1)
            3           2           1 
 ```
 
 We can use floating-point increments:
 
 ```fortran
-write(*,*) arange(1., 1.5, 0.1)
+print *, arange(1., 1.5, 0.1)
    1.00000000       1.10000002       1.20000005       1.29999995       1.39999998       1.50000000    
 ```
 
@@ -166,7 +166,7 @@ If `start` is greater than `end` and increment is positive,
 `arange` returns an empty array:
 
 ```fortran
-write(*,*) arange(5, 1)
+print *, arange(5, 1)
 
 ```
 
@@ -174,7 +174,7 @@ Use `empty` to generate a zero-length array of any Fortran standard
 kind:
 
 ```fortran
-write(*,*) size(empty(1))
+print *, size(empty(1))
            0
 ```
 which may be useful to initialize accumulators, for example
@@ -184,35 +184,35 @@ see the implementation of set `intersection` in this library.
 `head` returns the first element of the array:
 
 ```fortran
-write(*,*) head([1,2,3])
+print *, head([1,2,3])
            1
 ```
 
 `tail` returns everything but the first element of the array:
 
 ```fortran
-write(*,*) tail([1,2,3])
+print *, tail([1,2,3])
            2           3
 ```
 
 Similarly, `last` returns the last element of the array:
 
 ```fortran
-write(*,*) last([1,2,3])
+print *, last([1,2,3])
            3
 ```
 
 `init` returns everything but the last element of the array:
 
 ```fortran
-write(*,*) init([1,2,3])
+print *, init([1,2,3])
            1           2
 ```
 
 Subscript an array at specific indices:
 
 ```fortran
-write(*,*) subscript([1,2,3,4,5], [3,4])
+print *, subscript([1,2,3,4,5], [3,4])
            3           4
 ```
 
@@ -220,7 +220,7 @@ Unlike the Fortran 2008 vector subscript, the `subscript` function is out-of-bou
 i.e. subscripting out of bounds returns an empty array:
 
 ```fortran
-write(*,*) subscript([1,2,3], [10])
+print *, subscript([1,2,3], [10])
 
 ```
 
@@ -228,15 +228,15 @@ We can prepend, append, or insert an element into an array using `insert`:
 
 ```fortran
 ! insert a 5 at position 0 to prepend:
-write(*,*) insert(5, 0, [1,2,3])
+print *, insert(5, 0, [1,2,3])
            5           1           2           3
 
 ! insert a 5 at position 4 to append:
-write(*,*) insert(5, 4, [1,2,3])
+print *, insert(5, 4, [1,2,3])
            1           2           3           5
 
 ! insert a 2 at position 2:
-write(*,*) insert(2, 2, [1,3,4])
+print *, insert(2, 2, [1,3,4])
            1           2           3           4
 ```
 
@@ -244,11 +244,11 @@ write(*,*) insert(2, 2, [1,3,4])
 
 ```fortran
 ! return first half of the array
-write(*,*) split(arange(1, 5), 1)
+print *, split(arange(1, 5), 1)
            1           2
 
 ! return second half of the array
-write(*,*) split(arange(1, 5), 2)
+print *, split(arange(1, 5), 2)
            3           4           5
 ```
 The above is useful for recursive binary tree searching or sorting,
@@ -259,15 +259,15 @@ for example, see the implementation of `sort` in this library.
 ```fortran
 real :: x(5)
 call random_number(x)
-write(*,*) x
+print *, x
    0.997559547      0.566824675      0.965915322      0.747927666      0.367390871    
-write(*,*)sort(x)
+print *, sort(x)
    0.367390871      0.566824675      0.747927666      0.965915322      0.997559547    
 ```
 Use `reverse` to sort in descending order:
 
 ```fortran
-write(*,*) reverse(sort(x))
+print *, reverse(sort(x))
    0.997559547      0.965915322      0.747927666      0.566824675      0.367390871    
 ```
 
@@ -276,17 +276,17 @@ or an array within a lower and upper limit, for example:
 
 ```fortran
 ! limit a scalar (5) within bounds 1 and 4
-write(*,*) limit(5, 1, 4)
+print *, limit(5, 1, 4)
            4
 
 ! flipping the bounds works just as well
-write(*,*) limit(5, 4, 1)
+print *, limit(5, 4, 1)
            4
 ```
 `limit` also works on arrays:
 
 ```fortran
-write(*,*) limit(arange(0, 4), 1, 3):
+print *, limit(arange(0, 4), 1, 3):
            1           1           2           3           3
 ```
 
@@ -307,7 +307,7 @@ pure recursive integer function fibonacci(n) result(fib)
   end if
 end function fibonacci
 
-write(*,*) map(fibonacci, [17,5,13,22])
+print *, map(fibonacci, [17,5,13,22])
         1597           5         233       17711
 ```
 
@@ -321,13 +321,13 @@ pure logical function even(x)
   even = mod(x, 2) == 0
 endfunction even
 
-write(*,*) filter(even,[1,2,3,4,5])
+print *, filter(even,[1,2,3,4,5])
            2           4
 ```
 Functions can be chained together into pretty one-liners:
 
 ```fortran
-write(*,*) filter(even,map(fibonacci,arange(1,10)))
+print *, filter(even,map(fibonacci,arange(1,10)))
            2           8          34
 ```
 
@@ -354,11 +354,11 @@ input using the above-defined functions and a start value
 
 ```fortran
 ! left-fold an array using add to compute array sum
-write(*,*) foldl(add,0.,arange(1.,5.))
+print *, foldl(add,0.,arange(1.,5.))
    15.0000000
 
 ! left-fold an array using mult to compute array product
-write(*,*) foldl(mult,1.,arange(1.,5.))
+print *, foldl(mult,1.,arange(1.,5.))
    120.000000    
 ```
 The above is a trivial example that re-invents Fortran intrinsics
@@ -390,7 +390,7 @@ write(*,*) unfold(multpt1,[1.],5)
 Function `set` returns all unique elements of an input array:
 
 ```fortran
-write(*,*) set([1,1,2,2,3])
+print *, set([1,1,2,2,3])
            1           2           3
 ```
 Common functions that operate on sets, `union`, 
@@ -398,15 +398,15 @@ Common functions that operate on sets, `union`,
 
 ```fortran
 ! unique elements that are found in either array
-write(*,*) union([1,2,2],[2,3,3,4])
+print *, union([1,2,2],[2,3,3,4])
            1           2           3           4
 
 ! unique elements that are found in both arrays
-write(*,*) intersection([1,2,2],[2,3,3,4])
+print *, intersection([1,2,2],[2,3,3,4])
            2
 
 ! unique elements that are found first but not in second array
-write(*,*) complement([1,2,2],[2,3,3,4])
+print *, complement([1,2,2],[2,3,3,4])
            1
 ```
 
