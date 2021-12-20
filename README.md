@@ -318,8 +318,7 @@ even number, and use this function to filter an array:
 ```fortran
 pure logical function even(x)
   integer, intent(in) :: x
-  even = .false.
-  if(mod(x, 2) == 0) even = .true.
+  even = mod(x, 2) == 0
 endfunction even
 
 write(*,*) filter(even,[1,2,3,4,5])
