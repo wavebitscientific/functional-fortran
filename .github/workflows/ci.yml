@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        compiler: [gfortran-8, gfortran-9, gfortran-10]
+        compiler: [gfortran-9, gfortran-10]
 
     steps:
     - uses: actions/checkout@v2
