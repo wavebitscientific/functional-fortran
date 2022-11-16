@@ -3629,7 +3629,7 @@ pure function subscript_i1(x, ind) result(subscript)
   integer(i1), dimension(:), allocatable :: subscript
   integer(i1), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3646,7 +3646,7 @@ pure function subscript_i2(x, ind) result(subscript)
   integer(i2), dimension(:), allocatable :: subscript
   integer(i2), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3663,7 +3663,7 @@ pure function subscript_i4(x, ind) result(subscript)
   integer(i4), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3680,7 +3680,7 @@ pure function subscript_i8(x, ind) result(subscript)
   integer(i8), dimension(:), allocatable :: subscript
   integer(i8), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3697,7 +3697,7 @@ pure function subscript_r4(x, ind) result(subscript)
   real(r4), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3714,7 +3714,7 @@ pure function subscript_r8(x, ind) result(subscript)
   real(r8), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3731,7 +3731,7 @@ pure function subscript_r16(x, ind) result(subscript)
   real(r16), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3748,7 +3748,7 @@ pure function subscript_c4(x, ind) result(subscript)
   complex(r4), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3765,7 +3765,7 @@ pure function subscript_c8(x, ind) result(subscript)
   complex(r8), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
@@ -3782,7 +3782,7 @@ pure function subscript_c16(x, ind) result(subscript)
   complex(r16), dimension(:), allocatable :: subscript
   integer(i4), dimension(:), allocatable :: indices
   integer :: i
-  indices = pack(ind, ind > 0 .and. ind < size(x))
+  indices = pack(ind, ind > 0 .and. ind <= size(x))
   allocate(subscript(size(indices)))
   do concurrent(i = 1:size(indices))
     subscript(i) = x(indices(i))
