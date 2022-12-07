@@ -10,7 +10,7 @@ logical :: test_failed
 integer :: n, ntests
 
 n = 1
-ntests = 11
+ntests = 12
 call initialize_tests(tests, ntests)
 
 tests(n) = assert(all(subscript([1_int8, 2_int8, 3_int8], [2_int8]) == [2_int8]), &
@@ -43,6 +43,10 @@ n = n + 1
 
 tests(n) = assert(size(subscript([1, 2, 3], [0])) == 0, &
                   'subscript out of bounds returns empty array')
+n = n + 1
+
+tests(n) = assert(all(subscript([1, 2, 3], [3]) == [3]), &
+                  'subscript of last element')
 n = n + 1
 
 tests(n) = assert(all(subscript(arange(cmplx(1._real32, 0._real32), &
