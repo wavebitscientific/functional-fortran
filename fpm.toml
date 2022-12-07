@@ -1,6 +1,6 @@
 name = "functional"
-version = "0.6.1"
+version = "0.6.2"
 license = "BSD-3-Clause"
 author = "Milan Curcic"
 maintainer = "milancurcic@hey.com"
-copyright = "Copyright (c) 2016-2020, functional-fortran contributors"
+copyright = "Copyright (c) 2016-2022, functional-fortran contributors"
