@@ -1,4 +1,4 @@
-module mod_fold_functions
+module mod_foldl_functions
 
 implicit none
 
@@ -66,13 +66,13 @@ pure complex(real128) function sum_c16(x, y) result(res)
   res = x + y
 end function sum_c16
  
-end module mod_fold_functions
+end module mod_foldl_functions
 
 program test_foldl
 use iso_fortran_env, only:int8, int16, int32, int64, real32, real64, real128
 use testing, only:assert, initialize_tests, report_tests
 use functional
-use mod_fold_functions
+use mod_foldl_functions
 
 implicit none
 
